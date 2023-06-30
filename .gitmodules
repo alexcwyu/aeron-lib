@@ -1,12 +1,3 @@
-# [submodule "libaeron-sys/aeron"]
-# 	path = libaeron-sys/aeron
-# 	url = https://github.com/real-logic/aeron.git
-# [submodule "libaeron_driver-sys/aeron"]
-# 	path = libaeron_driver-sys/aeron
-# 	url = https://github.com/real-logic/aeron.git
-# [submodule "libaeron_archive-sys/aeron"]
-# 	path = libaeron_driver-sys/aeron
-# 	url = https://github.com/real-logic/aeron.git
 [submodule "libaeron_archive-sys/aeron"]
 	path = libaeron_archive-sys/aeron
 	url = https://github.com/real-logic/aeron.git
