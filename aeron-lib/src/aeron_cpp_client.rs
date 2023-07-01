@@ -402,6 +402,7 @@ pub mod root {
         pub mod util {
             #[allow(unused_imports)]
             use self::super::super::super::root;
+            #[doc = " Bjarne Stroustrup - Make Simple Tasks Simple - https://www.youtube.com/watch?v=nesCaocNjtQ"]
             pub type Iterator = [u8; 0usize];
             #[repr(C)]
             pub struct InvokeOnScopeExit {
@@ -519,7 +520,9 @@ pub mod root {
                     )
                 );
             }
+            #[doc = " a 32-bit signed int that is used for lengths and offsets to be compatible with Java's 32-bit int."]
             pub type index_t = ::std::os::raw::c_int;
+            #[doc = " Callback to indicate an exception has occurred.\n\n This handler may be called in a context of noexcept so the handler can not safely throw.\n\n @param exception that has occurred."]
             pub type exception_handler_t = [u64; 4usize];
             pub const ExceptionCategory_EXCEPTION_CATEGORY_FATAL:
                 root::aeron::util::ExceptionCategory = 0;
@@ -1078,6 +1081,7 @@ pub mod root {
                 #[allow(unused_imports)]
                 use self::super::super::super::super::root;
             }
+            #[doc = " Wraps, but does not own, a buffer of memory for providing atomic operations. This is for providing a view."]
             #[repr(C)]
             #[derive(Copy, Clone)]
             pub struct AtomicBuffer {
@@ -1257,6 +1261,7 @@ pub mod root {
                         );
                     }
                 }
+                #[doc = " Represents a claimed range in a buffer to be used for recording a message without copy semantics for later commit.\n <p>\n The claimed space is in {@link #buffer()} between {@link #offset()} and {@link #offset()} + {@link #length()}.\n When the buffer is filled with message data, use {@link #commit()} to make it available to subscribers."]
                 #[repr(C)]
                 #[derive(Copy, Clone)]
                 pub struct BufferClaim {
@@ -1538,6 +1543,7 @@ pub mod root {
                         );
                     }
                 }
+                #[doc = " Represents the header of the data frame for accessing meta data fields."]
                 #[repr(C)]
                 #[derive(Copy, Clone)]
                 pub struct Header {
@@ -1618,6 +1624,7 @@ pub mod root {
                         )
                     );
                 }
+                #[doc = " Callback for handling fragments of data being read from a log.\n\n Handler for reading data that is coming from a log buffer. The frame will either contain a whole message\n or a fragment of a message to be reassembled. Messages are fragmented if greater than the frame for MTU in length.\n\n @param buffer containing the data.\n @param offset at which the data begins.\n @param length of the data in bytes.\n @param header representing the meta data for the data."]
                 pub type fragment_handler_t = u8;
                 pub mod TermReader {
                     #[allow(unused_imports)]
@@ -1667,12 +1674,14 @@ pub mod root {
                         );
                     }
                 }
+                #[doc = " Callback for handling a block of messages being read from a log.\n\n @param buffer    containing the block of message fragments.\n @param offset    at which the block begins.\n @param length    of the block in bytes.\n @param sessionId of the stream containing this block of message fragments.\n @param termId    of the stream containing this block of message fragments."]
                 pub type block_handler_t = u8;
                 pub mod TermBlockScanner {
                     #[allow(unused_imports)]
                     use self::super::super::super::super::super::root;
                 }
             }
+            #[doc = " Reads the counters metadata and values buffers.\n\n This class is threadsafe.\n\n <b>Values Buffer</b>\n <pre>\n   0                   1                   2                   3\n   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n  |                        Counter Value                          |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                       Registration Id                         |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                          Owner Id                             |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                     104 bytes of padding                     ...\n ...                                                              |\n  +---------------------------------------------------------------+\n  |                   Repeats to end of buffer                   ...\n  |                                                               |\n ...                                                              |\n  +---------------------------------------------------------------+\n </pre>\n\n <b>Meta Data Buffer</b>\n <pre>\n   0                   1                   2                   3\n   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n  |                        Record State                           |\n  +---------------------------------------------------------------+\n  |                          Type Id                              |\n  +---------------------------------------------------------------+\n  |                  Free-for-reuse Deadline (ms)                 |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                      112 bytes for key                       ...\n ...                                                              |\n  +-+-------------------------------------------------------------+\n  |R|                      Label Length                           |\n  +-+-------------------------------------------------------------+\n  |                  380 bytes of Label in ASCII                 ...\n ...                                                              |\n  +---------------------------------------------------------------+\n  |                   Repeats to end of buffer                   ...\n  |                                                               |\n ...                                                              |\n  +---------------------------------------------------------------+\n </pre>"]
             pub type on_counters_metadata_t = u8;
             #[repr(C)]
             #[derive(Copy, Clone)]
@@ -2205,6 +2214,7 @@ pub mod root {
             pub mod ringbuffer {
                 #[allow(unused_imports)]
                 use self::super::super::super::super::root;
+                #[doc = " The read handler function signature"]
                 pub type handler_t = [u64; 4usize];
                 pub mod RingBufferDescriptor {
                     #[allow(unused_imports)]
@@ -2511,6 +2521,7 @@ pub mod root {
                     );
                 }
                 pub type scratch_buffer_t = [u8; 4096usize];
+                #[doc = " The data handler function signature"]
                 pub type handler_t = [u64; 4usize];
                 #[repr(C)]
                 #[repr(align(16))]
@@ -2692,9 +2703,12 @@ pub mod root {
                 LogBuffers_LogBuffers_destructor(self)
             }
         }
+        #[doc = " Supplies the reserved value field for a data frame header. The returned value will be set in the header as\n Little Endian format.\n\n This will be called as the last action of encoding a data frame right before the length is set. All other fields\n in the header plus the body of the frame will have been written at the point of supply.\n\n @param termBuffer for the message.\n @param termOffset of the start of the message.\n @param length of the message in bytes."]
         pub type on_reserved_value_supplier_t = [u64; 4usize];
+        #[doc = " @example BasicPublisher.cpp\n/\n/**\n Aeron Publisher API for sending messages to subscribers of a given channel and streamId pair. Publishers\n are created via an {@link Aeron} object, and messages are sent via an offer method or a claim and commit\n method combination.\n <p>\n The APIs for tryClaim and offer are non-blocking and threadsafe.\n <p>\n Note: Publication instances are threadsafe and can be shared between publisher threads.\n @see Aeron#addPublication\n @see Aeron#findPublication"]
         #[repr(C)]
         pub struct Publication {
+            #[doc = " @endcond"]
             pub m_conductor: *mut root::aeron::ClientConductor,
             pub m_logMetaDataBuffer: *mut root::aeron::concurrent::AtomicBuffer,
             pub m_channel: root::std::string,
@@ -2907,16 +2921,19 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " Get the status for the channel of this {@link Publication}.\n\n @return status code for this channel."]
             #[link_name = "\u{1}_ZNK5aeron11Publication13channelStatusEv"]
             pub fn Publication_channelStatus(
                 this: *const root::aeron::Publication,
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Fetches the local socket addresses for this publication. If the channel is not\n {@link aeron::concurrent::status::ChannelEndpointStatus::CHANNEL_ENDPOINT_ACTIVE}, then this will return an\n empty list.\n\n The format is as follows:\n <br>\n <br>\n IPv4: <code>ip address:port</code>\n <br>\n IPv6: <code>[ip6 address]:port</code>\n <br>\n <br>\n This is to match the formatting used in the Aeron URI\n\n @return local socket address for this subscription.\n @see #channelStatus()"]
             #[link_name = "\u{1}_ZNK5aeron11Publication20localSocketAddressesB5cxx11Ev"]
             pub fn Publication_localSocketAddresses(this: *const root::aeron::Publication) -> u8;
         }
         extern "C" {
+            #[doc = " Add a destination manually to a multi-destination-cast Publication.\n\n @param endpointChannel for the destination to add\n @return correlation id for the add command"]
             #[link_name = "\u{1}_ZN5aeron11Publication14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn Publication_addDestination(
                 this: *mut root::aeron::Publication,
@@ -2924,6 +2941,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Remove a previously added destination manually from a multi-destination-cast Publication.\n\n @param endpointChannel for the destination to remove\n @return correlation id for the remove command"]
             #[link_name = "\u{1}_ZN5aeron11Publication17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn Publication_removeDestination(
                 this: *mut root::aeron::Publication,
@@ -2931,6 +2949,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Retrieve the status of the associated add or remove destination operation with the given correlationId.\n\n This method is non-blocking.\n\n The value returned is dependent on what has occurred with respect to the media driver:\n\n - If the correlationId is unknown, then an exception is thrown.\n - If the media driver has not answered the add/remove command, then a false is returned.\n - If the media driver has successfully added or removed the destination then true is returned.\n - If the media driver has returned an error, this method will throw the error returned.\n\n @see Publication::addDestination\n @see Publication::removeDestination\n\n @param correlationId of the add/remove command returned by Publication::addDestination\n or Publication::removeDestination\n @return true for added or false if not."]
             #[link_name = "\u{1}_ZN5aeron11Publication23findDestinationResponseEl"]
             pub fn Publication_findDestinationResponse(
                 this: *mut root::aeron::Publication,
@@ -2938,6 +2957,7 @@ pub mod root {
             ) -> bool;
         }
         extern "C" {
+            #[doc = " @cond HIDDEN_SYMBOLS"]
             #[link_name = "\u{1}_ZN5aeron11PublicationC1ERNS_15ClientConductorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEElliiRNS_10concurrent6status20UnsafeBufferPositionEiSt10shared_ptrINS_10LogBuffersEE"]
             pub fn Publication_Publication(
                 this: *mut root::aeron::Publication,
@@ -2953,6 +2973,7 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " @endcond"]
             #[link_name = "\u{1}_ZN5aeron11PublicationD1Ev"]
             pub fn Publication_Publication_destructor(this: *mut root::aeron::Publication);
         }
@@ -3018,8 +3039,10 @@ pub mod root {
                 Publication_Publication_destructor(self)
             }
         }
+        #[doc = " Aeron Publisher API for sending messages to subscribers of a given channel and streamId pair. ExclusivePublications\n each get their own session id so multiple can be concurrently active on the same media driver as independent streams.\n\n {@link ExclusivePublication}s are created via the {@link Aeron#addExclusivePublication(String, int)} method,\n and messages are sent via one of the {@link #offer(DirectBuffer)} methods, or a\n {@link #tryClaim(int, ExclusiveBufferClaim)} and {@link ExclusiveBufferClaim#commit()} method combination.\n\n {@link ExclusivePublication}s have the potential to provide greater throughput than {@link Publication}s.\n\n The APIs for tryClaim and offer are non-blocking.\n\n <b>Note:</b> ExclusivePublication instances are NOT threadsafe for offer and try claim methods but are for others.\n\n @see Aeron#addExclusivePublication(String, int)\n @see BufferClaim"]
         #[repr(C)]
         pub struct ExclusivePublication {
+            #[doc = " @endcond"]
             pub m_conductor: *mut root::aeron::ClientConductor,
             pub m_logMetaDataBuffer: *mut root::aeron::concurrent::AtomicBuffer,
             pub m_channel: root::std::string,
@@ -3266,18 +3289,21 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " Get the status for the channel of this {@link Publication}\n\n @return status code for this channel"]
             #[link_name = "\u{1}_ZNK5aeron20ExclusivePublication13channelStatusEv"]
             pub fn ExclusivePublication_channelStatus(
                 this: *const root::aeron::ExclusivePublication,
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Fetches the local socket addresses for this publication. If the channel is not\n {@link aeron::concurrent::status::ChannelEndpointStatus::CHANNEL_ENDPOINT_ACTIVE}, then this will return an\n empty list.\n\n The format is as follows:\n <br>\n <br>\n IPv4: <code>ip address:port</code>\n <br>\n IPv6: <code>[ip6 address]:port</code>\n <br>\n <br>\n This is to match the formatting used in the Aeron URI\n\n @return local socket address for this subscription.\n @see #channelStatus()"]
             #[link_name = "\u{1}_ZNK5aeron20ExclusivePublication20localSocketAddressesB5cxx11Ev"]
             pub fn ExclusivePublication_localSocketAddresses(
                 this: *const root::aeron::ExclusivePublication,
             ) -> u8;
         }
         extern "C" {
+            #[doc = " Add a destination manually to a multi-destination-cast Publication.\n\n @param endpointChannel for the destination to add\n @return correlation id for the add command"]
             #[link_name = "\u{1}_ZN5aeron20ExclusivePublication14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn ExclusivePublication_addDestination(
                 this: *mut root::aeron::ExclusivePublication,
@@ -3285,6 +3311,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Remove a previously added destination manually from a multi-destination-cast Publication.\n\n @param endpointChannel for the destination to remove\n @return correlation id for the remove command"]
             #[link_name = "\u{1}_ZN5aeron20ExclusivePublication17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn ExclusivePublication_removeDestination(
                 this: *mut root::aeron::ExclusivePublication,
@@ -3292,6 +3319,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Retrieve the status of the associated add or remove destination operation with the given correlationId.\n\n This method is non-blocking.\n\n The value returned is dependent on what has occurred with respect to the media driver:\n\n - If the correlationId is unknown, then an exception is thrown.\n - If the media driver has not answered the add/remove command, then a false is returned.\n - If the media driver has successfully added or removed the destination then true is returned.\n - If the media driver has returned an error, this method will throw the error returned.\n\n @see Publication::addDestination\n @see Publication::removeDestination\n\n @param correlationId of the add/remove command returned by Publication::addDestination\n or Publication::removeDestination\n @return true for added or false if not."]
             #[link_name = "\u{1}_ZN5aeron20ExclusivePublication23findDestinationResponseEl"]
             pub fn ExclusivePublication_findDestinationResponse(
                 this: *mut root::aeron::ExclusivePublication,
@@ -3299,6 +3327,7 @@ pub mod root {
             ) -> bool;
         }
         extern "C" {
+            #[doc = " @cond HIDDEN_SYMBOLS"]
             #[link_name = "\u{1}_ZN5aeron20ExclusivePublicationC1ERNS_15ClientConductorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEliiRNS_10concurrent6status20UnsafeBufferPositionEiSt10shared_ptrINS_10LogBuffersEE"]
             pub fn ExclusivePublication_ExclusivePublication(
                 this: *mut root::aeron::ExclusivePublication,
@@ -3313,6 +3342,7 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " @endcond"]
             #[link_name = "\u{1}_ZN5aeron20ExclusivePublicationD1Ev"]
             pub fn ExclusivePublication_ExclusivePublication_destructor(
                 this: *mut root::aeron::ExclusivePublication,
@@ -3378,14 +3408,21 @@ pub mod root {
                 ExclusivePublication_ExclusivePublication_destructor(self)
             }
         }
+        #[doc = " Abort the current polling operation and do not advance the position for this fragment."]
         pub const ControlledPollAction_ABORT: root::aeron::ControlledPollAction = 1;
+        #[doc = " Break from the current polling operation and commit the position as of the end of the current fragment\n being handled."]
         pub const ControlledPollAction_BREAK: root::aeron::ControlledPollAction = 2;
+        #[doc = " Continue processing but commit the position as of the end of the current fragment so that\n flow control is applied to this point."]
         pub const ControlledPollAction_COMMIT: root::aeron::ControlledPollAction = 3;
+        #[doc = " Continue processing taking the same approach as the in fragment_handler_t."]
         pub const ControlledPollAction_CONTINUE: root::aeron::ControlledPollAction = 4;
         pub type ControlledPollAction = ::std::os::raw::c_int;
+        #[doc = " Callback for handling fragments of data being read from a log.\n\n @param buffer containing the data.\n @param offset at which the data begins.\n @param length of the data in bytes.\n @param header representing the meta data for the data.\n @return The action to be taken with regard to the stream position after the callback."]
         pub type controlled_poll_fragment_handler_t = u8;
+        #[doc = " Represents a replicated publication {@link Image} from a publisher to a {@link Subscription}.\n Each {@link Image} identifies a source publisher by session id.\n\n Is an overlay on the LogBuffers and Position. So, can be effectively copied and moved."]
         #[repr(C)]
         pub struct Image {
+            #[doc = " @endcond"]
             pub m_sourceIdentity: root::std::string,
             pub m_logBuffers: [u64; 2usize],
             pub m_exceptionHandler: root::aeron::util::exception_handler_t,
@@ -3578,8 +3615,10 @@ pub mod root {
                 )
             );
         }
+        #[doc = " Aeron Subscriber API for receiving messages from publishers on a given channel and streamId pair.\n Subscribers are created via an {@link Aeron} object, and received messages are delivered\n to the {@link fragment_handler_t}.\n <p>\n By default fragmented messages are not reassembled before delivery. If an application must\n receive whole messages, whether or not they were fragmented, then the Subscriber\n should be created with a {@link FragmentAssembler} or a custom implementation.\n <p>\n It is an applications responsibility to {@link #poll} the Subscriber for new messages.\n <p>\n Subscriptions are not threadsafe and should not be shared between subscribers.\n\n @see FragmentAssembler"]
         #[repr(C)]
         pub struct Subscription {
+            #[doc = " @endcond"]
             pub m_conductor: *mut root::aeron::ClientConductor,
             pub m_channel: root::std::string,
             pub m_channelStatusId: ::std::os::raw::c_int,
@@ -3707,28 +3746,33 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " Get the status for the channel of this {@link Subscription}\n\n @return status code for this channel"]
             #[link_name = "\u{1}_ZNK5aeron12Subscription13channelStatusEv"]
             pub fn Subscription_channelStatus(
                 this: *const root::aeron::Subscription,
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Fetches the local socket addresses for this subscription. If the channel is not\n {@link aeron::concurrent::status::ChannelEndpointStatus::CHANNEL_ENDPOINT_ACTIVE}, then this will return an\n empty list.\n\n The format is as follows:\n <br>\n <br>\n IPv4: <code>ip address:port</code>\n <br>\n IPv6: <code>[ip6 address]:port</code>\n <br>\n <br>\n This is to match the formatting used in the Aeron URI\n\n @return local socket address for this subscription.\n @see #channelStatus()"]
             #[link_name = "\u{1}_ZNK5aeron12Subscription20localSocketAddressesB5cxx11Ev"]
             pub fn Subscription_localSocketAddresses(this: *const root::aeron::Subscription) -> u8;
         }
         extern "C" {
+            #[doc = " Resolve channel endpoint and replace it with the port from the ephemeral range when 0 was provided. If there are\n no addresses, or if there is more than one, returned from {@link #localSocketAddresses()} then the original\n {@link #channel()} is returned.\n <p>\n If the channel is not {@link aeron::concurrent::status::ChannelEndpointStatus::CHANNEL_ENDPOINT_ACTIVE}, then an\n empty string will be returned.\n\n @return channel URI string with an endpoint being resolved to the allocated port.\n @see #channelStatus()\n @see #localSocketAddresses()"]
             #[link_name = "\u{1}_ZNK5aeron12Subscription29tryResolveChannelEndpointPortB5cxx11Ev"]
             pub fn Subscription_tryResolveChannelEndpointPort(
                 this: *const root::aeron::Subscription,
             ) -> root::std::string;
         }
         extern "C" {
+            #[doc = " Find the resolved endpoint for the channel. This may be null of MDS is used and no destination is yet added.\n The result will similar to taking the first element returned from {@link #localSocketAddresses()}. If more than\n one destination is added then the first found is returned.\n <p>\n If the channel is not {@link aeron::concurrent::status::ChannelEndpointStatus::CHANNEL_ENDPOINT_ACTIVE}, then an\n empty string will be returned.\n\n @return The resolved endpoint or an empty string if not found.\n @see #channelStatus()\n @see #localSocketAddresses()"]
             #[link_name = "\u{1}_ZNK5aeron12Subscription16resolvedEndpointB5cxx11Ev"]
             pub fn Subscription_resolvedEndpoint(
                 this: *const root::aeron::Subscription,
             ) -> root::std::string;
         }
         extern "C" {
+            #[doc = " Add a destination manually to a multi-destination Subscription.\n\n @param endpointChannel for the destination to add.\n @return correlation id for the add command."]
             #[link_name = "\u{1}_ZN5aeron12Subscription14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn Subscription_addDestination(
                 this: *mut root::aeron::Subscription,
@@ -3736,6 +3780,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Remove a previously added destination from a multi-destination Subscription.\n\n @param endpointChannel for the destination to remove.\n @return correlation id for the remove command."]
             #[link_name = "\u{1}_ZN5aeron12Subscription17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
             pub fn Subscription_removeDestination(
                 this: *mut root::aeron::Subscription,
@@ -3743,6 +3788,7 @@ pub mod root {
             ) -> ::std::os::raw::c_long;
         }
         extern "C" {
+            #[doc = " Retrieve the status of the associated add or remove destination operation with the given correlationId.\n\n This method is non-blocking.\n\n The value returned is dependent on what has occurred with respect to the media driver:\n\n - If the correlationId is unknown, then an exception is thrown.\n - If the media driver has not answered the add/remove command, then a false is returned.\n - If the media driver has successfully added or removed the destination then true is returned.\n - If the media driver has returned an error, this method will throw the error returned.\n\n @see Subscription::addDestination\n @see Subscription::removeDestination\n\n @param correlationId of the add/remove command returned by Subscription::addDestination\n or Subscription::removeDestination.\n @return true for added or false if not."]
             #[link_name = "\u{1}_ZN5aeron12Subscription23findDestinationResponseEl"]
             pub fn Subscription_findDestinationResponse(
                 this: *mut root::aeron::Subscription,
@@ -3750,6 +3796,7 @@ pub mod root {
             ) -> bool;
         }
         extern "C" {
+            #[doc = " @cond HIDDEN_SYMBOLS"]
             #[link_name = "\u{1}_ZN5aeron12SubscriptionC1ERNS_15ClientConductorElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii"]
             pub fn Subscription_Subscription(
                 this: *mut root::aeron::Subscription,
@@ -3761,6 +3808,7 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " @endcond"]
             #[link_name = "\u{1}_ZN5aeron12SubscriptionD1Ev"]
             pub fn Subscription_Subscription_destructor(this: *mut root::aeron::Subscription);
         }
@@ -3829,6 +3877,7 @@ pub mod root {
         #[repr(C)]
         pub struct Counter {
             pub _base: root::aeron::concurrent::AtomicCounter,
+            #[doc = " @endcond"]
             pub m_clientConductor: *mut root::aeron::ClientConductor,
             pub m_registrationId: ::std::os::raw::c_long,
             pub m_isClosed: u8,
@@ -3887,6 +3936,7 @@ pub mod root {
             pub fn Counter_label(this: *const root::aeron::Counter) -> root::std::string;
         }
         extern "C" {
+            #[doc = " @cond HIDDEN_SYMBOLS"]
             #[link_name = "\u{1}_ZN5aeron7CounterC1EPNS_15ClientConductorERNS_10concurrent12AtomicBufferEli"]
             pub fn Counter_Counter(
                 this: *mut root::aeron::Counter,
@@ -4675,35 +4725,60 @@ pub mod root {
                     )
                 );
             }
+            #[doc = " List of event types used in the control protocol between the media driver and the core."]
             #[repr(C)]
             #[derive(Copy, Clone)]
             pub struct ControlProtocolEvents {
                 pub _address: u8,
             }
+            #[doc = " Add Publication"]
             pub const ControlProtocolEvents_ADD_PUBLICATION: ::std::os::raw::c_int = 1;
+            #[doc = " Remove Publication"]
             pub const ControlProtocolEvents_REMOVE_PUBLICATION: ::std::os::raw::c_int = 2;
+            #[doc = " Add Exclusive Publication"]
             pub const ControlProtocolEvents_ADD_EXCLUSIVE_PUBLICATION: ::std::os::raw::c_int = 3;
+            #[doc = " Add Subscriber"]
             pub const ControlProtocolEvents_ADD_SUBSCRIPTION: ::std::os::raw::c_int = 4;
+            #[doc = " Remove Subscriber"]
             pub const ControlProtocolEvents_REMOVE_SUBSCRIPTION: ::std::os::raw::c_int = 5;
+            #[doc = " Keepalive from Client"]
             pub const ControlProtocolEvents_CLIENT_KEEPALIVE: ::std::os::raw::c_int = 6;
+            #[doc = " Add Destination"]
             pub const ControlProtocolEvents_ADD_DESTINATION: ::std::os::raw::c_int = 7;
+            #[doc = " Remove Destination"]
             pub const ControlProtocolEvents_REMOVE_DESTINATION: ::std::os::raw::c_int = 8;
+            #[doc = " Add Counter"]
             pub const ControlProtocolEvents_ADD_COUNTER: ::std::os::raw::c_int = 9;
+            #[doc = " Remove Counter"]
             pub const ControlProtocolEvents_REMOVE_COUNTER: ::std::os::raw::c_int = 10;
+            #[doc = " Client Close"]
             pub const ControlProtocolEvents_CLIENT_CLOSE: ::std::os::raw::c_int = 11;
+            #[doc = " Add Destination for existing Subscription"]
             pub const ControlProtocolEvents_ADD_RCV_DESTINATION: ::std::os::raw::c_int = 12;
+            #[doc = " Remove Destination for existing Subscription"]
             pub const ControlProtocolEvents_REMOVE_RCV_DESTINATION: ::std::os::raw::c_int = 13;
+            #[doc = " Request driver run termination hook"]
             pub const ControlProtocolEvents_TERMINATE_DRIVER: ::std::os::raw::c_int = 14;
+            #[doc = " Error Response"]
             pub const ControlProtocolEvents_ON_ERROR: ::std::os::raw::c_int = 3841;
+            #[doc = " New image Buffer Notification"]
             pub const ControlProtocolEvents_ON_AVAILABLE_IMAGE: ::std::os::raw::c_int = 3842;
+            #[doc = " New publication Buffer Notification"]
             pub const ControlProtocolEvents_ON_PUBLICATION_READY: ::std::os::raw::c_int = 3843;
+            #[doc = " Operation Succeeded"]
             pub const ControlProtocolEvents_ON_OPERATION_SUCCESS: ::std::os::raw::c_int = 3844;
+            #[doc = " Inform client of timeout and removal of inactive image"]
             pub const ControlProtocolEvents_ON_UNAVAILABLE_IMAGE: ::std::os::raw::c_int = 3845;
+            #[doc = " New Exclusive Publication Buffer notification"]
             pub const ControlProtocolEvents_ON_EXCLUSIVE_PUBLICATION_READY: ::std::os::raw::c_int =
                 3846;
+            #[doc = " New subscription notification"]
             pub const ControlProtocolEvents_ON_SUBSCRIPTION_READY: ::std::os::raw::c_int = 3847;
+            #[doc = " New counter notification"]
             pub const ControlProtocolEvents_ON_COUNTER_READY: ::std::os::raw::c_int = 3848;
+            #[doc = " inform clients of removal of counter"]
             pub const ControlProtocolEvents_ON_UNAVAILABLE_COUNTER: ::std::os::raw::c_int = 3849;
+            #[doc = " inform clients of client timeout"]
             pub const ControlProtocolEvents_ON_CLIENT_TIMEOUT: ::std::os::raw::c_int = 3850;
             #[test]
             fn bindgen_test_layout_ControlProtocolEvents() {
@@ -5408,13 +5483,21 @@ pub mod root {
                 );
             }
         }
+        #[doc = " Function called by Aeron to deliver notification of an available image.\n\n The Image passed may not be the image used internally, but may be copied or moved freely.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param image that has become available."]
         pub type on_available_image_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that an Image has become unavailable for polling.\n\n The Image passed is not guaranteed to be valid after the callback.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param image that has become unavailable"]
         pub type on_unavailable_image_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that the media driver has added a Publication successfully.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param channel of the Publication\n @param streamId within the channel of the Publication\n @param sessionId of the Publication\n @param correlationId used by the Publication for adding. Aka the registrationId returned by Aeron::addPublication"]
         pub type on_new_publication_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that the media driver has added a Subscription successfully.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param channel of the Subscription\n @param streamId within the channel of the Subscription\n @param correlationId used by the Subscription for adding. Aka the registrationId returned by Aeron::addSubscription"]
         pub type on_new_subscription_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification of a Counter being available.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param countersReader for more detail on the counter.\n @param registrationId for the counter.\n @param counterId      that is available."]
         pub type on_available_counter_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification of counter being removed.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param countersReader for more counter details.\n @param registrationId for the counter.\n @param counterId      that is unavailable."]
         pub type on_unavailable_counter_t = [u64; 4usize];
+        #[doc = " Function called when the Aeron client is closed to notify that the client or any of it associated resources\n should not be used after this event."]
         pub type on_close_client_t = [u64; 4usize];
+        #[doc = " This class provides configuration for the {@link Aeron} class via the {@link Aeron::Aeron} or {@link Aeron::connect}\n methods and its overloads. It gives applications some control over the interactions with the Aeron Media Driver.\n It can also set up error handling as well as application callbacks for connection information from the\n Media Driver."]
         #[repr(C)]
         #[derive(Copy, Clone)]
         pub struct Context {
@@ -7585,6 +7668,7 @@ pub mod root {
                 ClientConductor_ClientConductor_destructor(self)
             }
         }
+        #[doc = " Aeron entry point for communicating to the Media Driver for creating {@link Publication}s and {@link Subscription}s.\n Use a {@link Context} to configure the Aeron object.\n <p>\n A client application requires only one Aeron object per Media Driver."]
         #[repr(C)]
         #[repr(align(16))]
         pub struct Aeron {
@@ -7779,10 +7863,12 @@ pub mod root {
             );
         }
         extern "C" {
+            #[doc = " Return the static version and build string for the binary library.\n\n @return static version and build string for the binary library."]
             #[link_name = "\u{1}_ZN5aeron5Aeron7versionB5cxx11Ev"]
             pub fn Aeron_version() -> root::std::string;
         }
         extern "C" {
+            #[doc = " Create an Aeron instance and connect to the media driver.\n <p>\n Threads required for interacting with the media driver are created and managed within the Aeron instance.\n\n @param context for configuration of the client."]
             #[link_name = "\u{1}_ZN5aeron5AeronC1ERNS_7ContextE"]
             pub fn Aeron_Aeron(this: *mut root::aeron::Aeron, context: *mut root::aeron::Context);
         }
@@ -7807,6 +7893,7 @@ pub mod root {
             }
         }
     }
+    #[doc = " Set the value of the header flags field.\n\n @param flags value to be set in the header.\n @return this for a fluent API."]
     
     #[test]
     fn __bindgen_test_layout_ReadablePosition_open0_UnsafeBufferPosition_close0_instantiation() {
@@ -7998,6 +8085,7 @@ pub mod root {
     
     
     
+    #[doc = " @cond HIDDEN_SYMBOLS"]
     
     #[test]
     fn __bindgen_test_layout_Flyweight_open0_ImageBuffersReadyDefn_close0_instantiation() {

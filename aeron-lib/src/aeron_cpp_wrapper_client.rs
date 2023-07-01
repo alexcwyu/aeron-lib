@@ -4,10 +4,35 @@
 pub mod root {
     #[allow(unused_imports)]
     use self::super::root;
+    pub const AERON_NULL_VALUE: i32 = -1;
+    pub const AERON_CLIENT_ERROR_DRIVER_TIMEOUT: i32 = -1000;
+    pub const AERON_CLIENT_ERROR_CLIENT_TIMEOUT: i32 = -1001;
+    pub const AERON_CLIENT_ERROR_CONDUCTOR_SERVICE_TIMEOUT: i32 = -1002;
+    pub const AERON_CLIENT_ERROR_BUFFER_FULL: i32 = -1003;
+    pub const AERON_CLIENT_MAX_LOCAL_ADDRESS_STR_LEN: u32 = 64;
+    pub const AERON_DIR_ENV_VAR: &[u8; 10] = b"AERON_DIR\0";
+    pub const AERON_DRIVER_TIMEOUT_ENV_VAR: &[u8; 21] = b"AERON_DRIVER_TIMEOUT\0";
+    pub const AERON_CLIENT_RESOURCE_LINGER_DURATION_ENV_VAR: &[u8; 38] =
+        b"AERON_CLIENT_RESOURCE_LINGER_DURATION\0";
+    pub const AERON_CLIENT_PRE_TOUCH_MAPPED_MEMORY_ENV_VAR: &[u8; 37] =
+        b"AERON_CLIENT_PRE_TOUCH_MAPPED_MEMORY\0";
+    pub const AERON_AGENT_ON_START_FUNCTION_ENV_VAR: &[u8; 30] = b"AERON_AGENT_ON_START_FUNCTION\0";
+    pub const AERON_COUNTER_CACHE_LINE_LENGTH: u32 = 64;
+    pub const AERON_COUNTER_RECORD_UNUSED: u32 = 0;
+    pub const AERON_COUNTER_RECORD_ALLOCATED: u32 = 1;
+    pub const AERON_COUNTER_RECORD_RECLAIMED: i32 = -1;
+    pub const AERON_NULL_COUNTER_ID: i32 = -1;
+    pub const AERON_PUBLICATION_NOT_CONNECTED: i32 = -1;
+    pub const AERON_PUBLICATION_BACK_PRESSURED: i32 = -2;
+    pub const AERON_PUBLICATION_ADMIN_ACTION: i32 = -3;
+    pub const AERON_PUBLICATION_CLOSED: i32 = -4;
+    pub const AERON_PUBLICATION_MAX_POSITION_EXCEEDED: i32 = -5;
+    pub const AERON_PUBLICATION_ERROR: i32 = -6;
     pub const AERON_FILE_SEP: u8 = 47u8;
     pub const AERON_COMPILER_GCC: u32 = 1;
     pub const AERON_COMPILER_LLVM: u32 = 1;
     pub const AERON_CPU_X64: u32 = 1;
+    pub const AERON_MAX_PATH: u32 = 384;
     pub mod std {
         #[allow(unused_imports)]
         use self::super::super::root;
@@ -140,51 +165,9 @@ pub mod root {
         pub type unordered_map_const_local_iterator = u8;
         pub type unordered_map_size_type = u8;
         pub type unordered_map_difference_type = u8;
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct vector {
-            pub _address: u8,
-        }
-        pub type vector__Base = u8;
-        pub type vector__Tp_alloc_type = u8;
-        pub type vector__Alloc_traits = u8;
-        pub type vector_value_type = u8;
-        pub type vector_pointer = u8;
-        pub type vector_const_pointer = u8;
-        pub type vector_reference = u8;
-        pub type vector_const_reference = u8;
-        pub type vector_iterator = u8;
-        pub type vector_const_iterator = u8;
-        pub type vector_const_reverse_iterator = u8;
-        pub type vector_reverse_iterator = u8;
-        pub type vector_size_type = u64;
-        pub type vector_difference_type = u64;
-        pub type vector_allocator_type = u8;
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct vector__Temporary_value {
-            pub _address: u8,
-        }
-        #[repr(C)]
-        #[repr(align(1))]
-        #[derive(Copy, Clone)]
-        pub union vector__Temporary_value__Storage {
-            pub _bindgen_opaque_blob: u8,
-        }
-        pub type milli = u8;
         pub mod chrono {
             #[allow(unused_imports)]
             use self::super::super::super::root;
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct duration {
-                pub _address: u8,
-            }
-            pub type duration___is_float = u8;
-            pub type duration___divide = u8;
-            pub type duration___is_harmonic = u8;
-            pub type duration_rep = u8;
-            pub type duration_period = u8;
         }
         #[repr(C)]
         #[repr(align(8))]
@@ -206,6 +189,12 @@ pub mod root {
                 concat!("Alignment of ", stringify!(recursive_mutex))
             );
         }
+        pub type string = [u64; 4usize];
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct char_traits {
+            pub _address: u8,
+        }
         #[repr(C)]
         #[derive(Copy, Clone)]
         pub struct function {
@@ -226,65 +215,6 @@ pub mod root {
         pub type unique_ptr_element_type = u8;
         pub type unique_ptr_deleter_type = u8;
         pub type unique_ptr___safe_conversion_up = u8;
-        pub type string = [u64; 4usize];
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct shared_ptr {
-            pub _address: u8,
-        }
-        pub type shared_ptr__Constructible = u8;
-        pub type shared_ptr__Assignable = u8;
-        pub type shared_ptr_element_type = u8;
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct weak_ptr {
-            pub _address: u8,
-        }
-        pub type weak_ptr__Constructible = u8;
-        pub type weak_ptr__Assignable = u8;
-        pub type array_value_type = u8;
-        pub type array_pointer = u8;
-        pub type array_const_pointer = u8;
-        pub type array_reference = u8;
-        pub type array_const_reference = u8;
-        pub type array_iterator = u8;
-        pub type array_const_iterator = u8;
-        pub type array_size_type = u64;
-        pub type array_difference_type = u64;
-        pub type array_reverse_iterator = u8;
-        pub type array_const_reverse_iterator = u8;
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct char_traits {
-            pub _address: u8,
-        }
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct atomic {
-            pub _address: u8,
-        }
-        pub type atomic_value_type = u8;
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct deque {
-            pub _address: u8,
-        }
-        pub type deque__Base = u8;
-        pub type deque__Tp_alloc_type = u8;
-        pub type deque__Alloc_traits = u8;
-        pub type deque__Map_pointer = u8;
-        pub type deque_value_type = u8;
-        pub type deque_pointer = u8;
-        pub type deque_const_pointer = u8;
-        pub type deque_reference = u8;
-        pub type deque_const_reference = u8;
-        pub type deque_iterator = u8;
-        pub type deque_const_iterator = u8;
-        pub type deque_const_reverse_iterator = u8;
-        pub type deque_reverse_iterator = u8;
-        pub type deque_size_type = u64;
-        pub type deque_difference_type = u64;
-        pub type deque_allocator_type = u8;
         #[repr(C)]
         #[repr(align(8))]
         #[derive(Copy, Clone)]
@@ -389,137 +319,74 @@ pub mod root {
             #[link_name = "\u{1}_ZNSt6thread6_StateD1Ev"]
             pub fn thread__State__State_destructor(this: *mut root::std::thread__State);
         }
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct atomic {
+            pub _address: u8,
+        }
+        pub type atomic_value_type = u8;
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct shared_ptr {
+            pub _address: u8,
+        }
+        pub type shared_ptr__Constructible = u8;
+        pub type shared_ptr__Assignable = u8;
+        pub type shared_ptr_element_type = u8;
+        pub type array_value_type = u8;
+        pub type array_pointer = u8;
+        pub type array_const_pointer = u8;
+        pub type array_reference = u8;
+        pub type array_const_reference = u8;
+        pub type array_iterator = u8;
+        pub type array_const_iterator = u8;
+        pub type array_size_type = u64;
+        pub type array_difference_type = u64;
+        pub type array_reverse_iterator = u8;
+        pub type array_const_reverse_iterator = u8;
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct vector {
+            pub _address: u8,
+        }
+        pub type vector__Base = u8;
+        pub type vector__Tp_alloc_type = u8;
+        pub type vector__Alloc_traits = u8;
+        pub type vector_value_type = u8;
+        pub type vector_pointer = u8;
+        pub type vector_const_pointer = u8;
+        pub type vector_reference = u8;
+        pub type vector_const_reference = u8;
+        pub type vector_iterator = u8;
+        pub type vector_const_iterator = u8;
+        pub type vector_const_reverse_iterator = u8;
+        pub type vector_reverse_iterator = u8;
+        pub type vector_size_type = u64;
+        pub type vector_difference_type = u64;
+        pub type vector_allocator_type = u8;
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct vector__Temporary_value {
+            pub _address: u8,
+        }
+        #[repr(C)]
+        #[repr(align(1))]
+        #[derive(Copy, Clone)]
+        pub union vector__Temporary_value__Storage {
+            pub _bindgen_opaque_blob: u8,
+        }
     }
     pub mod __gnu_cxx {
         #[allow(unused_imports)]
         use self::super::super::root;
     }
-    pub type __off_t = ::std::os::raw::c_long;
-    pub type off_t = root::__off_t;
     pub mod aeron {
         #[allow(unused_imports)]
         use self::super::super::root;
         pub mod util {
             #[allow(unused_imports)]
             use self::super::super::super::root;
-            pub type Iterator = [u8; 0usize];
-            #[repr(C)]
-            pub struct InvokeOnScopeExit {
-                pub m_func: root::aeron::util::InvokeOnScopeExit_func_t,
-            }
-            pub type InvokeOnScopeExit_func_t = [u64; 4usize];
-            #[test]
-            fn bindgen_test_layout_InvokeOnScopeExit() {
-                const UNINIT: ::std::mem::MaybeUninit<InvokeOnScopeExit> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<InvokeOnScopeExit>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(InvokeOnScopeExit))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<InvokeOnScopeExit>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(InvokeOnScopeExit))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_func) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(InvokeOnScopeExit),
-                        "::",
-                        stringify!(m_func)
-                    )
-                );
-            }
-            #[repr(C)]
-            pub struct OnScopeExit {
-                pub m_holder: u64,
-            }
-            #[repr(C)]
-            pub struct OnScopeExit_FuncHolderBase__bindgen_vtable(::std::os::raw::c_void);
-            #[repr(C)]
-            pub struct OnScopeExit_FuncHolderBase {
-                pub vtable_: *const OnScopeExit_FuncHolderBase__bindgen_vtable,
-            }
-            #[test]
-            fn bindgen_test_layout_OnScopeExit_FuncHolderBase() {
-                assert_eq!(
-                    ::std::mem::size_of::<OnScopeExit_FuncHolderBase>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(OnScopeExit_FuncHolderBase))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<OnScopeExit_FuncHolderBase>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(OnScopeExit_FuncHolderBase))
-                );
-            }
-            #[repr(C)]
-            pub struct OnScopeExit_FuncHolder<func_t> {
-                pub _base: root::aeron::util::OnScopeExit_FuncHolderBase,
-                pub f: func_t,
-                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<func_t>>,
-            }
-            #[test]
-            fn bindgen_test_layout_OnScopeExit() {
-                const UNINIT: ::std::mem::MaybeUninit<OnScopeExit> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<OnScopeExit>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(OnScopeExit))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<OnScopeExit>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(OnScopeExit))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_holder) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(OnScopeExit),
-                        "::",
-                        stringify!(m_holder)
-                    )
-                );
-            }
-            #[repr(C)]
-            pub struct CallbackGuard {
-                pub m_isInCallback: *mut bool,
-            }
-            #[test]
-            fn bindgen_test_layout_CallbackGuard() {
-                const UNINIT: ::std::mem::MaybeUninit<CallbackGuard> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CallbackGuard>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(CallbackGuard))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CallbackGuard>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(CallbackGuard))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_isInCallback) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CallbackGuard),
-                        "::",
-                        stringify!(m_isInCallback)
-                    )
-                );
-            }
-            pub type index_t = ::std::os::raw::c_int;
+            #[doc = " Callback to indicate an exception has occurred.\n\n This handler may be called in a context of noexcept so the handler can not safely throw.\n\n @param exception that has occurred."]
             pub type exception_handler_t = [u64; 4usize];
             pub const ExceptionCategory_EXCEPTION_CATEGORY_FATAL:
                 root::aeron::util::ExceptionCategory = 0;
@@ -806,6 +673,23 @@ pub mod root {
                 );
             }
             #[repr(C)]
+            pub struct UnsupportedOperationException {
+                pub _base: root::aeron::util::SourcedException,
+            }
+            #[test]
+            fn bindgen_test_layout_UnsupportedOperationException() {
+                assert_eq!(
+                    ::std::mem::size_of::<UnsupportedOperationException>(),
+                    80usize,
+                    concat!("Size of: ", stringify!(UnsupportedOperationException))
+                );
+                assert_eq!(
+                    ::std::mem::align_of::<UnsupportedOperationException>(),
+                    8usize,
+                    concat!("Alignment of ", stringify!(UnsupportedOperationException))
+                );
+            }
+            #[repr(C)]
             pub struct RegistrationException {
                 pub _base: root::aeron::util::SourcedException,
                 pub m_errorCode: ::std::os::raw::c_int,
@@ -888,188 +772,92 @@ pub mod root {
                 );
             }
             #[repr(C)]
-            pub struct MemoryMappedFile {
-                pub m_memory: *mut ::std::os::raw::c_uchar,
-                pub m_memorySize: usize,
+            pub struct OnScopeExit {
+                pub m_holder: u64,
             }
-            pub type MemoryMappedFile_ptr_t = [u64; 2usize];
             #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct MemoryMappedFile_FileHandle {
-                pub handle: ::std::os::raw::c_int,
+            pub struct OnScopeExit_FuncHolderBase__bindgen_vtable(::std::os::raw::c_void);
+            #[repr(C)]
+            pub struct OnScopeExit_FuncHolderBase {
+                pub vtable_: *const OnScopeExit_FuncHolderBase__bindgen_vtable,
             }
             #[test]
-            fn bindgen_test_layout_MemoryMappedFile_FileHandle() {
-                const UNINIT: ::std::mem::MaybeUninit<MemoryMappedFile_FileHandle> =
+            fn bindgen_test_layout_OnScopeExit_FuncHolderBase() {
+                assert_eq!(
+                    ::std::mem::size_of::<OnScopeExit_FuncHolderBase>(),
+                    8usize,
+                    concat!("Size of: ", stringify!(OnScopeExit_FuncHolderBase))
+                );
+                assert_eq!(
+                    ::std::mem::align_of::<OnScopeExit_FuncHolderBase>(),
+                    8usize,
+                    concat!("Alignment of ", stringify!(OnScopeExit_FuncHolderBase))
+                );
+            }
+            #[repr(C)]
+            pub struct OnScopeExit_FuncHolder<func_t> {
+                pub _base: root::aeron::util::OnScopeExit_FuncHolderBase,
+                pub f: func_t,
+                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<func_t>>,
+            }
+            #[test]
+            fn bindgen_test_layout_OnScopeExit() {
+                const UNINIT: ::std::mem::MaybeUninit<OnScopeExit> =
                     ::std::mem::MaybeUninit::uninit();
                 let ptr = UNINIT.as_ptr();
                 assert_eq!(
-                    ::std::mem::size_of::<MemoryMappedFile_FileHandle>(),
-                    4usize,
-                    concat!("Size of: ", stringify!(MemoryMappedFile_FileHandle))
+                    ::std::mem::size_of::<OnScopeExit>(),
+                    8usize,
+                    concat!("Size of: ", stringify!(OnScopeExit))
                 );
                 assert_eq!(
-                    ::std::mem::align_of::<MemoryMappedFile_FileHandle>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(MemoryMappedFile_FileHandle))
+                    ::std::mem::align_of::<OnScopeExit>(),
+                    8usize,
+                    concat!("Alignment of ", stringify!(OnScopeExit))
                 );
                 assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).handle) as usize - ptr as usize },
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_holder) as usize - ptr as usize },
                     0usize,
                     concat!(
                         "Offset of field: ",
-                        stringify!(MemoryMappedFile_FileHandle),
+                        stringify!(OnScopeExit),
                         "::",
-                        stringify!(handle)
+                        stringify!(m_holder)
                     )
                 );
             }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile11m_page_sizeE"]
-                pub static mut MemoryMappedFile_m_page_size: usize;
+            #[repr(C)]
+            pub struct CallbackGuard {
+                pub m_isInCallback: *mut bool,
             }
             #[test]
-            fn bindgen_test_layout_MemoryMappedFile() {
-                const UNINIT: ::std::mem::MaybeUninit<MemoryMappedFile> =
+            fn bindgen_test_layout_CallbackGuard() {
+                const UNINIT: ::std::mem::MaybeUninit<CallbackGuard> =
                     ::std::mem::MaybeUninit::uninit();
                 let ptr = UNINIT.as_ptr();
                 assert_eq!(
-                    ::std::mem::size_of::<MemoryMappedFile>(),
-                    16usize,
-                    concat!("Size of: ", stringify!(MemoryMappedFile))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<MemoryMappedFile>(),
+                    ::std::mem::size_of::<CallbackGuard>(),
                     8usize,
-                    concat!("Alignment of ", stringify!(MemoryMappedFile))
+                    concat!("Size of: ", stringify!(CallbackGuard))
                 );
                 assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_memory) as usize - ptr as usize },
+                    ::std::mem::align_of::<CallbackGuard>(),
+                    8usize,
+                    concat!("Alignment of ", stringify!(CallbackGuard))
+                );
+                assert_eq!(
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_isInCallback) as usize - ptr as usize },
                     0usize,
                     concat!(
                         "Offset of field: ",
-                        stringify!(MemoryMappedFile),
+                        stringify!(CallbackGuard),
                         "::",
-                        stringify!(m_memory)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_memorySize) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MemoryMappedFile),
-                        "::",
-                        stringify!(m_memorySize)
+                        stringify!(m_isInCallback)
                     )
                 );
             }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile9createNewEPKclmb"]
-                pub fn MemoryMappedFile_createNew(
-                    filename: *const ::std::os::raw::c_char,
-                    offset: root::off_t,
-                    length: usize,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile11mapExistingEPKclmbb"]
-                pub fn MemoryMappedFile_mapExisting(
-                    filename: *const ::std::os::raw::c_char,
-                    offset: root::off_t,
-                    length: usize,
-                    readOnly: bool,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile11mapExistingEPKcbb"]
-                pub fn MemoryMappedFile_mapExisting1(
-                    filename: *const ::std::os::raw::c_char,
-                    readOnly: bool,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZNK5aeron4util16MemoryMappedFile12getMemoryPtrEv"]
-                pub fn MemoryMappedFile_getMemoryPtr(
-                    this: *const root::aeron::util::MemoryMappedFile,
-                ) -> *mut ::std::os::raw::c_uchar;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZNK5aeron4util16MemoryMappedFile13getMemorySizeEv"]
-                pub fn MemoryMappedFile_getMemorySize(
-                    this: *const root::aeron::util::MemoryMappedFile,
-                ) -> usize;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile11getPageSizeEv"]
-                pub fn MemoryMappedFile_getPageSize() -> usize;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFile11getFileSizeEPKc"]
-                pub fn MemoryMappedFile_getFileSize(
-                    filename: *const ::std::os::raw::c_char,
-                ) -> ::std::os::raw::c_long;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron4util16MemoryMappedFileD1Ev"]
-                pub fn MemoryMappedFile_MemoryMappedFile_destructor(
-                    this: *mut root::aeron::util::MemoryMappedFile,
-                );
-            }
-            impl MemoryMappedFile {
-                #[inline]
-                pub unsafe fn createNew(
-                    filename: *const ::std::os::raw::c_char,
-                    offset: root::off_t,
-                    length: usize,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t {
-                    MemoryMappedFile_createNew(filename, offset, length, preTouch)
-                }
-                #[inline]
-                pub unsafe fn mapExisting(
-                    filename: *const ::std::os::raw::c_char,
-                    offset: root::off_t,
-                    length: usize,
-                    readOnly: bool,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t {
-                    MemoryMappedFile_mapExisting(filename, offset, length, readOnly, preTouch)
-                }
-                #[inline]
-                pub unsafe fn mapExisting1(
-                    filename: *const ::std::os::raw::c_char,
-                    readOnly: bool,
-                    preTouch: bool,
-                ) -> root::aeron::util::MemoryMappedFile_ptr_t {
-                    MemoryMappedFile_mapExisting1(filename, readOnly, preTouch)
-                }
-                #[inline]
-                pub unsafe fn getMemoryPtr(&self) -> *mut ::std::os::raw::c_uchar {
-                    MemoryMappedFile_getMemoryPtr(self)
-                }
-                #[inline]
-                pub unsafe fn getMemorySize(&self) -> usize {
-                    MemoryMappedFile_getMemorySize(self)
-                }
-                #[inline]
-                pub unsafe fn getPageSize() -> usize {
-                    MemoryMappedFile_getPageSize()
-                }
-                #[inline]
-                pub unsafe fn getFileSize(
-                    filename: *const ::std::os::raw::c_char,
-                ) -> ::std::os::raw::c_long {
-                    MemoryMappedFile_getFileSize(filename)
-                }
-                #[inline]
-                pub unsafe fn destruct(&mut self) {
-                    MemoryMappedFile_MemoryMappedFile_destructor(self)
-                }
-            }
+            #[doc = " a 32-bit signed int that is used for lengths and offsets to be compatible with Java's 32-bit int."]
+            pub type index_t = ::std::os::raw::c_int;
         }
         pub mod concurrent {
             #[allow(unused_imports)]
@@ -1078,6 +866,7 @@ pub mod root {
                 #[allow(unused_imports)]
                 use self::super::super::super::super::root;
             }
+            #[doc = " Wraps, but does not own, a buffer of memory for providing atomic operations. This is for providing a view."]
             #[repr(C)]
             #[derive(Copy, Clone)]
             pub struct AtomicBuffer {
@@ -1127,136 +916,66 @@ pub mod root {
                 pub mod DataFrameHeader {
                     #[allow(unused_imports)]
                     use self::super::super::super::super::super::root;
-                    #[repr(C, packed(4))]
-                    #[derive(Copy, Clone)]
-                    pub struct DataFrameHeaderDefn {
-                        pub frameLength: ::std::os::raw::c_int,
-                        pub version: ::std::os::raw::c_uchar,
-                        pub flags: ::std::os::raw::c_uchar,
-                        pub type_: ::std::os::raw::c_ushort,
-                        pub termOffset: ::std::os::raw::c_int,
-                        pub sessionId: ::std::os::raw::c_int,
-                        pub streamId: ::std::os::raw::c_int,
-                        pub termId: ::std::os::raw::c_int,
-                        pub reservedValue: ::std::os::raw::c_long,
-                    }
-                    #[test]
-                    fn bindgen_test_layout_DataFrameHeaderDefn() {
-                        const UNINIT: ::std::mem::MaybeUninit<DataFrameHeaderDefn> =
-                            ::std::mem::MaybeUninit::uninit();
-                        let ptr = UNINIT.as_ptr();
-                        assert_eq!(
-                            ::std::mem::size_of::<DataFrameHeaderDefn>(),
-                            32usize,
-                            concat!("Size of: ", stringify!(DataFrameHeaderDefn))
-                        );
-                        assert_eq!(
-                            ::std::mem::align_of::<DataFrameHeaderDefn>(),
-                            4usize,
-                            concat!("Alignment of ", stringify!(DataFrameHeaderDefn))
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).frameLength) as usize - ptr as usize
-                            },
-                            0usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(frameLength)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).version) as usize - ptr as usize },
-                            4usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(version)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).flags) as usize - ptr as usize },
-                            5usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(flags)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
-                            6usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(type_)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).termOffset) as usize - ptr as usize
-                            },
-                            8usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(termOffset)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).sessionId) as usize - ptr as usize
-                            },
-                            12usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(sessionId)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize
-                            },
-                            16usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(streamId)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).termId) as usize - ptr as usize },
-                            20usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(termId)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).reservedValue) as usize - ptr as usize
-                            },
-                            24usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(DataFrameHeaderDefn),
-                                "::",
-                                stringify!(reservedValue)
-                            )
-                        );
-                    }
                 }
+                #[doc = " Represents the header of the data frame for accessing meta data fields."]
+                #[repr(C)]
+                #[derive(Copy, Clone)]
+                pub struct Header {
+                    pub m_header: *mut root::aeron_header_t,
+                    pub m_headerValues: root::aeron_header_values_t,
+                    pub m_context: *mut ::std::os::raw::c_void,
+                }
+                #[test]
+                fn bindgen_test_layout_Header() {
+                    const UNINIT: ::std::mem::MaybeUninit<Header> =
+                        ::std::mem::MaybeUninit::uninit();
+                    let ptr = UNINIT.as_ptr();
+                    assert_eq!(
+                        ::std::mem::size_of::<Header>(),
+                        64usize,
+                        concat!("Size of: ", stringify!(Header))
+                    );
+                    assert_eq!(
+                        ::std::mem::align_of::<Header>(),
+                        8usize,
+                        concat!("Alignment of ", stringify!(Header))
+                    );
+                    assert_eq!(
+                        unsafe { ::std::ptr::addr_of!((*ptr).m_header) as usize - ptr as usize },
+                        0usize,
+                        concat!(
+                            "Offset of field: ",
+                            stringify!(Header),
+                            "::",
+                            stringify!(m_header)
+                        )
+                    );
+                    assert_eq!(
+                        unsafe {
+                            ::std::ptr::addr_of!((*ptr).m_headerValues) as usize - ptr as usize
+                        },
+                        8usize,
+                        concat!(
+                            "Offset of field: ",
+                            stringify!(Header),
+                            "::",
+                            stringify!(m_headerValues)
+                        )
+                    );
+                    assert_eq!(
+                        unsafe { ::std::ptr::addr_of!((*ptr).m_context) as usize - ptr as usize },
+                        56usize,
+                        concat!(
+                            "Offset of field: ",
+                            stringify!(Header),
+                            "::",
+                            stringify!(m_context)
+                        )
+                    );
+                }
+                #[doc = " Callback for handling fragments of data being read from a log.\n\n Handler for reading data that is coming from a log buffer. The frame will either contain a whole message\n or a fragment of a message to be reassembled. Messages are fragmented if greater than the frame for MTU in length.\n\n @param buffer containing the data.\n @param offset at which the data begins.\n @param length of the data in bytes.\n @param header representing the meta data for the data."]
+                pub type fragment_handler_t = u8;
+                #[doc = " Represents a claimed range in a buffer to be used for recording a message without copy semantics for later commit.\n <p>\n The claimed space is in {@link #buffer()} between {@link #offset()} and {@link #offset()} + {@link #length()}.\n When the buffer is filled with message data, use {@link #commit()} to make it available to subscribers."]
                 #[repr(C)]
                 #[derive(Copy, Clone)]
                 pub struct BufferClaim {
@@ -1288,560 +1007,43 @@ pub mod root {
                         )
                     );
                 }
-                pub mod FrameDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
-                #[repr(C)]
-                #[derive(Copy, Clone)]
-                pub struct HeaderWriter {
-                    pub m_sessionId: ::std::os::raw::c_int,
-                    pub m_streamId: ::std::os::raw::c_int,
-                }
-                #[test]
-                fn bindgen_test_layout_HeaderWriter() {
-                    const UNINIT: ::std::mem::MaybeUninit<HeaderWriter> =
-                        ::std::mem::MaybeUninit::uninit();
-                    let ptr = UNINIT.as_ptr();
-                    assert_eq!(
-                        ::std::mem::size_of::<HeaderWriter>(),
-                        8usize,
-                        concat!("Size of: ", stringify!(HeaderWriter))
-                    );
-                    assert_eq!(
-                        ::std::mem::align_of::<HeaderWriter>(),
-                        4usize,
-                        concat!("Alignment of ", stringify!(HeaderWriter))
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                        0usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(HeaderWriter),
-                            "::",
-                            stringify!(m_sessionId)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                        4usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(HeaderWriter),
-                            "::",
-                            stringify!(m_streamId)
-                        )
-                    );
-                }
-                pub mod LogBufferDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                    #[repr(C, packed(4))]
-                    #[derive(Copy, Clone)]
-                    pub struct LogMetaDataDefn {
-                        pub termTailCounters: [::std::os::raw::c_long; 3usize],
-                        pub activeTermCount: ::std::os::raw::c_int,
-                        pub pad1: [::std::os::raw::c_schar; 100usize],
-                        pub endOfStreamPosition: ::std::os::raw::c_long,
-                        pub isConnected: ::std::os::raw::c_int,
-                        pub activeTransportCount: ::std::os::raw::c_int,
-                        pub pad2: [::std::os::raw::c_schar; 112usize],
-                        pub correlationId: ::std::os::raw::c_long,
-                        pub initialTermId: ::std::os::raw::c_int,
-                        pub defaultFrameHeaderLength: ::std::os::raw::c_int,
-                        pub mtuLength: ::std::os::raw::c_int,
-                        pub termLength: ::std::os::raw::c_int,
-                        pub pageSize: ::std::os::raw::c_int,
-                        pub pad3: [::std::os::raw::c_schar; 36usize],
-                    }
-                    #[test]
-                    fn bindgen_test_layout_LogMetaDataDefn() {
-                        const UNINIT: ::std::mem::MaybeUninit<LogMetaDataDefn> =
-                            ::std::mem::MaybeUninit::uninit();
-                        let ptr = UNINIT.as_ptr();
-                        assert_eq!(
-                            ::std::mem::size_of::<LogMetaDataDefn>(),
-                            320usize,
-                            concat!("Size of: ", stringify!(LogMetaDataDefn))
-                        );
-                        assert_eq!(
-                            ::std::mem::align_of::<LogMetaDataDefn>(),
-                            4usize,
-                            concat!("Alignment of ", stringify!(LogMetaDataDefn))
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).termTailCounters) as usize
-                                    - ptr as usize
-                            },
-                            0usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(termTailCounters)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).activeTermCount) as usize - ptr as usize
-                            },
-                            24usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(activeTermCount)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).pad1) as usize - ptr as usize },
-                            28usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(pad1)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).endOfStreamPosition) as usize
-                                    - ptr as usize
-                            },
-                            128usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(endOfStreamPosition)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).isConnected) as usize - ptr as usize
-                            },
-                            136usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(isConnected)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).activeTransportCount) as usize
-                                    - ptr as usize
-                            },
-                            140usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(activeTransportCount)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).pad2) as usize - ptr as usize },
-                            144usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(pad2)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize
-                            },
-                            256usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(correlationId)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).initialTermId) as usize - ptr as usize
-                            },
-                            264usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(initialTermId)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).defaultFrameHeaderLength) as usize
-                                    - ptr as usize
-                            },
-                            268usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(defaultFrameHeaderLength)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).mtuLength) as usize - ptr as usize
-                            },
-                            272usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(mtuLength)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).termLength) as usize - ptr as usize
-                            },
-                            276usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(termLength)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).pageSize) as usize - ptr as usize
-                            },
-                            280usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(pageSize)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).pad3) as usize - ptr as usize },
-                            284usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(LogMetaDataDefn),
-                                "::",
-                                stringify!(pad3)
-                            )
-                        );
-                    }
-                }
-                #[repr(C)]
-                #[derive(Copy, Clone)]
-                pub struct Header {
-                    pub m_context: *mut ::std::os::raw::c_void,
-                    pub m_buffer: root::aeron::concurrent::AtomicBuffer,
-                    pub m_offset: root::aeron::util::index_t,
-                    pub m_initialTermId: ::std::os::raw::c_int,
-                    pub m_positionBitsToShift: ::std::os::raw::c_int,
-                }
-                #[test]
-                fn bindgen_test_layout_Header() {
-                    const UNINIT: ::std::mem::MaybeUninit<Header> =
-                        ::std::mem::MaybeUninit::uninit();
-                    let ptr = UNINIT.as_ptr();
-                    assert_eq!(
-                        ::std::mem::size_of::<Header>(),
-                        40usize,
-                        concat!("Size of: ", stringify!(Header))
-                    );
-                    assert_eq!(
-                        ::std::mem::align_of::<Header>(),
-                        8usize,
-                        concat!("Alignment of ", stringify!(Header))
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_context) as usize - ptr as usize },
-                        0usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(Header),
-                            "::",
-                            stringify!(m_context)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_buffer) as usize - ptr as usize },
-                        8usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(Header),
-                            "::",
-                            stringify!(m_buffer)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_offset) as usize - ptr as usize },
-                        24usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(Header),
-                            "::",
-                            stringify!(m_offset)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_initialTermId) as usize - ptr as usize
-                        },
-                        28usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(Header),
-                            "::",
-                            stringify!(m_initialTermId)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_positionBitsToShift) as usize
-                                - ptr as usize
-                        },
-                        32usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(Header),
-                            "::",
-                            stringify!(m_positionBitsToShift)
-                        )
-                    );
-                }
-                pub type fragment_handler_t = u8;
-                pub mod TermReader {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                    #[repr(C)]
-                    #[derive(Copy, Clone)]
-                    pub struct ReadOutcome {
-                        pub offset: ::std::os::raw::c_int,
-                        pub fragmentsRead: ::std::os::raw::c_int,
-                    }
-                    #[test]
-                    fn bindgen_test_layout_ReadOutcome() {
-                        const UNINIT: ::std::mem::MaybeUninit<ReadOutcome> =
-                            ::std::mem::MaybeUninit::uninit();
-                        let ptr = UNINIT.as_ptr();
-                        assert_eq!(
-                            ::std::mem::size_of::<ReadOutcome>(),
-                            8usize,
-                            concat!("Size of: ", stringify!(ReadOutcome))
-                        );
-                        assert_eq!(
-                            ::std::mem::align_of::<ReadOutcome>(),
-                            4usize,
-                            concat!("Alignment of ", stringify!(ReadOutcome))
-                        );
-                        assert_eq!(
-                            unsafe { ::std::ptr::addr_of!((*ptr).offset) as usize - ptr as usize },
-                            0usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(ReadOutcome),
-                                "::",
-                                stringify!(offset)
-                            )
-                        );
-                        assert_eq!(
-                            unsafe {
-                                ::std::ptr::addr_of!((*ptr).fragmentsRead) as usize - ptr as usize
-                            },
-                            4usize,
-                            concat!(
-                                "Offset of field: ",
-                                stringify!(ReadOutcome),
-                                "::",
-                                stringify!(fragmentsRead)
-                            )
-                        );
-                    }
-                }
-                pub type block_handler_t = u8;
-                pub mod TermBlockScanner {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
             }
+            #[repr(C)]
+            pub struct AgentRunner<Agent, IdleStrategy> {
+                pub m_agent: *mut Agent,
+                pub m_idleStrategy: *mut IdleStrategy,
+                pub m_exceptionHandler: *mut root::aeron::util::exception_handler_t,
+                pub m_isStarted: u8,
+                pub m_isRunning: u8,
+                pub m_isClosed: u8,
+                pub m_thread: root::std::thread,
+                pub m_name: root::std::string,
+                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<Agent>>,
+                pub _phantom_1: ::std::marker::PhantomData<::std::cell::UnsafeCell<IdleStrategy>>,
+            }
+            #[repr(C)]
+            #[derive(Copy, Clone)]
+            pub struct AgentInvoker<Agent> {
+                pub m_agent: *mut Agent,
+                pub m_exceptionHandler: *mut root::aeron::util::exception_handler_t,
+                pub m_isStarted: bool,
+                pub m_isRunning: bool,
+                pub m_isClosed: bool,
+                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<Agent>>,
+            }
+            #[doc = " Reads the counters metadata and values buffers.\n\n This class is threadsafe.\n\n <b>Values Buffer</b>\n <pre>\n   0                   1                   2                   3\n   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n  |                        Counter Value                          |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                       Registration Id                         |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                          Owner Id                             |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                     104 bytes of padding                     ...\n ...                                                              |\n  +---------------------------------------------------------------+\n  |                   Repeats to end of buffer                   ...\n  |                                                               |\n ...                                                              |\n  +---------------------------------------------------------------+\n </pre>\n\n <b>Meta Data Buffer</b>\n <pre>\n   0                   1                   2                   3\n   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n  |                        Record State                           |\n  +---------------------------------------------------------------+\n  |                          Type Id                              |\n  +---------------------------------------------------------------+\n  |                  Free-for-reuse Deadline (ms)                 |\n  |                                                               |\n  +---------------------------------------------------------------+\n  |                      112 bytes for key                       ...\n ...                                                              |\n  +-+-------------------------------------------------------------+\n  |R|                      Label Length                           |\n  +-+-------------------------------------------------------------+\n  |                  380 bytes of Label in ASCII                 ...\n ...                                                              |\n  +---------------------------------------------------------------+\n  |                   Repeats to end of buffer                   ...\n  |                                                               |\n ...                                                              |\n  +---------------------------------------------------------------+\n </pre>"]
             pub type on_counters_metadata_t = u8;
             #[repr(C)]
             #[derive(Copy, Clone)]
             pub struct CountersReader {
-                pub m_metadataBuffer: root::aeron::concurrent::AtomicBuffer,
-                pub m_valuesBuffer: root::aeron::concurrent::AtomicBuffer,
-                pub m_maxCounterId: ::std::os::raw::c_int,
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct CountersReader_CounterValueDefn {
-                pub counterValue: ::std::os::raw::c_long,
-                pub registrationId: ::std::os::raw::c_long,
-                pub ownerId: ::std::os::raw::c_long,
-                pub padding: [::std::os::raw::c_schar; 104usize],
-            }
-            #[test]
-            fn bindgen_test_layout_CountersReader_CounterValueDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<CountersReader_CounterValueDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CountersReader_CounterValueDefn>(),
-                    128usize,
-                    concat!("Size of: ", stringify!(CountersReader_CounterValueDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CountersReader_CounterValueDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(CountersReader_CounterValueDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).counterValue) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterValueDefn),
-                        "::",
-                        stringify!(counterValue)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).registrationId) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterValueDefn),
-                        "::",
-                        stringify!(registrationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).ownerId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterValueDefn),
-                        "::",
-                        stringify!(ownerId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).padding) as usize - ptr as usize },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterValueDefn),
-                        "::",
-                        stringify!(padding)
-                    )
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct CountersReader_CounterMetaDataDefn {
-                pub state: ::std::os::raw::c_int,
-                pub typeId: ::std::os::raw::c_int,
-                pub freeToReuseDeadline: ::std::os::raw::c_long,
-                pub key: [::std::os::raw::c_schar; 112usize],
-                pub labelLength: ::std::os::raw::c_int,
-                pub label: [::std::os::raw::c_schar; 380usize],
-            }
-            #[test]
-            fn bindgen_test_layout_CountersReader_CounterMetaDataDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<CountersReader_CounterMetaDataDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CountersReader_CounterMetaDataDefn>(),
-                    512usize,
-                    concat!("Size of: ", stringify!(CountersReader_CounterMetaDataDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CountersReader_CounterMetaDataDefn>(),
-                    4usize,
-                    concat!(
-                        "Alignment of ",
-                        stringify!(CountersReader_CounterMetaDataDefn)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).state) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(state)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).typeId) as usize - ptr as usize },
-                    4usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(typeId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).freeToReuseDeadline) as usize - ptr as usize
-                    },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(freeToReuseDeadline)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).key) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(key)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).labelLength) as usize - ptr as usize },
-                    128usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(labelLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).label) as usize - ptr as usize },
-                    132usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader_CounterMetaDataDefn),
-                        "::",
-                        stringify!(label)
-                    )
-                );
+                pub m_countersReader: *mut root::aeron_counters_reader_t,
+                pub m_buffers: root::aeron_counters_reader_buffers_t,
             }
             pub const CountersReader_NULL_COUNTER_ID: ::std::os::raw::c_int = -1;
             pub const CountersReader_RECORD_UNUSED: ::std::os::raw::c_int = 0;
             pub const CountersReader_RECORD_ALLOCATED: ::std::os::raw::c_int = 1;
             pub const CountersReader_RECORD_RECLAIMED: ::std::os::raw::c_int = -1;
             pub const CountersReader_DEFAULT_REGISTRATION_ID: ::std::os::raw::c_long = 0;
-            pub const CountersReader_DEFAULT_OWNER_ID: ::std::os::raw::c_long = 0;
             pub const CountersReader_NOT_FREE_TO_REUSE: ::std::os::raw::c_long =
                 9223372036854775807;
             extern "C" {
@@ -1851,10 +1053,6 @@ pub mod root {
             extern "C" {
                 #[link_name = "\u{1}_ZN5aeron10concurrent14CountersReader22REGISTRATION_ID_OFFSETE"]
                 pub static CountersReader_REGISTRATION_ID_OFFSET: root::aeron::util::index_t;
-            }
-            extern "C" {
-                #[link_name = "\u{1}_ZN5aeron10concurrent14CountersReader15OWNER_ID_OFFSETE"]
-                pub static CountersReader_OWNER_ID_OFFSET: root::aeron::util::index_t;
             }
             extern "C" {
                 #[link_name = "\u{1}_ZN5aeron10concurrent14CountersReader15METADATA_LENGTHE"]
@@ -1896,101 +1094,24 @@ pub mod root {
                 );
                 assert_eq!(
                     unsafe {
-                        ::std::ptr::addr_of!((*ptr).m_metadataBuffer) as usize - ptr as usize
+                        ::std::ptr::addr_of!((*ptr).m_countersReader) as usize - ptr as usize
                     },
                     0usize,
                     concat!(
                         "Offset of field: ",
                         stringify!(CountersReader),
                         "::",
-                        stringify!(m_metadataBuffer)
+                        stringify!(m_countersReader)
                     )
                 );
                 assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_valuesBuffer) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader),
-                        "::",
-                        stringify!(m_valuesBuffer)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_maxCounterId) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersReader),
-                        "::",
-                        stringify!(m_maxCounterId)
-                    )
-                );
-            }
-            #[repr(C)]
-            pub struct CountersManager {
-                pub _base: root::aeron::concurrent::CountersReader,
-                pub m_freeList: [u64; 10usize],
-                pub m_clock: root::aeron::concurrent::CountersManager_clock_t,
-                pub m_freeToReuseTimeoutMs: ::std::os::raw::c_long,
-                pub m_highWaterMark: root::aeron::util::index_t,
-            }
-            pub type CountersManager_clock_t = [u64; 4usize];
-            #[test]
-            fn bindgen_test_layout_CountersManager() {
-                const UNINIT: ::std::mem::MaybeUninit<CountersManager> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CountersManager>(),
-                    168usize,
-                    concat!("Size of: ", stringify!(CountersManager))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CountersManager>(),
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_buffers) as usize - ptr as usize },
                     8usize,
-                    concat!("Alignment of ", stringify!(CountersManager))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_freeList) as usize - ptr as usize },
-                    40usize,
                     concat!(
                         "Offset of field: ",
-                        stringify!(CountersManager),
+                        stringify!(CountersReader),
                         "::",
-                        stringify!(m_freeList)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_clock) as usize - ptr as usize },
-                    120usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersManager),
-                        "::",
-                        stringify!(m_clock)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).m_freeToReuseTimeoutMs) as usize - ptr as usize
-                    },
-                    152usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersManager),
-                        "::",
-                        stringify!(m_freeToReuseTimeoutMs)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_highWaterMark) as usize - ptr as usize },
-                    160usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CountersManager),
-                        "::",
-                        stringify!(m_highWaterMark)
+                        stringify!(m_buffers)
                     )
                 );
             }
@@ -2130,19 +1251,10 @@ pub mod root {
                 }
             }
             #[repr(C)]
-            pub struct AtomicArrayUpdater<E> {
-                pub m_beginChange: u64,
-                pub m_array: *mut E,
-                pub m_length: usize,
-                pub m_endChange: u64,
-                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<E>>,
-            }
-            #[repr(C)]
             pub struct AtomicCounter {
-                pub m_buffer: root::aeron::concurrent::AtomicBuffer,
-                pub m_counterId: ::std::os::raw::c_int,
-                pub m_countersManager: [u64; 2usize],
-                pub m_offset: root::aeron::util::index_t,
+                pub m_counter: *mut root::aeron_counter_t,
+                pub m_ptr: *mut ::std::os::raw::c_long,
+                pub m_constants: root::aeron_counter_constants_t,
             }
             #[test]
             fn bindgen_test_layout_AtomicCounter() {
@@ -2151,7 +1263,7 @@ pub mod root {
                 let ptr = UNINIT.as_ptr();
                 assert_eq!(
                     ::std::mem::size_of::<AtomicCounter>(),
-                    48usize,
+                    32usize,
                     concat!("Size of: ", stringify!(AtomicCounter))
                 );
                 assert_eq!(
@@ -2160,560 +1272,49 @@ pub mod root {
                     concat!("Alignment of ", stringify!(AtomicCounter))
                 );
                 assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_buffer) as usize - ptr as usize },
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_counter) as usize - ptr as usize },
                     0usize,
                     concat!(
                         "Offset of field: ",
                         stringify!(AtomicCounter),
                         "::",
-                        stringify!(m_buffer)
+                        stringify!(m_counter)
                     )
                 );
                 assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_counterId) as usize - ptr as usize },
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_ptr) as usize - ptr as usize },
+                    8usize,
+                    concat!(
+                        "Offset of field: ",
+                        stringify!(AtomicCounter),
+                        "::",
+                        stringify!(m_ptr)
+                    )
+                );
+                assert_eq!(
+                    unsafe { ::std::ptr::addr_of!((*ptr).m_constants) as usize - ptr as usize },
                     16usize,
                     concat!(
                         "Offset of field: ",
                         stringify!(AtomicCounter),
                         "::",
-                        stringify!(m_counterId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).m_countersManager) as usize - ptr as usize
-                    },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(AtomicCounter),
-                        "::",
-                        stringify!(m_countersManager)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_offset) as usize - ptr as usize },
-                    40usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(AtomicCounter),
-                        "::",
-                        stringify!(m_offset)
+                        stringify!(m_constants)
                     )
                 );
             }
-            pub mod ringbuffer {
-                #[allow(unused_imports)]
-                use self::super::super::super::super::root;
-                pub type handler_t = [u64; 4usize];
-                pub mod RingBufferDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
-                pub mod RecordDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
-                #[repr(C)]
-                #[derive(Copy, Clone)]
-                pub struct ManyToOneRingBuffer {
-                    pub m_buffer: *mut root::aeron::concurrent::AtomicBuffer,
-                    pub m_capacity: root::aeron::util::index_t,
-                    pub m_maxMsgLength: root::aeron::util::index_t,
-                    pub m_headPositionIndex: root::aeron::util::index_t,
-                    pub m_headCachePositionIndex: root::aeron::util::index_t,
-                    pub m_tailPositionIndex: root::aeron::util::index_t,
-                    pub m_correlationIdCounterIndex: root::aeron::util::index_t,
-                    pub m_consumerHeartbeatIndex: root::aeron::util::index_t,
-                }
-                extern "C" {
-                    #[link_name = "\u{1}_ZN5aeron10concurrent10ringbuffer19ManyToOneRingBuffer21INSUFFICIENT_CAPACITYE"]
-                    pub static ManyToOneRingBuffer_INSUFFICIENT_CAPACITY:
-                        root::aeron::util::index_t;
-                }
-                #[test]
-                fn bindgen_test_layout_ManyToOneRingBuffer() {
-                    const UNINIT: ::std::mem::MaybeUninit<ManyToOneRingBuffer> =
-                        ::std::mem::MaybeUninit::uninit();
-                    let ptr = UNINIT.as_ptr();
-                    assert_eq!(
-                        ::std::mem::size_of::<ManyToOneRingBuffer>(),
-                        40usize,
-                        concat!("Size of: ", stringify!(ManyToOneRingBuffer))
-                    );
-                    assert_eq!(
-                        ::std::mem::align_of::<ManyToOneRingBuffer>(),
-                        8usize,
-                        concat!("Alignment of ", stringify!(ManyToOneRingBuffer))
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_buffer) as usize - ptr as usize },
-                        0usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_buffer)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_capacity) as usize - ptr as usize },
-                        8usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_capacity)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_maxMsgLength) as usize - ptr as usize
-                        },
-                        12usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_maxMsgLength)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_headPositionIndex) as usize - ptr as usize
-                        },
-                        16usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_headPositionIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_headCachePositionIndex) as usize
-                                - ptr as usize
-                        },
-                        20usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_headCachePositionIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_tailPositionIndex) as usize - ptr as usize
-                        },
-                        24usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_tailPositionIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_correlationIdCounterIndex) as usize
-                                - ptr as usize
-                        },
-                        28usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_correlationIdCounterIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_consumerHeartbeatIndex) as usize
-                                - ptr as usize
-                        },
-                        32usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(ManyToOneRingBuffer),
-                            "::",
-                            stringify!(m_consumerHeartbeatIndex)
-                        )
-                    );
-                }
-            }
-            #[repr(C)]
-            pub struct AgentRunner<Agent, IdleStrategy> {
-                pub m_agent: *mut Agent,
-                pub m_idleStrategy: *mut IdleStrategy,
-                pub m_exceptionHandler: *mut root::aeron::util::exception_handler_t,
-                pub m_isStarted: u8,
-                pub m_isRunning: u8,
-                pub m_isClosed: u8,
-                pub m_thread: root::std::thread,
-                pub m_name: root::std::string,
-                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<Agent>>,
-                pub _phantom_1: ::std::marker::PhantomData<::std::cell::UnsafeCell<IdleStrategy>>,
-            }
-            pub mod broadcast {
-                #[allow(unused_imports)]
-                use self::super::super::super::super::root;
-                pub mod BroadcastBufferDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
-                pub mod RecordDescriptor {
-                    #[allow(unused_imports)]
-                    use self::super::super::super::super::super::root;
-                }
-                #[repr(C)]
-                pub struct BroadcastReceiver {
-                    pub m_buffer: *mut root::aeron::concurrent::AtomicBuffer,
-                    pub m_capacity: root::aeron::util::index_t,
-                    pub m_mask: root::aeron::util::index_t,
-                    pub m_tailIntentCounterIndex: root::aeron::util::index_t,
-                    pub m_tailCounterIndex: root::aeron::util::index_t,
-                    pub m_latestCounterIndex: root::aeron::util::index_t,
-                    pub m_recordOffset: root::aeron::util::index_t,
-                    pub m_cursor: ::std::os::raw::c_long,
-                    pub m_nextRecord: ::std::os::raw::c_long,
-                    pub m_lappedCount: u64,
-                }
-                #[test]
-                fn bindgen_test_layout_BroadcastReceiver() {
-                    const UNINIT: ::std::mem::MaybeUninit<BroadcastReceiver> =
-                        ::std::mem::MaybeUninit::uninit();
-                    let ptr = UNINIT.as_ptr();
-                    assert_eq!(
-                        ::std::mem::size_of::<BroadcastReceiver>(),
-                        56usize,
-                        concat!("Size of: ", stringify!(BroadcastReceiver))
-                    );
-                    assert_eq!(
-                        ::std::mem::align_of::<BroadcastReceiver>(),
-                        8usize,
-                        concat!("Alignment of ", stringify!(BroadcastReceiver))
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_buffer) as usize - ptr as usize },
-                        0usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_buffer)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_capacity) as usize - ptr as usize },
-                        8usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_capacity)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_mask) as usize - ptr as usize },
-                        12usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_mask)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_tailIntentCounterIndex) as usize
-                                - ptr as usize
-                        },
-                        16usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_tailIntentCounterIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_tailCounterIndex) as usize - ptr as usize
-                        },
-                        20usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_tailCounterIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_latestCounterIndex) as usize
-                                - ptr as usize
-                        },
-                        24usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_latestCounterIndex)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_recordOffset) as usize - ptr as usize
-                        },
-                        28usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_recordOffset)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_cursor) as usize - ptr as usize },
-                        32usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_cursor)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_nextRecord) as usize - ptr as usize
-                        },
-                        40usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_nextRecord)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_lappedCount) as usize - ptr as usize
-                        },
-                        48usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(BroadcastReceiver),
-                            "::",
-                            stringify!(m_lappedCount)
-                        )
-                    );
-                }
-                pub type scratch_buffer_t = [u8; 4096usize];
-                pub type handler_t = [u64; 4usize];
-                #[repr(C)]
-                #[repr(align(16))]
-                pub struct CopyBroadcastReceiver {
-                    pub m_scratch: root::aeron::concurrent::broadcast::scratch_buffer_t,
-                    pub m_receiver: *mut root::aeron::concurrent::broadcast::BroadcastReceiver,
-                    pub m_scratchBuffer: root::aeron::concurrent::AtomicBuffer,
-                }
-                #[test]
-                fn bindgen_test_layout_CopyBroadcastReceiver() {
-                    const UNINIT: ::std::mem::MaybeUninit<CopyBroadcastReceiver> =
-                        ::std::mem::MaybeUninit::uninit();
-                    let ptr = UNINIT.as_ptr();
-                    assert_eq!(
-                        ::std::mem::size_of::<CopyBroadcastReceiver>(),
-                        4128usize,
-                        concat!("Size of: ", stringify!(CopyBroadcastReceiver))
-                    );
-                    assert_eq!(
-                        ::std::mem::align_of::<CopyBroadcastReceiver>(),
-                        16usize,
-                        concat!("Alignment of ", stringify!(CopyBroadcastReceiver))
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_scratch) as usize - ptr as usize },
-                        0usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(CopyBroadcastReceiver),
-                            "::",
-                            stringify!(m_scratch)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe { ::std::ptr::addr_of!((*ptr).m_receiver) as usize - ptr as usize },
-                        4096usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(CopyBroadcastReceiver),
-                            "::",
-                            stringify!(m_receiver)
-                        )
-                    );
-                    assert_eq!(
-                        unsafe {
-                            ::std::ptr::addr_of!((*ptr).m_scratchBuffer) as usize - ptr as usize
-                        },
-                        4104usize,
-                        concat!(
-                            "Offset of field: ",
-                            stringify!(CopyBroadcastReceiver),
-                            "::",
-                            stringify!(m_scratchBuffer)
-                        )
-                    );
-                }
-            }
-            #[repr(C)]
-            pub struct SleepingIdleStrategy {
-                pub m_duration: u64,
-            }
-            #[test]
-            fn bindgen_test_layout_SleepingIdleStrategy() {
-                const UNINIT: ::std::mem::MaybeUninit<SleepingIdleStrategy> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<SleepingIdleStrategy>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(SleepingIdleStrategy))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<SleepingIdleStrategy>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(SleepingIdleStrategy))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_duration) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SleepingIdleStrategy),
-                        "::",
-                        stringify!(m_duration)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct AgentInvoker<Agent> {
-                pub m_agent: *mut Agent,
-                pub m_exceptionHandler: *mut root::aeron::util::exception_handler_t,
-                pub m_isStarted: bool,
-                pub m_isRunning: bool,
-                pub m_isClosed: bool,
-                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<Agent>>,
-            }
         }
-        #[repr(C)]
-        pub struct LogBuffers {
-            pub m_memoryMappedFiles: root::aeron::util::MemoryMappedFile_ptr_t,
-            pub m_buffers: [root::aeron::concurrent::AtomicBuffer; 4usize],
-        }
-        #[test]
-        fn bindgen_test_layout_LogBuffers() {
-            const UNINIT: ::std::mem::MaybeUninit<LogBuffers> = ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<LogBuffers>(),
-                80usize,
-                concat!("Size of: ", stringify!(LogBuffers))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<LogBuffers>(),
-                8usize,
-                concat!("Alignment of ", stringify!(LogBuffers))
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_memoryMappedFiles) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(LogBuffers),
-                    "::",
-                    stringify!(m_memoryMappedFiles)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_buffers) as usize - ptr as usize },
-                16usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(LogBuffers),
-                    "::",
-                    stringify!(m_buffers)
-                )
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron10LogBuffersC1EPKcb"]
-            pub fn LogBuffers_LogBuffers(
-                this: *mut root::aeron::LogBuffers,
-                filename: *const ::std::os::raw::c_char,
-                preTouch: bool,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron10LogBuffersC1EPhli"]
-            pub fn LogBuffers_LogBuffers1(
-                this: *mut root::aeron::LogBuffers,
-                address: *mut ::std::os::raw::c_uchar,
-                logLength: ::std::os::raw::c_long,
-                termLength: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron10LogBuffersD1Ev"]
-            pub fn LogBuffers_LogBuffers_destructor(this: *mut root::aeron::LogBuffers);
-        }
-        impl LogBuffers {
-            #[inline]
-            pub unsafe fn new(filename: *const ::std::os::raw::c_char, preTouch: bool) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                LogBuffers_LogBuffers(__bindgen_tmp.as_mut_ptr(), filename, preTouch);
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn new1(
-                address: *mut ::std::os::raw::c_uchar,
-                logLength: ::std::os::raw::c_long,
-                termLength: ::std::os::raw::c_int,
-            ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                LogBuffers_LogBuffers1(__bindgen_tmp.as_mut_ptr(), address, logLength, termLength);
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                LogBuffers_LogBuffers_destructor(self)
-            }
-        }
+        #[doc = " Supplies the reserved value field for a data frame header. The returned value will be set in the header as\n Little Endian format.\n\n This will be called as the last action of encoding a data frame right before the length is set. All other fields\n in the header plus the body of the frame will have been written at the point of supply.\n\n @param termBuffer for the message\n @param termOffset of the start of the message\n @param length of the message in bytes"]
         pub type on_reserved_value_supplier_t = [u64; 4usize];
+        pub type AsyncDestination = root::aeron_async_destination_t;
+        #[doc = " @example BasicPublisher.cpp\n/\n/**\n Aeron Publisher API for sending messages to subscribers of a given channel and streamId pair. Publishers\n are created via an {@link Aeron} object, and messages are sent via an offer method or a claim and commit\n method combination.\n <p>\n The APIs for tryClaim and offer are non-blocking and threadsafe.\n <p>\n Note: Publication instances are threadsafe and can be shared between publisher threads.\n @see Aeron#addPublication\n @see Aeron#findPublication"]
         #[repr(C)]
         pub struct Publication {
-            pub m_conductor: *mut root::aeron::ClientConductor,
-            pub m_logMetaDataBuffer: *mut root::aeron::concurrent::AtomicBuffer,
+            pub m_aeron: *mut root::aeron_t,
+            pub m_publication: *mut root::aeron_publication_t,
+            pub m_constants: root::aeron_publication_constants_t,
             pub m_channel: root::std::string,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_originalRegistrationId: ::std::os::raw::c_long,
-            pub m_maxPossiblePosition: ::std::os::raw::c_long,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_sessionId: ::std::os::raw::c_int,
-            pub m_initialTermId: ::std::os::raw::c_int,
-            pub m_maxPayloadLength: ::std::os::raw::c_int,
-            pub m_maxMessageLength: ::std::os::raw::c_int,
-            pub m_positionBitsToShift: ::std::os::raw::c_int,
-            pub m_publicationLimit: root::aeron::concurrent::status::ReadablePosition<
-                root::aeron::concurrent::status::UnsafeBufferPosition,
-            >,
-            pub m_channelStatusId: ::std::os::raw::c_int,
-            pub m_isClosed: u8,
-            pub m_logBuffers: [u64; 2usize],
-            pub m_headerWriter: root::aeron::concurrent::logbuffer::HeaderWriter,
+            pub m_pendingDestinations: [u64; 7usize],
+            pub m_adminLock: root::std::recursive_mutex,
         }
         #[test]
         fn bindgen_test_layout_Publication() {
@@ -2721,7 +1322,7 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<Publication>(),
-                152usize,
+                232usize,
                 concat!("Size of: ", stringify!(Publication))
             );
             assert_eq!(
@@ -2730,28 +1331,38 @@ pub mod root {
                 concat!("Alignment of ", stringify!(Publication))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_conductor) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_aeron) as usize - ptr as usize },
                 0usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Publication),
                     "::",
-                    stringify!(m_conductor)
+                    stringify!(m_aeron)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logMetaDataBuffer) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_publication) as usize - ptr as usize },
                 8usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Publication),
                     "::",
-                    stringify!(m_logMetaDataBuffer)
+                    stringify!(m_publication)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_constants) as usize - ptr as usize },
+                16usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Publication),
+                    "::",
+                    stringify!(m_constants)
                 )
             );
             assert_eq!(
                 unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                16usize,
+                104usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Publication),
@@ -2760,288 +1371,38 @@ pub mod root {
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_originalRegistrationId) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingDestinations) as usize - ptr as usize
                 },
-                56usize,
+                136usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Publication),
                     "::",
-                    stringify!(m_originalRegistrationId)
+                    stringify!(m_pendingDestinations)
                 )
             );
             assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_maxPossiblePosition) as usize - ptr as usize
-                },
-                64usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_adminLock) as usize - ptr as usize },
+                192usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Publication),
                     "::",
-                    stringify!(m_maxPossiblePosition)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                72usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                76usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_sessionId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_initialTermId) as usize - ptr as usize },
-                80usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_initialTermId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_maxPayloadLength) as usize - ptr as usize },
-                84usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_maxPayloadLength)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_maxMessageLength) as usize - ptr as usize },
-                88usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_maxMessageLength)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_positionBitsToShift) as usize - ptr as usize
-                },
-                92usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_positionBitsToShift)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_publicationLimit) as usize - ptr as usize },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_publicationLimit)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channelStatusId) as usize - ptr as usize },
-                120usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_channelStatusId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                124usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_isClosed)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logBuffers) as usize - ptr as usize },
-                128usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_logBuffers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_headerWriter) as usize - ptr as usize },
-                144usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Publication),
-                    "::",
-                    stringify!(m_headerWriter)
+                    stringify!(m_adminLock)
                 )
             );
         }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron11Publication13channelStatusEv"]
-            pub fn Publication_channelStatus(
-                this: *const root::aeron::Publication,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron11Publication20localSocketAddressesB5cxx11Ev"]
-            pub fn Publication_localSocketAddresses(this: *const root::aeron::Publication) -> u8;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron11Publication14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn Publication_addDestination(
-                this: *mut root::aeron::Publication,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron11Publication17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn Publication_removeDestination(
-                this: *mut root::aeron::Publication,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron11Publication23findDestinationResponseEl"]
-            pub fn Publication_findDestinationResponse(
-                this: *mut root::aeron::Publication,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron11PublicationC1ERNS_15ClientConductorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEElliiRNS_10concurrent6status20UnsafeBufferPositionEiSt10shared_ptrINS_10LogBuffersEE"]
-            pub fn Publication_Publication(
-                this: *mut root::aeron::Publication,
-                conductor: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimit: *mut root::aeron::concurrent::status::UnsafeBufferPosition,
-                channelStatusId: ::std::os::raw::c_int,
-                logBuffers: [u64; 2usize],
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron11PublicationD1Ev"]
-            pub fn Publication_Publication_destructor(this: *mut root::aeron::Publication);
-        }
-        impl Publication {
-            #[inline]
-            pub unsafe fn channelStatus(&self) -> ::std::os::raw::c_long {
-                Publication_channelStatus(self)
-            }
-            #[inline]
-            pub unsafe fn localSocketAddresses(&self) -> u8 {
-                Publication_localSocketAddresses(self)
-            }
-            #[inline]
-            pub unsafe fn addDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                Publication_addDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn removeDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                Publication_removeDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn findDestinationResponse(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool {
-                Publication_findDestinationResponse(self, correlationId)
-            }
-            #[inline]
-            pub unsafe fn new(
-                conductor: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimit: *mut root::aeron::concurrent::status::UnsafeBufferPosition,
-                channelStatusId: ::std::os::raw::c_int,
-                logBuffers: [u64; 2usize],
-            ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                Publication_Publication(
-                    __bindgen_tmp.as_mut_ptr(),
-                    conductor,
-                    channel,
-                    registrationId,
-                    originalRegistrationId,
-                    streamId,
-                    sessionId,
-                    publicationLimit,
-                    channelStatusId,
-                    logBuffers,
-                );
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                Publication_Publication_destructor(self)
-            }
-        }
+        #[doc = " Aeron Publisher API for sending messages to subscribers of a given channel and streamId pair. ExclusivePublications\n each get their own session id so multiple can be concurrently active on the same media driver as independent streams.\n\n {@link ExclusivePublication}s are created via the {@link Aeron#addExclusivePublication(String, int)} method,\n and messages are sent via one of the {@link #offer(DirectBuffer)} methods, or a\n {@link #tryClaim(int, ExclusiveBufferClaim)} and {@link ExclusiveBufferClaim#commit()} method combination.\n\n {@link ExclusivePublication}s have the potential to provide greater throughput than {@link Publication}s.\n\n The APIs tryClaim and offer are non-blocking.\n\n <b>Note:</b> ExclusivePublication instances are NOT threadsafe for offer and try claim methods but are for others.\n\n @see Aeron#addExclusivePublication(String, int)\n @see BufferClaim"]
         #[repr(C)]
         pub struct ExclusivePublication {
-            pub m_conductor: *mut root::aeron::ClientConductor,
-            pub m_logMetaDataBuffer: *mut root::aeron::concurrent::AtomicBuffer,
+            #[doc = " @endcond"]
+            pub m_aeron: *mut root::aeron_t,
+            pub m_publication: *mut root::aeron_exclusive_publication_t,
+            pub m_constants: root::aeron_publication_constants_t,
             pub m_channel: root::std::string,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_maxPossiblePosition: ::std::os::raw::c_long,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_sessionId: ::std::os::raw::c_int,
-            pub m_initialTermId: ::std::os::raw::c_int,
-            pub m_maxPayloadLength: ::std::os::raw::c_int,
-            pub m_maxMessageLength: ::std::os::raw::c_int,
-            pub m_positionBitsToShift: ::std::os::raw::c_int,
-            pub m_termOffset: ::std::os::raw::c_int,
-            pub m_termId: ::std::os::raw::c_int,
-            pub m_activePartitionIndex: ::std::os::raw::c_int,
-            pub m_termBeginPosition: ::std::os::raw::c_long,
-            pub m_publicationLimit: root::aeron::concurrent::status::ReadablePosition<
-                root::aeron::concurrent::status::UnsafeBufferPosition,
-            >,
-            pub m_channelStatusId: ::std::os::raw::c_int,
-            pub m_isClosed: u8,
-            pub m_logBuffers: [u64; 2usize],
-            pub m_headerWriter: root::aeron::concurrent::logbuffer::HeaderWriter,
+            pub m_pendingDestinations: [u64; 7usize],
+            pub m_adminLock: root::std::recursive_mutex,
         }
         #[test]
         fn bindgen_test_layout_ExclusivePublication() {
@@ -3050,7 +1411,7 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<ExclusivePublication>(),
-                168usize,
+                232usize,
                 concat!("Size of: ", stringify!(ExclusivePublication))
             );
             assert_eq!(
@@ -3059,28 +1420,38 @@ pub mod root {
                 concat!("Alignment of ", stringify!(ExclusivePublication))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_conductor) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_aeron) as usize - ptr as usize },
                 0usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ExclusivePublication),
                     "::",
-                    stringify!(m_conductor)
+                    stringify!(m_aeron)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logMetaDataBuffer) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_publication) as usize - ptr as usize },
                 8usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ExclusivePublication),
                     "::",
-                    stringify!(m_logMetaDataBuffer)
+                    stringify!(m_publication)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_constants) as usize - ptr as usize },
+                16usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(ExclusivePublication),
+                    "::",
+                    stringify!(m_constants)
                 )
             );
             assert_eq!(
                 unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                16usize,
+                104usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ExclusivePublication),
@@ -3089,320 +1460,59 @@ pub mod root {
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_maxPossiblePosition) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingDestinations) as usize - ptr as usize
                 },
-                56usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_maxPossiblePosition)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                68usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_sessionId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_initialTermId) as usize - ptr as usize },
-                72usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_initialTermId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_maxPayloadLength) as usize - ptr as usize },
-                76usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_maxPayloadLength)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_maxMessageLength) as usize - ptr as usize },
-                80usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_maxMessageLength)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_positionBitsToShift) as usize - ptr as usize
-                },
-                84usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_positionBitsToShift)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_termOffset) as usize - ptr as usize },
-                88usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_termOffset)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_termId) as usize - ptr as usize },
-                92usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_termId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_activePartitionIndex) as usize - ptr as usize
-                },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_activePartitionIndex)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_termBeginPosition) as usize - ptr as usize },
-                104usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_termBeginPosition)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_publicationLimit) as usize - ptr as usize },
-                112usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_publicationLimit)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channelStatusId) as usize - ptr as usize },
                 136usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ExclusivePublication),
                     "::",
-                    stringify!(m_channelStatusId)
+                    stringify!(m_pendingDestinations)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                140usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_adminLock) as usize - ptr as usize },
+                192usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ExclusivePublication),
                     "::",
-                    stringify!(m_isClosed)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logBuffers) as usize - ptr as usize },
-                144usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_logBuffers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_headerWriter) as usize - ptr as usize },
-                160usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ExclusivePublication),
-                    "::",
-                    stringify!(m_headerWriter)
+                    stringify!(m_adminLock)
                 )
             );
         }
         extern "C" {
+            #[doc = " Get the status for the channel of this {@link Publication}\n\n @return status code for this channel"]
             #[link_name = "\u{1}_ZNK5aeron20ExclusivePublication13channelStatusEv"]
             pub fn ExclusivePublication_channelStatus(
                 this: *const root::aeron::ExclusivePublication,
             ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron20ExclusivePublication20localSocketAddressesB5cxx11Ev"]
-            pub fn ExclusivePublication_localSocketAddresses(
-                this: *const root::aeron::ExclusivePublication,
-            ) -> u8;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron20ExclusivePublication14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ExclusivePublication_addDestination(
-                this: *mut root::aeron::ExclusivePublication,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron20ExclusivePublication17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ExclusivePublication_removeDestination(
-                this: *mut root::aeron::ExclusivePublication,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron20ExclusivePublication23findDestinationResponseEl"]
-            pub fn ExclusivePublication_findDestinationResponse(
-                this: *mut root::aeron::ExclusivePublication,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron20ExclusivePublicationC1ERNS_15ClientConductorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEliiRNS_10concurrent6status20UnsafeBufferPositionEiSt10shared_ptrINS_10LogBuffersEE"]
-            pub fn ExclusivePublication_ExclusivePublication(
-                this: *mut root::aeron::ExclusivePublication,
-                conductor: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                registrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimit: *mut root::aeron::concurrent::status::UnsafeBufferPosition,
-                channelStatusId: ::std::os::raw::c_int,
-                logBuffers: [u64; 2usize],
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron20ExclusivePublicationD1Ev"]
-            pub fn ExclusivePublication_ExclusivePublication_destructor(
-                this: *mut root::aeron::ExclusivePublication,
-            );
         }
         impl ExclusivePublication {
             #[inline]
             pub unsafe fn channelStatus(&self) -> ::std::os::raw::c_long {
                 ExclusivePublication_channelStatus(self)
             }
-            #[inline]
-            pub unsafe fn localSocketAddresses(&self) -> u8 {
-                ExclusivePublication_localSocketAddresses(self)
-            }
-            #[inline]
-            pub unsafe fn addDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ExclusivePublication_addDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn removeDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ExclusivePublication_removeDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn findDestinationResponse(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool {
-                ExclusivePublication_findDestinationResponse(self, correlationId)
-            }
-            #[inline]
-            pub unsafe fn new(
-                conductor: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                registrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimit: *mut root::aeron::concurrent::status::UnsafeBufferPosition,
-                channelStatusId: ::std::os::raw::c_int,
-                logBuffers: [u64; 2usize],
-            ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                ExclusivePublication_ExclusivePublication(
-                    __bindgen_tmp.as_mut_ptr(),
-                    conductor,
-                    channel,
-                    registrationId,
-                    streamId,
-                    sessionId,
-                    publicationLimit,
-                    channelStatusId,
-                    logBuffers,
-                );
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                ExclusivePublication_ExclusivePublication_destructor(self)
-            }
         }
+        #[doc = " Abort the current polling operation and do not advance the position for this fragment."]
         pub const ControlledPollAction_ABORT: root::aeron::ControlledPollAction = 1;
+        #[doc = " Break from the current polling operation and commit the position as of the end of the current fragment\n being handled."]
         pub const ControlledPollAction_BREAK: root::aeron::ControlledPollAction = 2;
+        #[doc = " Continue processing but commit the position as of the end of the current fragment so that\n flow control is applied to this point."]
         pub const ControlledPollAction_COMMIT: root::aeron::ControlledPollAction = 3;
+        #[doc = " Continue processing taking the same approach as the in fragment_handler_t."]
         pub const ControlledPollAction_CONTINUE: root::aeron::ControlledPollAction = 4;
         pub type ControlledPollAction = ::std::os::raw::c_int;
+        #[doc = " Callback for handling fragments of data being read from a log.\n\n @param buffer containing the data.\n @param offset at which the data begins.\n @param length of the data in bytes.\n @param header representing the meta data for the data.\n @return The action to be taken with regard to the stream position after the callback."]
         pub type controlled_poll_fragment_handler_t = u8;
+        #[doc = " Represents a replicated publication {@link Image} from a publisher to a {@link Subscription}.\n Each {@link Image} identifies a source publisher by session id.\n\n Is an overlay on the LogBuffers and Position. So, can be effectively copied and moved."]
         #[repr(C)]
         pub struct Image {
+            pub m_subscription: *mut root::aeron_subscription_t,
+            pub m_image: *mut root::aeron_image_t,
+            pub m_constants: root::aeron_image_constants_t,
             pub m_sourceIdentity: root::std::string,
-            pub m_logBuffers: [u64; 2usize],
-            pub m_exceptionHandler: root::aeron::util::exception_handler_t,
-            pub m_termBuffers: [u64; 6usize],
-            pub m_subscriberPosition: root::aeron::concurrent::status::Position<
-                root::aeron::concurrent::status::UnsafeBufferPosition,
-            >,
-            pub m_header: root::aeron::concurrent::logbuffer::Header,
-            pub m_isClosed: u8,
-            pub m_isEos: bool,
-            pub m_termLengthMask: ::std::os::raw::c_int,
-            pub m_positionBitsToShift: ::std::os::raw::c_int,
-            pub m_sessionId: ::std::os::raw::c_int,
-            pub m_joinPosition: ::std::os::raw::c_long,
-            pub m_finalPosition: ::std::os::raw::c_long,
-            pub m_subscriptionRegistrationId: ::std::os::raw::c_long,
-            pub m_correlationId: ::std::os::raw::c_long,
         }
         pub type Image_list_t = [u64; 3usize];
         pub type Image_array_t = *mut [u64; 2usize];
@@ -3412,7 +1522,7 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<Image>(),
-                240usize,
+                120usize,
                 concat!("Size of: ", stringify!(Image))
             );
             assert_eq!(
@@ -3421,8 +1531,38 @@ pub mod root {
                 concat!("Alignment of ", stringify!(Image))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sourceIdentity) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_subscription) as usize - ptr as usize },
                 0usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Image),
+                    "::",
+                    stringify!(m_subscription)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_image) as usize - ptr as usize },
+                8usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Image),
+                    "::",
+                    stringify!(m_image)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_constants) as usize - ptr as usize },
+                16usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Image),
+                    "::",
+                    stringify!(m_constants)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_sourceIdentity) as usize - ptr as usize },
+                88usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Image),
@@ -3430,2009 +1570,36 @@ pub mod root {
                     stringify!(m_sourceIdentity)
                 )
             );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logBuffers) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_logBuffers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_exceptionHandler) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_exceptionHandler)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_termBuffers) as usize - ptr as usize },
-                80usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_termBuffers)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_subscriberPosition) as usize - ptr as usize
-                },
-                128usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_subscriberPosition)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_header) as usize - ptr as usize },
-                152usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_header)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                192usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_isClosed)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isEos) as usize - ptr as usize },
-                193usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_isEos)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_termLengthMask) as usize - ptr as usize },
-                196usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_termLengthMask)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_positionBitsToShift) as usize - ptr as usize
-                },
-                200usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_positionBitsToShift)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                204usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_sessionId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_joinPosition) as usize - ptr as usize },
-                208usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_joinPosition)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_finalPosition) as usize - ptr as usize },
-                216usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_finalPosition)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_subscriptionRegistrationId) as usize
-                        - ptr as usize
-                },
-                224usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_subscriptionRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_correlationId) as usize - ptr as usize },
-                232usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Image),
-                    "::",
-                    stringify!(m_correlationId)
-                )
-            );
         }
-        #[repr(C)]
-        pub struct Subscription {
-            pub m_conductor: *mut root::aeron::ClientConductor,
-            pub m_channel: root::std::string,
-            pub m_channelStatusId: ::std::os::raw::c_int,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_isClosed: u8,
-            pub m_imageArray: [u64; 4usize],
-            pub m_paddingBefore: [::std::os::raw::c_char; 64usize],
-            pub m_roundRobinIndex: usize,
-            pub m_paddingAfter: [::std::os::raw::c_char; 64usize],
-        }
-        #[test]
-        fn bindgen_test_layout_Subscription() {
-            const UNINIT: ::std::mem::MaybeUninit<Subscription> = ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<Subscription>(),
-                232usize,
-                concat!("Size of: ", stringify!(Subscription))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<Subscription>(),
-                8usize,
-                concat!("Alignment of ", stringify!(Subscription))
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_conductor) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_conductor)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                8usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_channel)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channelStatusId) as usize - ptr as usize },
-                40usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_channelStatusId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                44usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                56usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_isClosed)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_imageArray) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_imageArray)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_paddingBefore) as usize - ptr as usize },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_paddingBefore)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_roundRobinIndex) as usize - ptr as usize },
-                160usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_roundRobinIndex)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_paddingAfter) as usize - ptr as usize },
-                168usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Subscription),
-                    "::",
-                    stringify!(m_paddingAfter)
-                )
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron12Subscription13channelStatusEv"]
-            pub fn Subscription_channelStatus(
-                this: *const root::aeron::Subscription,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron12Subscription20localSocketAddressesB5cxx11Ev"]
-            pub fn Subscription_localSocketAddresses(this: *const root::aeron::Subscription) -> u8;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron12Subscription29tryResolveChannelEndpointPortB5cxx11Ev"]
-            pub fn Subscription_tryResolveChannelEndpointPort(
-                this: *const root::aeron::Subscription,
-            ) -> root::std::string;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron12Subscription16resolvedEndpointB5cxx11Ev"]
-            pub fn Subscription_resolvedEndpoint(
-                this: *const root::aeron::Subscription,
-            ) -> root::std::string;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron12Subscription14addDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn Subscription_addDestination(
-                this: *mut root::aeron::Subscription,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron12Subscription17removeDestinationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn Subscription_removeDestination(
-                this: *mut root::aeron::Subscription,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron12Subscription23findDestinationResponseEl"]
-            pub fn Subscription_findDestinationResponse(
-                this: *mut root::aeron::Subscription,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron12SubscriptionC1ERNS_15ClientConductorElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii"]
-            pub fn Subscription_Subscription(
-                this: *mut root::aeron::Subscription,
-                conductor: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-                channelStatusId: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron12SubscriptionD1Ev"]
-            pub fn Subscription_Subscription_destructor(this: *mut root::aeron::Subscription);
-        }
-        impl Subscription {
-            #[inline]
-            pub unsafe fn channelStatus(&self) -> ::std::os::raw::c_long {
-                Subscription_channelStatus(self)
-            }
-            #[inline]
-            pub unsafe fn localSocketAddresses(&self) -> u8 {
-                Subscription_localSocketAddresses(self)
-            }
-            #[inline]
-            pub unsafe fn tryResolveChannelEndpointPort(&self) -> root::std::string {
-                Subscription_tryResolveChannelEndpointPort(self)
-            }
-            #[inline]
-            pub unsafe fn resolvedEndpoint(&self) -> root::std::string {
-                Subscription_resolvedEndpoint(self)
-            }
-            #[inline]
-            pub unsafe fn addDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                Subscription_addDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn removeDestination(
-                &mut self,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                Subscription_removeDestination(self, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn findDestinationResponse(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool {
-                Subscription_findDestinationResponse(self, correlationId)
-            }
-            #[inline]
-            pub unsafe fn new(
-                conductor: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-                channelStatusId: ::std::os::raw::c_int,
-            ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                Subscription_Subscription(
-                    __bindgen_tmp.as_mut_ptr(),
-                    conductor,
-                    registrationId,
-                    channel,
-                    streamId,
-                    channelStatusId,
-                );
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                Subscription_Subscription_destructor(self)
-            }
-        }
-        #[repr(C)]
-        pub struct Counter {
-            pub _base: root::aeron::concurrent::AtomicCounter,
-            pub m_clientConductor: *mut root::aeron::ClientConductor,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_isClosed: u8,
-        }
-        #[test]
-        fn bindgen_test_layout_Counter() {
-            const UNINIT: ::std::mem::MaybeUninit<Counter> = ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<Counter>(),
-                72usize,
-                concat!("Size of: ", stringify!(Counter))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<Counter>(),
-                8usize,
-                concat!("Alignment of ", stringify!(Counter))
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_clientConductor) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Counter),
-                    "::",
-                    stringify!(m_clientConductor)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                56usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Counter),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Counter),
-                    "::",
-                    stringify!(m_isClosed)
-                )
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron7Counter5stateEv"]
-            pub fn Counter_state(this: *const root::aeron::Counter) -> ::std::os::raw::c_int;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZNK5aeron7Counter5labelB5cxx11Ev"]
-            pub fn Counter_label(this: *const root::aeron::Counter) -> root::std::string;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron7CounterC1EPNS_15ClientConductorERNS_10concurrent12AtomicBufferEli"]
-            pub fn Counter_Counter(
-                this: *mut root::aeron::Counter,
-                clientConductor: *mut root::aeron::ClientConductor,
-                buffer: *mut root::aeron::concurrent::AtomicBuffer,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron7CounterD1Ev"]
-            pub fn Counter_Counter_destructor(this: *mut root::aeron::Counter);
-        }
-        impl Counter {
-            #[inline]
-            pub unsafe fn state(&self) -> ::std::os::raw::c_int {
-                Counter_state(self)
-            }
-            #[inline]
-            pub unsafe fn label(&self) -> root::std::string {
-                Counter_label(self)
-            }
-            #[inline]
-            pub unsafe fn new(
-                clientConductor: *mut root::aeron::ClientConductor,
-                buffer: *mut root::aeron::concurrent::AtomicBuffer,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            ) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                Counter_Counter(
-                    __bindgen_tmp.as_mut_ptr(),
-                    clientConductor,
-                    buffer,
-                    registrationId,
-                    counterId,
-                );
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                Counter_Counter_destructor(self)
-            }
-        }
-        pub mod command {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct Flyweight<struct_t> {
-                pub m_struct: *mut struct_t,
-                pub m_buffer: root::aeron::concurrent::AtomicBuffer,
-                pub m_baseOffset: root::aeron::util::index_t,
-                pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<struct_t>>,
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct CorrelatedMessageDefn {
-                pub clientId: ::std::os::raw::c_long,
-                pub correlationId: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_CorrelatedMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<CorrelatedMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CorrelatedMessageDefn>(),
-                    16usize,
-                    concat!("Size of: ", stringify!(CorrelatedMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CorrelatedMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(CorrelatedMessageDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).clientId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CorrelatedMessageDefn),
-                        "::",
-                        stringify!(clientId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CorrelatedMessageDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct CorrelatedMessageFlyweight {
-                pub _base:
-                    root::aeron::command::Flyweight<root::aeron::command::CorrelatedMessageDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_CorrelatedMessageFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<CorrelatedMessageFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(CorrelatedMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CorrelatedMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(CorrelatedMessageFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct PublicationBuffersReadyDefn {
-                pub correlationId: ::std::os::raw::c_long,
-                pub registrationId: ::std::os::raw::c_long,
-                pub sessionId: ::std::os::raw::c_int,
-                pub streamId: ::std::os::raw::c_int,
-                pub positionLimitCounterId: ::std::os::raw::c_int,
-                pub channelStatusIndicatorId: ::std::os::raw::c_int,
-                pub logFileLength: ::std::os::raw::c_int,
-                pub logFileData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_PublicationBuffersReadyDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<PublicationBuffersReadyDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<PublicationBuffersReadyDefn>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(PublicationBuffersReadyDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<PublicationBuffersReadyDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(PublicationBuffersReadyDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).registrationId) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(registrationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).sessionId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(sessionId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize },
-                    20usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(streamId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).positionLimitCounterId) as usize - ptr as usize
-                    },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(positionLimitCounterId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).channelStatusIndicatorId) as usize
-                            - ptr as usize
-                    },
-                    28usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(channelStatusIndicatorId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).logFileLength) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(logFileLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).logFileData) as usize - ptr as usize },
-                    36usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationBuffersReadyDefn),
-                        "::",
-                        stringify!(logFileData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct PublicationBuffersReadyFlyweight {
-                pub _base: root::aeron::command::Flyweight<
-                    root::aeron::command::PublicationBuffersReadyDefn,
-                >,
-            }
-            #[test]
-            fn bindgen_test_layout_PublicationBuffersReadyFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<PublicationBuffersReadyFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(PublicationBuffersReadyFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<PublicationBuffersReadyFlyweight>(),
-                    8usize,
-                    concat!(
-                        "Alignment of ",
-                        stringify!(PublicationBuffersReadyFlyweight)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct PublicationMessageDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub streamId: ::std::os::raw::c_int,
-                pub channelLength: ::std::os::raw::c_int,
-                pub channelData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_PublicationMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<PublicationMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<PublicationMessageDefn>(),
-                    28usize,
-                    concat!("Size of: ", stringify!(PublicationMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<PublicationMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(PublicationMessageDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationMessageDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationMessageDefn),
-                        "::",
-                        stringify!(streamId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelLength) as usize - ptr as usize },
-                    20usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationMessageDefn),
-                        "::",
-                        stringify!(channelLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelData) as usize - ptr as usize },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationMessageDefn),
-                        "::",
-                        stringify!(channelData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct PublicationMessageFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::PublicationMessageDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_PublicationMessageFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<PublicationMessageFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<PublicationMessageFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(PublicationMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<PublicationMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(PublicationMessageFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(PublicationMessageFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct RemoveMessageDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub registrationId: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_RemoveMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<RemoveMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<RemoveMessageDefn>(),
-                    24usize,
-                    concat!("Size of: ", stringify!(RemoveMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<RemoveMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(RemoveMessageDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(RemoveMessageDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).registrationId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(RemoveMessageDefn),
-                        "::",
-                        stringify!(registrationId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct RemoveMessageFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::RemoveMessageDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_RemoveMessageFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<RemoveMessageFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<RemoveMessageFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(RemoveMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<RemoveMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(RemoveMessageFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(RemoveMessageFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct SubscriptionMessageDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub registrationCorrelationId: ::std::os::raw::c_long,
-                pub streamId: ::std::os::raw::c_int,
-                pub channelLength: ::std::os::raw::c_int,
-                pub channelData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_SubscriptionMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<SubscriptionMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<SubscriptionMessageDefn>(),
-                    36usize,
-                    concat!("Size of: ", stringify!(SubscriptionMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<SubscriptionMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(SubscriptionMessageDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).registrationCorrelationId) as usize
-                            - ptr as usize
-                    },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageDefn),
-                        "::",
-                        stringify!(registrationCorrelationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageDefn),
-                        "::",
-                        stringify!(streamId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelLength) as usize - ptr as usize },
-                    28usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageDefn),
-                        "::",
-                        stringify!(channelLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelData) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageDefn),
-                        "::",
-                        stringify!(channelData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct SubscriptionMessageFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::SubscriptionMessageDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_SubscriptionMessageFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<SubscriptionMessageFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<SubscriptionMessageFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(SubscriptionMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<SubscriptionMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(SubscriptionMessageFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionMessageFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct DestinationMessageDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub registrationId: ::std::os::raw::c_long,
-                pub channelLength: ::std::os::raw::c_int,
-                pub channelData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_DestinationMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<DestinationMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<DestinationMessageDefn>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(DestinationMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<DestinationMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(DestinationMessageDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(DestinationMessageDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).registrationId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(DestinationMessageDefn),
-                        "::",
-                        stringify!(registrationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelLength) as usize - ptr as usize },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(DestinationMessageDefn),
-                        "::",
-                        stringify!(channelLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelData) as usize - ptr as usize },
-                    28usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(DestinationMessageDefn),
-                        "::",
-                        stringify!(channelData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct DestinationMessageFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::DestinationMessageDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_DestinationMessageFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<DestinationMessageFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<DestinationMessageFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(DestinationMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<DestinationMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(DestinationMessageFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(DestinationMessageFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct CounterMessageDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub typeId: ::std::os::raw::c_int,
-            }
-            #[test]
-            fn bindgen_test_layout_CounterMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<CounterMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CounterMessageDefn>(),
-                    20usize,
-                    concat!("Size of: ", stringify!(CounterMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CounterMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(CounterMessageDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CounterMessageDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).typeId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CounterMessageDefn),
-                        "::",
-                        stringify!(typeId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct CounterMessageFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::CounterMessageDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_CounterMessageFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<CounterMessageFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CounterMessageFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(CounterMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CounterMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(CounterMessageFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CounterMessageFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct TerminateDriverDefn {
-                pub correlatedMessage: root::aeron::command::CorrelatedMessageDefn,
-                pub tokenLength: ::std::os::raw::c_int,
-            }
-            #[test]
-            fn bindgen_test_layout_TerminateDriverDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<TerminateDriverDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<TerminateDriverDefn>(),
-                    20usize,
-                    concat!("Size of: ", stringify!(TerminateDriverDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<TerminateDriverDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(TerminateDriverDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).correlatedMessage) as usize - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(TerminateDriverDefn),
-                        "::",
-                        stringify!(correlatedMessage)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).tokenLength) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(TerminateDriverDefn),
-                        "::",
-                        stringify!(tokenLength)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct TerminateDriverFlyweight {
-                pub _base: root::aeron::command::CorrelatedMessageFlyweight,
-                pub m_struct: *mut root::aeron::command::TerminateDriverDefn,
-            }
-            #[test]
-            fn bindgen_test_layout_TerminateDriverFlyweight() {
-                const UNINIT: ::std::mem::MaybeUninit<TerminateDriverFlyweight> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<TerminateDriverFlyweight>(),
-                    40usize,
-                    concat!("Size of: ", stringify!(TerminateDriverFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<TerminateDriverFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(TerminateDriverFlyweight))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).m_struct) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(TerminateDriverFlyweight),
-                        "::",
-                        stringify!(m_struct)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct ControlProtocolEvents {
-                pub _address: u8,
-            }
-            pub const ControlProtocolEvents_ADD_PUBLICATION: ::std::os::raw::c_int = 1;
-            pub const ControlProtocolEvents_REMOVE_PUBLICATION: ::std::os::raw::c_int = 2;
-            pub const ControlProtocolEvents_ADD_EXCLUSIVE_PUBLICATION: ::std::os::raw::c_int = 3;
-            pub const ControlProtocolEvents_ADD_SUBSCRIPTION: ::std::os::raw::c_int = 4;
-            pub const ControlProtocolEvents_REMOVE_SUBSCRIPTION: ::std::os::raw::c_int = 5;
-            pub const ControlProtocolEvents_CLIENT_KEEPALIVE: ::std::os::raw::c_int = 6;
-            pub const ControlProtocolEvents_ADD_DESTINATION: ::std::os::raw::c_int = 7;
-            pub const ControlProtocolEvents_REMOVE_DESTINATION: ::std::os::raw::c_int = 8;
-            pub const ControlProtocolEvents_ADD_COUNTER: ::std::os::raw::c_int = 9;
-            pub const ControlProtocolEvents_REMOVE_COUNTER: ::std::os::raw::c_int = 10;
-            pub const ControlProtocolEvents_CLIENT_CLOSE: ::std::os::raw::c_int = 11;
-            pub const ControlProtocolEvents_ADD_RCV_DESTINATION: ::std::os::raw::c_int = 12;
-            pub const ControlProtocolEvents_REMOVE_RCV_DESTINATION: ::std::os::raw::c_int = 13;
-            pub const ControlProtocolEvents_TERMINATE_DRIVER: ::std::os::raw::c_int = 14;
-            pub const ControlProtocolEvents_ON_ERROR: ::std::os::raw::c_int = 3841;
-            pub const ControlProtocolEvents_ON_AVAILABLE_IMAGE: ::std::os::raw::c_int = 3842;
-            pub const ControlProtocolEvents_ON_PUBLICATION_READY: ::std::os::raw::c_int = 3843;
-            pub const ControlProtocolEvents_ON_OPERATION_SUCCESS: ::std::os::raw::c_int = 3844;
-            pub const ControlProtocolEvents_ON_UNAVAILABLE_IMAGE: ::std::os::raw::c_int = 3845;
-            pub const ControlProtocolEvents_ON_EXCLUSIVE_PUBLICATION_READY: ::std::os::raw::c_int =
-                3846;
-            pub const ControlProtocolEvents_ON_SUBSCRIPTION_READY: ::std::os::raw::c_int = 3847;
-            pub const ControlProtocolEvents_ON_COUNTER_READY: ::std::os::raw::c_int = 3848;
-            pub const ControlProtocolEvents_ON_UNAVAILABLE_COUNTER: ::std::os::raw::c_int = 3849;
-            pub const ControlProtocolEvents_ON_CLIENT_TIMEOUT: ::std::os::raw::c_int = 3850;
-            #[test]
-            fn bindgen_test_layout_ControlProtocolEvents() {
-                assert_eq!(
-                    ::std::mem::size_of::<ControlProtocolEvents>(),
-                    1usize,
-                    concat!("Size of: ", stringify!(ControlProtocolEvents))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ControlProtocolEvents>(),
-                    1usize,
-                    concat!("Alignment of ", stringify!(ControlProtocolEvents))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct ImageBuffersReadyDefn {
-                pub correlationId: ::std::os::raw::c_long,
-                pub sessionId: ::std::os::raw::c_int,
-                pub streamId: ::std::os::raw::c_int,
-                pub subscriptionRegistrationId: ::std::os::raw::c_long,
-                pub subscriberPositionId: ::std::os::raw::c_int,
-            }
-            #[test]
-            fn bindgen_test_layout_ImageBuffersReadyDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<ImageBuffersReadyDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<ImageBuffersReadyDefn>(),
-                    28usize,
-                    concat!("Size of: ", stringify!(ImageBuffersReadyDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ImageBuffersReadyDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(ImageBuffersReadyDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageBuffersReadyDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).sessionId) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageBuffersReadyDefn),
-                        "::",
-                        stringify!(sessionId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize },
-                    12usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageBuffersReadyDefn),
-                        "::",
-                        stringify!(streamId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).subscriptionRegistrationId) as usize
-                            - ptr as usize
-                    },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageBuffersReadyDefn),
-                        "::",
-                        stringify!(subscriptionRegistrationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).subscriberPositionId) as usize - ptr as usize
-                    },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageBuffersReadyDefn),
-                        "::",
-                        stringify!(subscriberPositionId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct ImageBuffersReadyFlyweight {
-                pub _base:
-                    root::aeron::command::Flyweight<root::aeron::command::ImageBuffersReadyDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_ImageBuffersReadyFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<ImageBuffersReadyFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(ImageBuffersReadyFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ImageBuffersReadyFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(ImageBuffersReadyFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct ImageMessageDefn {
-                pub correlationId: ::std::os::raw::c_long,
-                pub subscriptionRegistrationId: ::std::os::raw::c_long,
-                pub streamId: ::std::os::raw::c_int,
-                pub channelLength: ::std::os::raw::c_int,
-                pub channelData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_ImageMessageDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<ImageMessageDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<ImageMessageDefn>(),
-                    28usize,
-                    concat!("Size of: ", stringify!(ImageMessageDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ImageMessageDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(ImageMessageDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageMessageDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).subscriptionRegistrationId) as usize
-                            - ptr as usize
-                    },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageMessageDefn),
-                        "::",
-                        stringify!(subscriptionRegistrationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).streamId) as usize - ptr as usize },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageMessageDefn),
-                        "::",
-                        stringify!(streamId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelLength) as usize - ptr as usize },
-                    20usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageMessageDefn),
-                        "::",
-                        stringify!(channelLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).channelData) as usize - ptr as usize },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ImageMessageDefn),
-                        "::",
-                        stringify!(channelData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct ImageMessageFlyweight {
-                pub _base: root::aeron::command::Flyweight<root::aeron::command::ImageMessageDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_ImageMessageFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<ImageMessageFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(ImageMessageFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ImageMessageFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(ImageMessageFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct ErrorResponseDefn {
-                pub offendingCommandCorrelationId: ::std::os::raw::c_long,
-                pub errorCode: ::std::os::raw::c_int,
-                pub errorMessageLength: ::std::os::raw::c_int,
-                pub errorMessageData: [::std::os::raw::c_schar; 1usize],
-            }
-            #[test]
-            fn bindgen_test_layout_ErrorResponseDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<ErrorResponseDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<ErrorResponseDefn>(),
-                    20usize,
-                    concat!("Size of: ", stringify!(ErrorResponseDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ErrorResponseDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(ErrorResponseDefn))
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).offendingCommandCorrelationId) as usize
-                            - ptr as usize
-                    },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ErrorResponseDefn),
-                        "::",
-                        stringify!(offendingCommandCorrelationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).errorCode) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ErrorResponseDefn),
-                        "::",
-                        stringify!(errorCode)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).errorMessageLength) as usize - ptr as usize
-                    },
-                    12usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ErrorResponseDefn),
-                        "::",
-                        stringify!(errorMessageLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).errorMessageData) as usize - ptr as usize
-                    },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ErrorResponseDefn),
-                        "::",
-                        stringify!(errorMessageData)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct ErrorResponseFlyweight {
-                pub _base: root::aeron::command::Flyweight<root::aeron::command::ErrorResponseDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_ErrorResponseFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<ErrorResponseFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(ErrorResponseFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ErrorResponseFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(ErrorResponseFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct OperationSucceededDefn {
-                pub correlationId: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_OperationSucceededDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<OperationSucceededDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<OperationSucceededDefn>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(OperationSucceededDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<OperationSucceededDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(OperationSucceededDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(OperationSucceededDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct OperationSucceededFlyweight {
-                pub _base:
-                    root::aeron::command::Flyweight<root::aeron::command::OperationSucceededDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_OperationSucceededFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<OperationSucceededFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(OperationSucceededFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<OperationSucceededFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(OperationSucceededFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct SubscriptionReadyDefn {
-                pub correlationId: ::std::os::raw::c_long,
-                pub channelStatusIndicatorId: ::std::os::raw::c_int,
-            }
-            #[test]
-            fn bindgen_test_layout_SubscriptionReadyDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<SubscriptionReadyDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<SubscriptionReadyDefn>(),
-                    12usize,
-                    concat!("Size of: ", stringify!(SubscriptionReadyDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<SubscriptionReadyDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(SubscriptionReadyDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionReadyDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).channelStatusIndicatorId) as usize
-                            - ptr as usize
-                    },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(SubscriptionReadyDefn),
-                        "::",
-                        stringify!(channelStatusIndicatorId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct SubscriptionReadyFlyweight {
-                pub _base:
-                    root::aeron::command::Flyweight<root::aeron::command::SubscriptionReadyDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_SubscriptionReadyFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<SubscriptionReadyFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(SubscriptionReadyFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<SubscriptionReadyFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(SubscriptionReadyFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct CounterUpdateDefn {
-                pub correlationId: ::std::os::raw::c_long,
-                pub counterId: ::std::os::raw::c_int,
-            }
-            #[test]
-            fn bindgen_test_layout_CounterUpdateDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<CounterUpdateDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<CounterUpdateDefn>(),
-                    12usize,
-                    concat!("Size of: ", stringify!(CounterUpdateDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CounterUpdateDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(CounterUpdateDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).correlationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CounterUpdateDefn),
-                        "::",
-                        stringify!(correlationId)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).counterId) as usize - ptr as usize },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(CounterUpdateDefn),
-                        "::",
-                        stringify!(counterId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct CounterUpdateFlyweight {
-                pub _base: root::aeron::command::Flyweight<root::aeron::command::CounterUpdateDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_CounterUpdateFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<CounterUpdateFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(CounterUpdateFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<CounterUpdateFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(CounterUpdateFlyweight))
-                );
-            }
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct ClientTimeoutDefn {
-                pub clientId: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_ClientTimeoutDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<ClientTimeoutDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<ClientTimeoutDefn>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(ClientTimeoutDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ClientTimeoutDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(ClientTimeoutDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).clientId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(ClientTimeoutDefn),
-                        "::",
-                        stringify!(clientId)
-                    )
-                );
-            }
-            #[repr(C)]
-            #[derive(Copy, Clone)]
-            pub struct ClientTimeoutFlyweight {
-                pub _base: root::aeron::command::Flyweight<root::aeron::command::ClientTimeoutDefn>,
-            }
-            #[test]
-            fn bindgen_test_layout_ClientTimeoutFlyweight() {
-                assert_eq!(
-                    ::std::mem::size_of::<ClientTimeoutFlyweight>(),
-                    32usize,
-                    concat!("Size of: ", stringify!(ClientTimeoutFlyweight))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<ClientTimeoutFlyweight>(),
-                    8usize,
-                    concat!("Alignment of ", stringify!(ClientTimeoutFlyweight))
-                );
-            }
-        }
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct DriverProxy {
-            pub m_toDriverCommandBuffer:
-                *mut root::aeron::concurrent::ringbuffer::ManyToOneRingBuffer,
-            pub m_clientId: ::std::os::raw::c_long,
-        }
-        pub type DriverProxy_driver_proxy_command_buffer_t = [u8; 4096usize];
-        #[test]
-        fn bindgen_test_layout_DriverProxy() {
-            const UNINIT: ::std::mem::MaybeUninit<DriverProxy> = ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<DriverProxy>(),
-                16usize,
-                concat!("Size of: ", stringify!(DriverProxy))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<DriverProxy>(),
-                8usize,
-                concat!("Alignment of ", stringify!(DriverProxy))
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toDriverCommandBuffer) as usize - ptr as usize
-                },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(DriverProxy),
-                    "::",
-                    stringify!(m_toDriverCommandBuffer)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_clientId) as usize - ptr as usize },
-                8usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(DriverProxy),
-                    "::",
-                    stringify!(m_clientId)
-                )
-            );
-        }
-        pub mod CncFileDescriptor {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct MetaDataDefn {
-                pub cncVersion: ::std::os::raw::c_int,
-                pub toDriverBufferLength: ::std::os::raw::c_int,
-                pub toClientsBufferLength: ::std::os::raw::c_int,
-                pub counterMetadataBufferLength: ::std::os::raw::c_int,
-                pub counterValuesBufferLength: ::std::os::raw::c_int,
-                pub errorLogBufferLength: ::std::os::raw::c_int,
-                pub clientLivenessTimeout: ::std::os::raw::c_long,
-                pub startTimestamp: ::std::os::raw::c_long,
-                pub pid: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_MetaDataDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<MetaDataDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<MetaDataDefn>(),
-                    48usize,
-                    concat!("Size of: ", stringify!(MetaDataDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<MetaDataDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(MetaDataDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).cncVersion) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(cncVersion)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).toDriverBufferLength) as usize - ptr as usize
-                    },
-                    4usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(toDriverBufferLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).toClientsBufferLength) as usize - ptr as usize
-                    },
-                    8usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(toClientsBufferLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).counterMetadataBufferLength) as usize
-                            - ptr as usize
-                    },
-                    12usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(counterMetadataBufferLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).counterValuesBufferLength) as usize
-                            - ptr as usize
-                    },
-                    16usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(counterValuesBufferLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).errorLogBufferLength) as usize - ptr as usize
-                    },
-                    20usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(errorLogBufferLength)
-                    )
-                );
-                assert_eq!(
-                    unsafe {
-                        ::std::ptr::addr_of!((*ptr).clientLivenessTimeout) as usize - ptr as usize
-                    },
-                    24usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(clientLivenessTimeout)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).startTimestamp) as usize - ptr as usize },
-                    32usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(startTimestamp)
-                    )
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).pid) as usize - ptr as usize },
-                    40usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(MetaDataDefn),
-                        "::",
-                        stringify!(pid)
-                    )
-                );
-            }
-        }
+        #[doc = " Function called by Aeron to deliver notification of an available image.\n\n The Image passed may not be the image used internally, but may be copied or moved freely.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param image that has become available."]
         pub type on_available_image_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that an Image has become unavailable for polling.\n\n The Image passed is not guaranteed to be valid after the callback.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param image that has become unavailable"]
         pub type on_unavailable_image_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that the media driver has added a Publication successfully.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param channel of the Publication\n @param streamId within the channel of the Publication\n @param sessionId of the Publication\n @param correlationId used by the Publication for adding. Aka the registrationId returned by Aeron::addPublication"]
         pub type on_new_publication_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification that the media driver has added a Subscription successfully.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param channel of the Subscription\n @param streamId within the channel of the Subscription\n @param correlationId used by the Subscription for adding. Aka the registrationId returned by Aeron::addSubscription"]
         pub type on_new_subscription_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification of a Counter being available.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param countersReader for more detail on the counter.\n @param registrationId for the counter.\n @param counterId      that is available."]
         pub type on_available_counter_t = [u64; 4usize];
+        #[doc = " Function called by Aeron to deliver notification of counter being removed.\n\n Implementations should do the minimum work for passing off state to another thread for later processing\n and should not make a reentrant call back into the Aeron instance.\n\n @param countersReader for more counter details.\n @param registrationId for the counter.\n @param counterId      that is unavailable."]
         pub type on_unavailable_counter_t = [u64; 4usize];
+        #[doc = " Function called when the Aeron client is closed to notify that the client or any of it associated resources\n should not be used after this event."]
         pub type on_close_client_t = [u64; 4usize];
+        #[doc = " This class provides configuration for the {@link Aeron} class via the {@link Aeron::Aeron} or {@link Aeron::connect}\n methods and its overloads. It gives applications some control over the interactions with the Aeron Media Driver.\n It can also set up error handling as well as application callbacks for connection information from the\n Media Driver."]
         #[repr(C)]
         #[derive(Copy, Clone)]
         pub struct Context {
-            pub m_dirName: root::std::string,
-            pub m_exceptionHandler: root::aeron::util::exception_handler_t,
-            pub m_onNewPublicationHandler: root::aeron::on_new_publication_t,
-            pub m_onNewExclusivePublicationHandler: root::aeron::on_new_publication_t,
-            pub m_onNewSubscriptionHandler: root::aeron::on_new_subscription_t,
+            pub m_context: *mut root::aeron_context_t,
             pub m_onAvailableImageHandler: root::aeron::on_available_image_t,
             pub m_onUnavailableImageHandler: root::aeron::on_unavailable_image_t,
+            pub m_exceptionHandler: root::aeron::util::exception_handler_t,
+            pub m_onNewPublicationHandler: root::aeron::on_new_publication_t,
+            pub m_isOnNewExclusivePublicationHandlerSet: bool,
+            pub m_onNewExclusivePublicationHandler: root::aeron::on_new_publication_t,
+            pub m_onNewSubscriptionHandler: root::aeron::on_new_subscription_t,
             pub m_onAvailableCounterHandler: root::aeron::on_available_counter_t,
             pub m_onUnavailableCounterHandler: root::aeron::on_unavailable_counter_t,
             pub m_onCloseClientHandler: root::aeron::on_close_client_t,
-            pub m_mediaDriverTimeout: ::std::os::raw::c_long,
-            pub m_resourceLingerTimeout: ::std::os::raw::c_long,
-            pub m_useConductorAgentInvoker: bool,
-            pub m_isOnNewExclusivePublicationHandlerSet: bool,
-            pub m_preTouchMappedMemory: bool,
         }
         #[test]
         fn bindgen_test_layout_Context() {
@@ -5440,7 +1607,7 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<Context>(),
-                344usize,
+                304usize,
                 concat!("Size of: ", stringify!(Context))
             );
             assert_eq!(
@@ -5449,67 +1616,20 @@ pub mod root {
                 concat!("Alignment of ", stringify!(Context))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_dirName) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_context) as usize - ptr as usize },
                 0usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
                     "::",
-                    stringify!(m_dirName)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_exceptionHandler) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_exceptionHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewPublicationHandler) as usize - ptr as usize
-                },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_onNewPublicationHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewExclusivePublicationHandler) as usize
-                        - ptr as usize
-                },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_onNewExclusivePublicationHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewSubscriptionHandler) as usize - ptr as usize
-                },
-                128usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_onNewSubscriptionHandler)
+                    stringify!(m_context)
                 )
             );
             assert_eq!(
                 unsafe {
                     ::std::ptr::addr_of!((*ptr).m_onAvailableImageHandler) as usize - ptr as usize
                 },
-                160usize,
+                8usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
@@ -5521,7 +1641,7 @@ pub mod root {
                 unsafe {
                     ::std::ptr::addr_of!((*ptr).m_onUnavailableImageHandler) as usize - ptr as usize
                 },
-                192usize,
+                40usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
@@ -5530,10 +1650,70 @@ pub mod root {
                 )
             );
             assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_exceptionHandler) as usize - ptr as usize },
+                72usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Context),
+                    "::",
+                    stringify!(m_exceptionHandler)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_onNewPublicationHandler) as usize - ptr as usize
+                },
+                104usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Context),
+                    "::",
+                    stringify!(m_onNewPublicationHandler)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_isOnNewExclusivePublicationHandlerSet) as usize
+                        - ptr as usize
+                },
+                136usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Context),
+                    "::",
+                    stringify!(m_isOnNewExclusivePublicationHandlerSet)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_onNewExclusivePublicationHandler) as usize
+                        - ptr as usize
+                },
+                144usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Context),
+                    "::",
+                    stringify!(m_onNewExclusivePublicationHandler)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_onNewSubscriptionHandler) as usize - ptr as usize
+                },
+                176usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Context),
+                    "::",
+                    stringify!(m_onNewSubscriptionHandler)
+                )
+            );
+            assert_eq!(
                 unsafe {
                     ::std::ptr::addr_of!((*ptr).m_onAvailableCounterHandler) as usize - ptr as usize
                 },
-                224usize,
+                208usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
@@ -5546,7 +1726,7 @@ pub mod root {
                     ::std::ptr::addr_of!((*ptr).m_onUnavailableCounterHandler) as usize
                         - ptr as usize
                 },
-                256usize,
+                240usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
@@ -5558,7 +1738,7 @@ pub mod root {
                 unsafe {
                     ::std::ptr::addr_of!((*ptr).m_onCloseClientHandler) as usize - ptr as usize
                 },
-                288usize,
+                272usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Context),
@@ -5566,919 +1746,244 @@ pub mod root {
                     stringify!(m_onCloseClientHandler)
                 )
             );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_mediaDriverTimeout) as usize - ptr as usize
-                },
-                320usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_mediaDriverTimeout)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_resourceLingerTimeout) as usize - ptr as usize
-                },
-                328usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_resourceLingerTimeout)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_useConductorAgentInvoker) as usize - ptr as usize
-                },
-                336usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_useConductorAgentInvoker)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_isOnNewExclusivePublicationHandlerSet) as usize
-                        - ptr as usize
-                },
-                337usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_isOnNewExclusivePublicationHandlerSet)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_preTouchMappedMemory) as usize - ptr as usize
-                },
-                338usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Context),
-                    "::",
-                    stringify!(m_preTouchMappedMemory)
-                )
-            );
         }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron7Context24requestDriverTerminationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKhm"]
-            pub fn Context_requestDriverTermination(
-                directory: *const root::std::string,
-                tokenBuffer: *mut ::std::os::raw::c_uchar,
-                tokenLength: usize,
-            ) -> bool;
+        #[repr(C)]
+        pub struct ChannelUri {
+            pub m_prefix: root::std::string,
+            pub m_media: root::std::string,
+            pub m_params: u64,
         }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron7Context16defaultAeronPathB5cxx11Ev"]
-            pub fn Context_defaultAeronPath() -> root::std::string;
-        }
-        impl Context {
-            #[inline]
-            pub unsafe fn requestDriverTermination(
-                directory: *const root::std::string,
-                tokenBuffer: *mut ::std::os::raw::c_uchar,
-                tokenLength: usize,
-            ) -> bool {
-                Context_requestDriverTermination(directory, tokenBuffer, tokenLength)
-            }
-            #[inline]
-            pub unsafe fn defaultAeronPath() -> root::std::string {
-                Context_defaultAeronPath()
-            }
+        pub const ChannelUri_State_MEDIA: root::aeron::ChannelUri_State = 0;
+        pub const ChannelUri_State_PARAMS_KEY: root::aeron::ChannelUri_State = 1;
+        pub const ChannelUri_State_PARAMS_VALUE: root::aeron::ChannelUri_State = 2;
+        pub type ChannelUri_State = ::std::os::raw::c_int;
+        #[test]
+        fn bindgen_test_layout_ChannelUri() {
+            const UNINIT: ::std::mem::MaybeUninit<ChannelUri> = ::std::mem::MaybeUninit::uninit();
+            let ptr = UNINIT.as_ptr();
+            assert_eq!(
+                ::std::mem::size_of::<ChannelUri>(),
+                72usize,
+                concat!("Size of: ", stringify!(ChannelUri))
+            );
+            assert_eq!(
+                ::std::mem::align_of::<ChannelUri>(),
+                8usize,
+                concat!("Alignment of ", stringify!(ChannelUri))
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_prefix) as usize - ptr as usize },
+                0usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(ChannelUri),
+                    "::",
+                    stringify!(m_prefix)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_media) as usize - ptr as usize },
+                32usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(ChannelUri),
+                    "::",
+                    stringify!(m_media)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_params) as usize - ptr as usize },
+                64usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(ChannelUri),
+                    "::",
+                    stringify!(m_params)
+                )
+            );
         }
         #[repr(C)]
         #[derive(Copy, Clone)]
-        pub struct DriverListenerAdapter<DriverListener> {
-            pub m_broadcastReceiver: *mut root::aeron::concurrent::broadcast::CopyBroadcastReceiver,
-            pub m_driverListener: *mut DriverListener,
-            pub _phantom_0: ::std::marker::PhantomData<::std::cell::UnsafeCell<DriverListener>>,
+        pub struct AsyncAddSubscription {
+            pub m_async: *mut root::aeron_async_add_subscription_t,
+            pub m_onAvailableImage: root::aeron::on_available_image_t,
+            pub m_onUnavailableImage: root::aeron::on_unavailable_image_t,
         }
-        pub mod HeartbeatTimestamp {
-            #[allow(unused_imports)]
-            use self::super::super::super::root;
-            #[repr(C, packed(4))]
-            #[derive(Copy, Clone)]
-            pub struct HeartbeatTimestampKeyDefn {
-                pub registrationId: ::std::os::raw::c_long,
-            }
-            #[test]
-            fn bindgen_test_layout_HeartbeatTimestampKeyDefn() {
-                const UNINIT: ::std::mem::MaybeUninit<HeartbeatTimestampKeyDefn> =
-                    ::std::mem::MaybeUninit::uninit();
-                let ptr = UNINIT.as_ptr();
-                assert_eq!(
-                    ::std::mem::size_of::<HeartbeatTimestampKeyDefn>(),
-                    8usize,
-                    concat!("Size of: ", stringify!(HeartbeatTimestampKeyDefn))
-                );
-                assert_eq!(
-                    ::std::mem::align_of::<HeartbeatTimestampKeyDefn>(),
-                    4usize,
-                    concat!("Alignment of ", stringify!(HeartbeatTimestampKeyDefn))
-                );
-                assert_eq!(
-                    unsafe { ::std::ptr::addr_of!((*ptr).registrationId) as usize - ptr as usize },
-                    0usize,
-                    concat!(
-                        "Offset of field: ",
-                        stringify!(HeartbeatTimestampKeyDefn),
-                        "::",
-                        stringify!(registrationId)
-                    )
-                );
-            }
+        #[test]
+        fn bindgen_test_layout_AsyncAddSubscription() {
+            const UNINIT: ::std::mem::MaybeUninit<AsyncAddSubscription> =
+                ::std::mem::MaybeUninit::uninit();
+            let ptr = UNINIT.as_ptr();
+            assert_eq!(
+                ::std::mem::size_of::<AsyncAddSubscription>(),
+                72usize,
+                concat!("Size of: ", stringify!(AsyncAddSubscription))
+            );
+            assert_eq!(
+                ::std::mem::align_of::<AsyncAddSubscription>(),
+                8usize,
+                concat!("Alignment of ", stringify!(AsyncAddSubscription))
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_async) as usize - ptr as usize },
+                0usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(AsyncAddSubscription),
+                    "::",
+                    stringify!(m_async)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_onAvailableImage) as usize - ptr as usize },
+                8usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(AsyncAddSubscription),
+                    "::",
+                    stringify!(m_onAvailableImage)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_onUnavailableImage) as usize - ptr as usize
+                },
+                40usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(AsyncAddSubscription),
+                    "::",
+                    stringify!(m_onUnavailableImage)
+                )
+            );
         }
-        pub type epoch_clock_t = [u64; 4usize];
-        pub type nano_clock_t = [u64; 4usize];
+        #[doc = " Aeron Subscriber API for receiving messages from publishers on a given channel and streamId pair.\n Subscribers are created via an {@link Aeron} object, and received messages are delivered\n to the {@link fragment_handler_t}.\n <p>\n By default fragmented messages are not reassembled before delivery. If an application must\n receive whole messages, whether or not they were fragmented, then the Subscriber\n should be created with a {@link FragmentAssembler} or a custom implementation.\n <p>\n It is an applications responsibility to {@link #poll} the Subscriber for new messages.\n <p>\n Subscriptions are not threadsafe and should not be shared between subscribers.\n\n @see FragmentAssembler"]
         #[repr(C)]
-        pub struct ClientConductor {
-            pub m_publicationByRegistrationId: [u64; 7usize],
-            pub m_exclusivePublicationByRegistrationId: [u64; 7usize],
-            pub m_subscriptionByRegistrationId: [u64; 7usize],
-            pub m_counterByRegistrationId: [u64; 7usize],
-            pub m_destinationStateByCorrelationId: [u64; 7usize],
-            pub m_logBuffersByRegistrationId: [u64; 7usize],
-            pub m_lingeringImageLists: [u64; 3usize],
-            pub m_driverProxy: *mut root::aeron::DriverProxy,
-            pub m_driverListenerAdapter:
-                root::aeron::DriverListenerAdapter<root::aeron::ClientConductor>,
-            pub m_countersReader: root::aeron::concurrent::CountersReader,
-            pub m_counterValuesBuffer: *mut root::aeron::concurrent::AtomicBuffer,
-            pub m_onNewPublicationHandler: root::aeron::on_new_publication_t,
-            pub m_onNewExclusivePublicationHandler: root::aeron::on_new_publication_t,
-            pub m_onNewSubscriptionHandler: root::aeron::on_new_subscription_t,
-            pub m_errorHandler: root::aeron::util::exception_handler_t,
-            pub m_onAvailableCounterHandlers: [u64; 3usize],
-            pub m_onUnavailableCounterHandlers: [u64; 3usize],
-            pub m_onCloseClientHandlers: [u64; 3usize],
-            pub m_epochClock: root::aeron::epoch_clock_t,
-            pub m_driverTimeoutMs: ::std::os::raw::c_long,
-            pub m_resourceLingerTimeoutMs: ::std::os::raw::c_long,
-            pub m_interServiceTimeoutMs: ::std::os::raw::c_long,
-            pub m_preTouchMappedMemory: bool,
-            pub m_isInCallback: bool,
-            pub m_driverActive: u8,
-            pub m_isClosed: u8,
+        pub struct Subscription {
+            #[doc = " @endcond"]
+            pub m_aeron: *mut root::aeron_t,
+            pub m_subscription: *mut root::aeron_subscription_t,
+            pub m_addSubscription: *mut root::aeron::AsyncAddSubscription,
+            pub m_constants: root::aeron_subscription_constants_t,
+            pub m_channel: root::std::string,
+            pub m_pendingDestinations: [u64; 7usize],
             pub m_adminLock: root::std::recursive_mutex,
-            pub m_heartbeatTimestamp: u64,
-            pub m_timeOfLastDoWorkMs: ::std::os::raw::c_longlong,
-            pub m_timeOfLastKeepaliveMs: ::std::os::raw::c_longlong,
-            pub m_timeOfLastCheckManagedResourcesMs: ::std::os::raw::c_longlong,
-            pub m_padding: [::std::os::raw::c_char; 64usize],
-        }
-        pub const ClientConductor_RegistrationStatus_AWAITING_MEDIA_DRIVER:
-            root::aeron::ClientConductor_RegistrationStatus = 0;
-        pub const ClientConductor_RegistrationStatus_REGISTERED_MEDIA_DRIVER:
-            root::aeron::ClientConductor_RegistrationStatus = 1;
-        pub const ClientConductor_RegistrationStatus_ERRORED_MEDIA_DRIVER:
-            root::aeron::ClientConductor_RegistrationStatus = 2;
-        pub type ClientConductor_RegistrationStatus = ::std::os::raw::c_schar;
-        #[repr(C)]
-        pub struct ClientConductor_PublicationStateDefn {
-            pub m_errorMessage: root::std::string,
-            pub m_buffers: [u64; 2usize],
-            pub m_publication: [u64; 2usize],
-            pub m_channel: root::std::string,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_originalRegistrationId: ::std::os::raw::c_long,
-            pub m_timeOfRegistrationMs: ::std::os::raw::c_longlong,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_sessionId: ::std::os::raw::c_int,
-            pub m_publicationLimitCounterId: ::std::os::raw::c_int,
-            pub m_channelStatusId: ::std::os::raw::c_int,
-            pub m_errorCode: ::std::os::raw::c_int,
-            pub m_status: root::aeron::ClientConductor_RegistrationStatus,
         }
         #[test]
-        fn bindgen_test_layout_ClientConductor_PublicationStateDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_PublicationStateDefn> =
-                ::std::mem::MaybeUninit::uninit();
+        fn bindgen_test_layout_Subscription() {
+            const UNINIT: ::std::mem::MaybeUninit<Subscription> = ::std::mem::MaybeUninit::uninit();
             let ptr = UNINIT.as_ptr();
             assert_eq!(
-                ::std::mem::size_of::<ClientConductor_PublicationStateDefn>(),
-                144usize,
-                concat!(
-                    "Size of: ",
-                    stringify!(ClientConductor_PublicationStateDefn)
-                )
-            );
-            assert_eq!(
-                ::std::mem::align_of::<ClientConductor_PublicationStateDefn>(),
-                8usize,
-                concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_PublicationStateDefn)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorMessage) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_errorMessage)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_buffers) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_buffers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_publication) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_publication)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_channel)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_originalRegistrationId) as usize - ptr as usize
-                },
-                104usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_originalRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfRegistrationMs) as usize - ptr as usize
-                },
-                112usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_timeOfRegistrationMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                120usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                124usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_sessionId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_publicationLimitCounterId) as usize - ptr as usize
-                },
-                128usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_publicationLimitCounterId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channelStatusId) as usize - ptr as usize },
-                132usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_channelStatusId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorCode) as usize - ptr as usize },
-                136usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_errorCode)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_status) as usize - ptr as usize },
-                140usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_PublicationStateDefn),
-                    "::",
-                    stringify!(m_status)
-                )
-            );
-        }
-        #[repr(C)]
-        pub struct ClientConductor_ExclusivePublicationStateDefn {
-            pub m_errorMessage: root::std::string,
-            pub m_buffers: [u64; 2usize],
-            pub m_publication: [u64; 2usize],
-            pub m_channel: root::std::string,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_timeOfRegistrationMs: ::std::os::raw::c_longlong,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_sessionId: ::std::os::raw::c_int,
-            pub m_publicationLimitCounterId: ::std::os::raw::c_int,
-            pub m_channelStatusId: ::std::os::raw::c_int,
-            pub m_errorCode: ::std::os::raw::c_int,
-            pub m_status: root::aeron::ClientConductor_RegistrationStatus,
-        }
-        #[test]
-        fn bindgen_test_layout_ClientConductor_ExclusivePublicationStateDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_ExclusivePublicationStateDefn> =
-                ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<ClientConductor_ExclusivePublicationStateDefn>(),
-                136usize,
-                concat!(
-                    "Size of: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn)
-                )
-            );
-            assert_eq!(
-                ::std::mem::align_of::<ClientConductor_ExclusivePublicationStateDefn>(),
-                8usize,
-                concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorMessage) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_errorMessage)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_buffers) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_buffers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_publication) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_publication)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_channel)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                96usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfRegistrationMs) as usize - ptr as usize
-                },
-                104usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_timeOfRegistrationMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                112usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_sessionId) as usize - ptr as usize },
-                116usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_sessionId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_publicationLimitCounterId) as usize - ptr as usize
-                },
-                120usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_publicationLimitCounterId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_channelStatusId) as usize - ptr as usize },
-                124usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_channelStatusId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorCode) as usize - ptr as usize },
-                128usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_errorCode)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_status) as usize - ptr as usize },
-                132usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ExclusivePublicationStateDefn),
-                    "::",
-                    stringify!(m_status)
-                )
-            );
-        }
-        #[repr(C)]
-        pub struct ClientConductor_SubscriptionStateDefn {
-            pub m_errorMessage: root::std::string,
-            pub m_subscriptionCache: [u64; 2usize],
-            pub m_subscription: [u64; 2usize],
-            pub m_onAvailableImageHandler: root::aeron::on_available_image_t,
-            pub m_onUnavailableImageHandler: root::aeron::on_unavailable_image_t,
-            pub m_channel: root::std::string,
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_timeOfRegistrationMs: ::std::os::raw::c_longlong,
-            pub m_streamId: ::std::os::raw::c_int,
-            pub m_errorCode: ::std::os::raw::c_int,
-            pub m_status: root::aeron::ClientConductor_RegistrationStatus,
-        }
-        #[test]
-        fn bindgen_test_layout_ClientConductor_SubscriptionStateDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_SubscriptionStateDefn> =
-                ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<ClientConductor_SubscriptionStateDefn>(),
+                ::std::mem::size_of::<Subscription>(),
                 192usize,
-                concat!(
-                    "Size of: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn)
-                )
+                concat!("Size of: ", stringify!(Subscription))
             );
             assert_eq!(
-                ::std::mem::align_of::<ClientConductor_SubscriptionStateDefn>(),
+                ::std::mem::align_of::<Subscription>(),
                 8usize,
-                concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_SubscriptionStateDefn)
-                )
+                concat!("Alignment of ", stringify!(Subscription))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorMessage) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_aeron) as usize - ptr as usize },
                 0usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
+                    stringify!(Subscription),
                     "::",
-                    stringify!(m_errorMessage)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_subscriptionCache) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_subscriptionCache)
+                    stringify!(m_aeron)
                 )
             );
             assert_eq!(
                 unsafe { ::std::ptr::addr_of!((*ptr).m_subscription) as usize - ptr as usize },
-                48usize,
+                8usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
+                    stringify!(Subscription),
                     "::",
                     stringify!(m_subscription)
                 )
             );
             assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onAvailableImageHandler) as usize - ptr as usize
-                },
-                64usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_addSubscription) as usize - ptr as usize },
+                16usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
+                    stringify!(Subscription),
                     "::",
-                    stringify!(m_onAvailableImageHandler)
+                    stringify!(m_addSubscription)
                 )
             );
             assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onUnavailableImageHandler) as usize - ptr as usize
-                },
-                96usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_constants) as usize - ptr as usize },
+                24usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
+                    stringify!(Subscription),
                     "::",
-                    stringify!(m_onUnavailableImageHandler)
+                    stringify!(m_constants)
                 )
             );
             assert_eq!(
                 unsafe { ::std::ptr::addr_of!((*ptr).m_channel) as usize - ptr as usize },
-                128usize,
+                64usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
+                    stringify!(Subscription),
                     "::",
                     stringify!(m_channel)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                160usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfRegistrationMs) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingDestinations) as usize - ptr as usize
                 },
-                168usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_timeOfRegistrationMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_streamId) as usize - ptr as usize },
-                176usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_streamId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorCode) as usize - ptr as usize },
-                180usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_errorCode)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_status) as usize - ptr as usize },
-                184usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_SubscriptionStateDefn),
-                    "::",
-                    stringify!(m_status)
-                )
-            );
-        }
-        #[repr(C)]
-        pub struct ClientConductor_CounterStateDefn {
-            pub m_errorMessage: root::std::string,
-            pub m_counterCache: [u64; 2usize],
-            pub m_counter: [u64; 2usize],
-            pub m_registrationId: ::std::os::raw::c_long,
-            pub m_timeOfRegistrationMs: ::std::os::raw::c_longlong,
-            pub m_counterId: ::std::os::raw::c_int,
-            pub m_status: root::aeron::ClientConductor_RegistrationStatus,
-            pub m_errorCode: ::std::os::raw::c_int,
-        }
-        #[test]
-        fn bindgen_test_layout_ClientConductor_CounterStateDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_CounterStateDefn> =
-                ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<ClientConductor_CounterStateDefn>(),
                 96usize,
-                concat!("Size of: ", stringify!(ClientConductor_CounterStateDefn))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<ClientConductor_CounterStateDefn>(),
-                8usize,
                 concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_CounterStateDefn)
+                    "Offset of field: ",
+                    stringify!(Subscription),
+                    "::",
+                    stringify!(m_pendingDestinations)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorMessage) as usize - ptr as usize },
-                0usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_adminLock) as usize - ptr as usize },
+                152usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
+                    stringify!(Subscription),
                     "::",
-                    stringify!(m_errorMessage)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_counterCache) as usize - ptr as usize },
-                32usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_counterCache)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_counter) as usize - ptr as usize },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_counter)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_registrationId) as usize - ptr as usize },
-                64usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_registrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfRegistrationMs) as usize - ptr as usize
-                },
-                72usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_timeOfRegistrationMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_counterId) as usize - ptr as usize },
-                80usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_counterId)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_status) as usize - ptr as usize },
-                84usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_status)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorCode) as usize - ptr as usize },
-                88usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_CounterStateDefn),
-                    "::",
-                    stringify!(m_errorCode)
+                    stringify!(m_adminLock)
                 )
             );
         }
         #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct ClientConductor_ImageListLingerDefn {
-            pub m_imageArray: root::aeron::Image_array_t,
-            pub m_timeOfLastStateChangeMs: ::std::os::raw::c_longlong,
-        }
-        #[test]
-        fn bindgen_test_layout_ClientConductor_ImageListLingerDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_ImageListLingerDefn> =
-                ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<ClientConductor_ImageListLingerDefn>(),
-                16usize,
-                concat!("Size of: ", stringify!(ClientConductor_ImageListLingerDefn))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<ClientConductor_ImageListLingerDefn>(),
-                8usize,
-                concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_ImageListLingerDefn)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_imageArray) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ImageListLingerDefn),
-                    "::",
-                    stringify!(m_imageArray)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfLastStateChangeMs) as usize - ptr as usize
-                },
-                8usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_ImageListLingerDefn),
-                    "::",
-                    stringify!(m_timeOfLastStateChangeMs)
-                )
-            );
-        }
-        #[repr(C)]
-        pub struct ClientConductor_LogBuffersDefn {
-            pub m_logBuffers: [u64; 2usize],
-            pub m_timeOfLastStateChangeMs: ::std::os::raw::c_longlong,
-        }
-        #[test]
-        fn bindgen_test_layout_ClientConductor_LogBuffersDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_LogBuffersDefn> =
-                ::std::mem::MaybeUninit::uninit();
-            let ptr = UNINIT.as_ptr();
-            assert_eq!(
-                ::std::mem::size_of::<ClientConductor_LogBuffersDefn>(),
-                24usize,
-                concat!("Size of: ", stringify!(ClientConductor_LogBuffersDefn))
-            );
-            assert_eq!(
-                ::std::mem::align_of::<ClientConductor_LogBuffersDefn>(),
-                8usize,
-                concat!("Alignment of ", stringify!(ClientConductor_LogBuffersDefn))
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_logBuffers) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_LogBuffersDefn),
-                    "::",
-                    stringify!(m_logBuffers)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfLastStateChangeMs) as usize - ptr as usize
-                },
-                16usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_LogBuffersDefn),
-                    "::",
-                    stringify!(m_timeOfLastStateChangeMs)
-                )
-            );
-        }
-        #[repr(C)]
-        #[derive(Copy, Clone)]
-        pub struct ClientConductor_DestinationStateDefn {
-            pub m_errorMessage: root::std::string,
-            pub m_correlationId: ::std::os::raw::c_long,
+        pub struct Counter {
+            pub _base: root::aeron::concurrent::AtomicCounter,
+            pub m_reader: *mut root::aeron::concurrent::CountersReader,
             pub m_registrationId: ::std::os::raw::c_long,
-            pub m_timeOfRegistrationMs: ::std::os::raw::c_longlong,
-            pub m_errorCode: ::std::os::raw::c_int,
-            pub m_status: root::aeron::ClientConductor_RegistrationStatus,
         }
         #[test]
-        fn bindgen_test_layout_ClientConductor_DestinationStateDefn() {
-            const UNINIT: ::std::mem::MaybeUninit<ClientConductor_DestinationStateDefn> =
-                ::std::mem::MaybeUninit::uninit();
+        fn bindgen_test_layout_Counter() {
+            const UNINIT: ::std::mem::MaybeUninit<Counter> = ::std::mem::MaybeUninit::uninit();
             let ptr = UNINIT.as_ptr();
             assert_eq!(
-                ::std::mem::size_of::<ClientConductor_DestinationStateDefn>(),
-                64usize,
-                concat!(
-                    "Size of: ",
-                    stringify!(ClientConductor_DestinationStateDefn)
-                )
+                ::std::mem::size_of::<Counter>(),
+                48usize,
+                concat!("Size of: ", stringify!(Counter))
             );
             assert_eq!(
-                ::std::mem::align_of::<ClientConductor_DestinationStateDefn>(),
+                ::std::mem::align_of::<Counter>(),
                 8usize,
-                concat!(
-                    "Alignment of ",
-                    stringify!(ClientConductor_DestinationStateDefn)
-                )
+                concat!("Alignment of ", stringify!(Counter))
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorMessage) as usize - ptr as usize },
-                0usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
-                    "::",
-                    stringify!(m_errorMessage)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_correlationId) as usize - ptr as usize },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_reader) as usize - ptr as usize },
                 32usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
+                    stringify!(Counter),
                     "::",
-                    stringify!(m_correlationId)
+                    stringify!(m_reader)
                 )
             );
             assert_eq!(
@@ -6486,43 +1991,18 @@ pub mod root {
                 40usize,
                 concat!(
                     "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
+                    stringify!(Counter),
                     "::",
                     stringify!(m_registrationId)
                 )
             );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfRegistrationMs) as usize - ptr as usize
-                },
-                48usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
-                    "::",
-                    stringify!(m_timeOfRegistrationMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorCode) as usize - ptr as usize },
-                56usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
-                    "::",
-                    stringify!(m_errorCode)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_status) as usize - ptr as usize },
-                60usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor_DestinationStateDefn),
-                    "::",
-                    stringify!(m_status)
-                )
-            );
+        }
+        pub type epoch_clock_t = u8;
+        pub type nano_clock_t = u8;
+        #[repr(C)]
+        #[derive(Copy, Clone)]
+        pub struct ClientConductor {
+            pub m_aeron: *mut root::aeron_t,
         }
         #[test]
         fn bindgen_test_layout_ClientConductor() {
@@ -6531,7 +2011,7 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<ClientConductor>(),
-                832usize,
+                8usize,
                 concat!("Size of: ", stringify!(ClientConductor))
             );
             assert_eq!(
@@ -6540,1071 +2020,34 @@ pub mod root {
                 concat!("Alignment of ", stringify!(ClientConductor))
             );
             assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_publicationByRegistrationId) as usize
-                        - ptr as usize
-                },
+                unsafe { ::std::ptr::addr_of!((*ptr).m_aeron) as usize - ptr as usize },
                 0usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(ClientConductor),
                     "::",
-                    stringify!(m_publicationByRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_exclusivePublicationByRegistrationId) as usize
-                        - ptr as usize
-                },
-                56usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_exclusivePublicationByRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_subscriptionByRegistrationId) as usize
-                        - ptr as usize
-                },
-                112usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_subscriptionByRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_counterByRegistrationId) as usize - ptr as usize
-                },
-                168usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_counterByRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_destinationStateByCorrelationId) as usize
-                        - ptr as usize
-                },
-                224usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_destinationStateByCorrelationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_logBuffersByRegistrationId) as usize
-                        - ptr as usize
-                },
-                280usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_logBuffersByRegistrationId)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_lingeringImageLists) as usize - ptr as usize
-                },
-                336usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_lingeringImageLists)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_driverProxy) as usize - ptr as usize },
-                360usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_driverProxy)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_driverListenerAdapter) as usize - ptr as usize
-                },
-                368usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_driverListenerAdapter)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_countersReader) as usize - ptr as usize },
-                384usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_countersReader)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_counterValuesBuffer) as usize - ptr as usize
-                },
-                424usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_counterValuesBuffer)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewPublicationHandler) as usize - ptr as usize
-                },
-                432usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onNewPublicationHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewExclusivePublicationHandler) as usize
-                        - ptr as usize
-                },
-                464usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onNewExclusivePublicationHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onNewSubscriptionHandler) as usize - ptr as usize
-                },
-                496usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onNewSubscriptionHandler)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_errorHandler) as usize - ptr as usize },
-                528usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_errorHandler)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onAvailableCounterHandlers) as usize
-                        - ptr as usize
-                },
-                560usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onAvailableCounterHandlers)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onUnavailableCounterHandlers) as usize
-                        - ptr as usize
-                },
-                584usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onUnavailableCounterHandlers)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_onCloseClientHandlers) as usize - ptr as usize
-                },
-                608usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_onCloseClientHandlers)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_epochClock) as usize - ptr as usize },
-                632usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_epochClock)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_driverTimeoutMs) as usize - ptr as usize },
-                664usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_driverTimeoutMs)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_resourceLingerTimeoutMs) as usize - ptr as usize
-                },
-                672usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_resourceLingerTimeoutMs)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_interServiceTimeoutMs) as usize - ptr as usize
-                },
-                680usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_interServiceTimeoutMs)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_preTouchMappedMemory) as usize - ptr as usize
-                },
-                688usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_preTouchMappedMemory)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isInCallback) as usize - ptr as usize },
-                689usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_isInCallback)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_driverActive) as usize - ptr as usize },
-                690usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_driverActive)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_isClosed) as usize - ptr as usize },
-                691usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_isClosed)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_adminLock) as usize - ptr as usize },
-                696usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_adminLock)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_heartbeatTimestamp) as usize - ptr as usize
-                },
-                736usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_heartbeatTimestamp)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfLastDoWorkMs) as usize - ptr as usize
-                },
-                744usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_timeOfLastDoWorkMs)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfLastKeepaliveMs) as usize - ptr as usize
-                },
-                752usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_timeOfLastKeepaliveMs)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_timeOfLastCheckManagedResourcesMs) as usize
-                        - ptr as usize
-                },
-                760usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_timeOfLastCheckManagedResourcesMs)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_padding) as usize - ptr as usize },
-                768usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(ClientConductor),
-                    "::",
-                    stringify!(m_padding)
+                    stringify!(m_aeron)
                 )
             );
         }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor7onStartEv"]
-            pub fn ClientConductor_onStart(this: *mut root::aeron::ClientConductor);
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor6doWorkEv"]
-            pub fn ClientConductor_doWork(
-                this: *mut root::aeron::ClientConductor,
-            ) -> ::std::os::raw::c_int;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor7onCloseEv"]
-            pub fn ClientConductor_onClose(this: *mut root::aeron::ClientConductor);
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor14addPublicationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi"]
-            pub fn ClientConductor_addPublication(
-                this: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor15findPublicationEl"]
-            pub fn ClientConductor_findPublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize];
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor18releasePublicationEl"]
-            pub fn ClientConductor_releasePublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor23addExclusivePublicationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi"]
-            pub fn ClientConductor_addExclusivePublication(
-                this: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor24findExclusivePublicationEl"]
-            pub fn ClientConductor_findExclusivePublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize];
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor27releaseExclusivePublicationEl"]
-            pub fn ClientConductor_releaseExclusivePublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor15addSubscriptionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiRKSt8functionIFvRNS_5ImageEEESF_"]
-            pub fn ClientConductor_addSubscription(
-                this: *mut root::aeron::ClientConductor,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-                onAvailableImageHandler: *const root::aeron::on_available_image_t,
-                onUnavailableImageHandler: *const root::aeron::on_unavailable_image_t,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor16findSubscriptionEl"]
-            pub fn ClientConductor_findSubscription(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize];
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor19releaseSubscriptionElPSt10shared_ptrINS_5ImageEEm"]
-            pub fn ClientConductor_releaseSubscription(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                imageArray: root::aeron::Image_array_t,
-                length: usize,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor10addCounterEiPKhmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_addCounter(
-                this: *mut root::aeron::ClientConductor,
-                typeId: ::std::os::raw::c_int,
-                keyBuffer: *mut ::std::os::raw::c_uchar,
-                keyLength: usize,
-                label: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor11findCounterEl"]
-            pub fn ClientConductor_findCounter(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize];
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor14releaseCounterEl"]
-            pub fn ClientConductor_releaseCounter(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor23findDestinationResponseEl"]
-            pub fn ClientConductor_findDestinationResponse(
-                this: *mut root::aeron::ClientConductor,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor16onNewPublicationElliiiiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_onNewPublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimitCounterId: ::std::os::raw::c_int,
-                channelStatusIndicatorId: ::std::os::raw::c_int,
-                logFilename: *const root::std::string,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor25onNewExclusivePublicationElliiiiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_onNewExclusivePublication(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimitCounterId: ::std::os::raw::c_int,
-                channelStatusIndicatorId: ::std::os::raw::c_int,
-                logFilename: *const root::std::string,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor19onSubscriptionReadyEli"]
-            pub fn ClientConductor_onSubscriptionReady(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                channelStatusId: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor18onOperationSuccessEl"]
-            pub fn ClientConductor_onOperationSuccess(
-                this: *mut root::aeron::ClientConductor,
-                correlationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor30onChannelEndpointErrorResponseEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_onChannelEndpointErrorResponse(
-                this: *mut root::aeron::ClientConductor,
-                channelStatusId: ::std::os::raw::c_int,
-                errorMessage: *const root::std::string,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor15onErrorResponseEliRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_onErrorResponse(
-                this: *mut root::aeron::ClientConductor,
-                offendingCommandCorrelationId: ::std::os::raw::c_long,
-                errorCode: ::std::os::raw::c_int,
-                errorMessage: *const root::std::string,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor16onAvailableImageEliilRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_"]
-            pub fn ClientConductor_onAvailableImage(
-                this: *mut root::aeron::ClientConductor,
-                correlationId: ::std::os::raw::c_long,
-                sessionId: ::std::os::raw::c_int,
-                subscriberPositionId: ::std::os::raw::c_int,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                logFilename: *const root::std::string,
-                sourceIdentity: *const root::std::string,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor18onUnavailableImageEll"]
-            pub fn ClientConductor_onUnavailableImage(
-                this: *mut root::aeron::ClientConductor,
-                correlationId: ::std::os::raw::c_long,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor18onAvailableCounterEli"]
-            pub fn ClientConductor_onAvailableCounter(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor20onUnavailableCounterEli"]
-            pub fn ClientConductor_onUnavailableCounter(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor15onClientTimeoutEl"]
-            pub fn ClientConductor_onClientTimeout(
-                this: *mut root::aeron::ClientConductor,
-                clientId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor17closeAllResourcesEx"]
-            pub fn ClientConductor_closeAllResources(
-                this: *mut root::aeron::ClientConductor,
-                nowMs: ::std::os::raw::c_longlong,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor14addDestinationElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_addDestination(
-                this: *mut root::aeron::ClientConductor,
-                publicationRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor17removeDestinationElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_removeDestination(
-                this: *mut root::aeron::ClientConductor,
-                publicationRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor17addRcvDestinationElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_addRcvDestination(
-                this: *mut root::aeron::ClientConductor,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor20removeRcvDestinationElRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"]
-            pub fn ClientConductor_removeRcvDestination(
-                this: *mut root::aeron::ClientConductor,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor26addAvailableCounterHandlerERKSt8functionIFvRNS_10concurrent14CountersReaderEliEE"]
-            pub fn ClientConductor_addAvailableCounterHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_available_counter_t,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor29removeAvailableCounterHandlerERKSt8functionIFvRNS_10concurrent14CountersReaderEliEE"]
-            pub fn ClientConductor_removeAvailableCounterHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_available_counter_t,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor29removeAvailableCounterHandlerEl"]
-            pub fn ClientConductor_removeAvailableCounterHandler1(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor28addUnavailableCounterHandlerERKSt8functionIFvRNS_10concurrent14CountersReaderEliEE"]
-            pub fn ClientConductor_addUnavailableCounterHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_unavailable_counter_t,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor31removeUnavailableCounterHandlerERKSt8functionIFvRNS_10concurrent14CountersReaderEliEE"]
-            pub fn ClientConductor_removeUnavailableCounterHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_unavailable_counter_t,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor31removeUnavailableCounterHandlerEl"]
-            pub fn ClientConductor_removeUnavailableCounterHandler1(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor21addCloseClientHandlerERKSt8functionIFvvEE"]
-            pub fn ClientConductor_addCloseClientHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_close_client_t,
-            ) -> ::std::os::raw::c_long;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor24removeCloseClientHandlerERKSt8functionIFvvEE"]
-            pub fn ClientConductor_removeCloseClientHandler(
-                this: *mut root::aeron::ClientConductor,
-                handler: *const root::aeron::on_close_client_t,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductor24removeCloseClientHandlerEl"]
-            pub fn ClientConductor_removeCloseClientHandler1(
-                this: *mut root::aeron::ClientConductor,
-                registrationId: ::std::os::raw::c_long,
-            );
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron15ClientConductorD1Ev"]
-            pub fn ClientConductor_ClientConductor_destructor(
-                this: *mut root::aeron::ClientConductor,
-            );
-        }
-        impl ClientConductor {
-            #[inline]
-            pub unsafe fn onStart(&mut self) {
-                ClientConductor_onStart(self)
-            }
-            #[inline]
-            pub unsafe fn doWork(&mut self) -> ::std::os::raw::c_int {
-                ClientConductor_doWork(self)
-            }
-            #[inline]
-            pub unsafe fn onClose(&mut self) {
-                ClientConductor_onClose(self)
-            }
-            #[inline]
-            pub unsafe fn addPublication(
-                &mut self,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addPublication(self, channel, streamId)
-            }
-            #[inline]
-            pub unsafe fn findPublication(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize] {
-                ClientConductor_findPublication(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn releasePublication(&mut self, registrationId: ::std::os::raw::c_long) {
-                ClientConductor_releasePublication(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn addExclusivePublication(
-                &mut self,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addExclusivePublication(self, channel, streamId)
-            }
-            #[inline]
-            pub unsafe fn findExclusivePublication(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize] {
-                ClientConductor_findExclusivePublication(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn releaseExclusivePublication(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) {
-                ClientConductor_releaseExclusivePublication(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn addSubscription(
-                &mut self,
-                channel: *const root::std::string,
-                streamId: ::std::os::raw::c_int,
-                onAvailableImageHandler: *const root::aeron::on_available_image_t,
-                onUnavailableImageHandler: *const root::aeron::on_unavailable_image_t,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addSubscription(
-                    self,
-                    channel,
-                    streamId,
-                    onAvailableImageHandler,
-                    onUnavailableImageHandler,
-                )
-            }
-            #[inline]
-            pub unsafe fn findSubscription(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize] {
-                ClientConductor_findSubscription(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn releaseSubscription(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                imageArray: root::aeron::Image_array_t,
-                length: usize,
-            ) {
-                ClientConductor_releaseSubscription(self, registrationId, imageArray, length)
-            }
-            #[inline]
-            pub unsafe fn addCounter(
-                &mut self,
-                typeId: ::std::os::raw::c_int,
-                keyBuffer: *mut ::std::os::raw::c_uchar,
-                keyLength: usize,
-                label: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addCounter(self, typeId, keyBuffer, keyLength, label)
-            }
-            #[inline]
-            pub unsafe fn findCounter(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) -> [u64; 2usize] {
-                ClientConductor_findCounter(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn releaseCounter(&mut self, registrationId: ::std::os::raw::c_long) {
-                ClientConductor_releaseCounter(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn findDestinationResponse(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-            ) -> bool {
-                ClientConductor_findDestinationResponse(self, correlationId)
-            }
-            #[inline]
-            pub unsafe fn onNewPublication(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimitCounterId: ::std::os::raw::c_int,
-                channelStatusIndicatorId: ::std::os::raw::c_int,
-                logFilename: *const root::std::string,
-            ) {
-                ClientConductor_onNewPublication(
-                    self,
-                    registrationId,
-                    originalRegistrationId,
-                    streamId,
-                    sessionId,
-                    publicationLimitCounterId,
-                    channelStatusIndicatorId,
-                    logFilename,
-                )
-            }
-            #[inline]
-            pub unsafe fn onNewExclusivePublication(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                originalRegistrationId: ::std::os::raw::c_long,
-                streamId: ::std::os::raw::c_int,
-                sessionId: ::std::os::raw::c_int,
-                publicationLimitCounterId: ::std::os::raw::c_int,
-                channelStatusIndicatorId: ::std::os::raw::c_int,
-                logFilename: *const root::std::string,
-            ) {
-                ClientConductor_onNewExclusivePublication(
-                    self,
-                    registrationId,
-                    originalRegistrationId,
-                    streamId,
-                    sessionId,
-                    publicationLimitCounterId,
-                    channelStatusIndicatorId,
-                    logFilename,
-                )
-            }
-            #[inline]
-            pub unsafe fn onSubscriptionReady(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                channelStatusId: ::std::os::raw::c_int,
-            ) {
-                ClientConductor_onSubscriptionReady(self, registrationId, channelStatusId)
-            }
-            #[inline]
-            pub unsafe fn onOperationSuccess(&mut self, correlationId: ::std::os::raw::c_long) {
-                ClientConductor_onOperationSuccess(self, correlationId)
-            }
-            #[inline]
-            pub unsafe fn onChannelEndpointErrorResponse(
-                &mut self,
-                channelStatusId: ::std::os::raw::c_int,
-                errorMessage: *const root::std::string,
-            ) {
-                ClientConductor_onChannelEndpointErrorResponse(self, channelStatusId, errorMessage)
-            }
-            #[inline]
-            pub unsafe fn onErrorResponse(
-                &mut self,
-                offendingCommandCorrelationId: ::std::os::raw::c_long,
-                errorCode: ::std::os::raw::c_int,
-                errorMessage: *const root::std::string,
-            ) {
-                ClientConductor_onErrorResponse(
-                    self,
-                    offendingCommandCorrelationId,
-                    errorCode,
-                    errorMessage,
-                )
-            }
-            #[inline]
-            pub unsafe fn onAvailableImage(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-                sessionId: ::std::os::raw::c_int,
-                subscriberPositionId: ::std::os::raw::c_int,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                logFilename: *const root::std::string,
-                sourceIdentity: *const root::std::string,
-            ) {
-                ClientConductor_onAvailableImage(
-                    self,
-                    correlationId,
-                    sessionId,
-                    subscriberPositionId,
-                    subscriptionRegistrationId,
-                    logFilename,
-                    sourceIdentity,
-                )
-            }
-            #[inline]
-            pub unsafe fn onUnavailableImage(
-                &mut self,
-                correlationId: ::std::os::raw::c_long,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-            ) {
-                ClientConductor_onUnavailableImage(self, correlationId, subscriptionRegistrationId)
-            }
-            #[inline]
-            pub unsafe fn onAvailableCounter(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            ) {
-                ClientConductor_onAvailableCounter(self, registrationId, counterId)
-            }
-            #[inline]
-            pub unsafe fn onUnavailableCounter(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-                counterId: ::std::os::raw::c_int,
-            ) {
-                ClientConductor_onUnavailableCounter(self, registrationId, counterId)
-            }
-            #[inline]
-            pub unsafe fn onClientTimeout(&mut self, clientId: ::std::os::raw::c_long) {
-                ClientConductor_onClientTimeout(self, clientId)
-            }
-            #[inline]
-            pub unsafe fn closeAllResources(&mut self, nowMs: ::std::os::raw::c_longlong) {
-                ClientConductor_closeAllResources(self, nowMs)
-            }
-            #[inline]
-            pub unsafe fn addDestination(
-                &mut self,
-                publicationRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addDestination(self, publicationRegistrationId, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn removeDestination(
-                &mut self,
-                publicationRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_removeDestination(self, publicationRegistrationId, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn addRcvDestination(
-                &mut self,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addRcvDestination(self, subscriptionRegistrationId, endpointChannel)
-            }
-            #[inline]
-            pub unsafe fn removeRcvDestination(
-                &mut self,
-                subscriptionRegistrationId: ::std::os::raw::c_long,
-                endpointChannel: *const root::std::string,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_removeRcvDestination(
-                    self,
-                    subscriptionRegistrationId,
-                    endpointChannel,
-                )
-            }
-            #[inline]
-            pub unsafe fn addAvailableCounterHandler(
-                &mut self,
-                handler: *const root::aeron::on_available_counter_t,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addAvailableCounterHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeAvailableCounterHandler(
-                &mut self,
-                handler: *const root::aeron::on_available_counter_t,
-            ) {
-                ClientConductor_removeAvailableCounterHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeAvailableCounterHandler1(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) {
-                ClientConductor_removeAvailableCounterHandler1(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn addUnavailableCounterHandler(
-                &mut self,
-                handler: *const root::aeron::on_unavailable_counter_t,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addUnavailableCounterHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeUnavailableCounterHandler(
-                &mut self,
-                handler: *const root::aeron::on_unavailable_counter_t,
-            ) {
-                ClientConductor_removeUnavailableCounterHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeUnavailableCounterHandler1(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) {
-                ClientConductor_removeUnavailableCounterHandler1(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn addCloseClientHandler(
-                &mut self,
-                handler: *const root::aeron::on_close_client_t,
-            ) -> ::std::os::raw::c_long {
-                ClientConductor_addCloseClientHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeCloseClientHandler(
-                &mut self,
-                handler: *const root::aeron::on_close_client_t,
-            ) {
-                ClientConductor_removeCloseClientHandler(self, handler)
-            }
-            #[inline]
-            pub unsafe fn removeCloseClientHandler1(
-                &mut self,
-                registrationId: ::std::os::raw::c_long,
-            ) {
-                ClientConductor_removeCloseClientHandler1(self, registrationId)
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                ClientConductor_ClientConductor_destructor(self)
-            }
-        }
+        pub type AsyncAddPublication = root::aeron_async_add_publication_t;
+        pub type AsyncAddExclusivePublication = root::aeron_async_add_exclusive_publication_t;
+        pub type AsyncAddCounter = root::aeron_async_add_counter_t;
+        #[doc = " Aeron entry point for communicating to the Media Driver for creating {@link Publication}s and {@link Subscription}s.\n Use a {@link Context} to configure the Aeron object.\n <p>\n A client application requires only one Aeron object per Media Driver."]
         #[repr(C)]
-        #[repr(align(16))]
         pub struct Aeron {
             pub m_context: root::aeron::Context,
-            pub m_cncBuffer: root::aeron::util::MemoryMappedFile_ptr_t,
-            pub m_toDriverAtomicBuffer: root::aeron::concurrent::AtomicBuffer,
-            pub m_toClientsAtomicBuffer: root::aeron::concurrent::AtomicBuffer,
-            pub m_countersMetadataBuffer: root::aeron::concurrent::AtomicBuffer,
-            pub m_countersValueBuffer: root::aeron::concurrent::AtomicBuffer,
-            pub m_toDriverRingBuffer: root::aeron::concurrent::ringbuffer::ManyToOneRingBuffer,
-            pub m_driverProxy: root::aeron::DriverProxy,
-            pub m_toClientsBroadcastReceiver: root::aeron::concurrent::broadcast::BroadcastReceiver,
-            pub __bindgen_padding_0: u64,
-            pub m_toClientsCopyReceiver: root::aeron::concurrent::broadcast::CopyBroadcastReceiver,
-            pub m_conductor: root::aeron::ClientConductor,
-            pub m_idleStrategy: root::aeron::concurrent::SleepingIdleStrategy,
-            pub m_conductorRunner: root::aeron::concurrent::AgentRunner<
-                root::aeron::ClientConductor,
-                root::aeron::concurrent::SleepingIdleStrategy,
-            >,
+            pub m_aeron: *mut root::aeron_t,
+            pub m_countersReader: root::aeron::concurrent::CountersReader,
+            pub m_pendingPublications: [u64; 7usize],
+            pub m_pendingExclusivePublications: [u64; 7usize],
+            pub m_pendingSubscriptions: [u64; 7usize],
+            pub m_pendingCounters: [u64; 7usize],
+            pub m_availableCounterHandlers: [u64; 3usize],
+            pub m_unavailableCounterHandlers: [u64; 3usize],
+            pub m_closeClientHandlers: [u64; 3usize],
+            pub m_adminLock: root::std::recursive_mutex,
+            pub m_clientConductor: root::aeron::ClientConductor,
             pub m_conductorInvoker:
                 root::aeron::concurrent::AgentInvoker<root::aeron::ClientConductor>,
         }
@@ -7614,12 +2057,12 @@ pub mod root {
             let ptr = UNINIT.as_ptr();
             assert_eq!(
                 ::std::mem::size_of::<Aeron>(),
-                5616usize,
+                720usize,
                 concat!("Size of: ", stringify!(Aeron))
             );
             assert_eq!(
                 ::std::mem::align_of::<Aeron>(),
-                16usize,
+                8usize,
                 concat!("Alignment of ", stringify!(Aeron))
             );
             assert_eq!(
@@ -7633,143 +2076,132 @@ pub mod root {
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_cncBuffer) as usize - ptr as usize },
-                344usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_aeron) as usize - ptr as usize },
+                304usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_cncBuffer)
+                    stringify!(m_aeron)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_countersReader) as usize - ptr as usize },
+                312usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Aeron),
+                    "::",
+                    stringify!(m_countersReader)
                 )
             );
             assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toDriverAtomicBuffer) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingPublications) as usize - ptr as usize
                 },
-                360usize,
+                352usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_toDriverAtomicBuffer)
+                    stringify!(m_pendingPublications)
                 )
             );
             assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toClientsAtomicBuffer) as usize - ptr as usize
-                },
-                376usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Aeron),
-                    "::",
-                    stringify!(m_toClientsAtomicBuffer)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_countersMetadataBuffer) as usize - ptr as usize
-                },
-                392usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Aeron),
-                    "::",
-                    stringify!(m_countersMetadataBuffer)
-                )
-            );
-            assert_eq!(
-                unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_countersValueBuffer) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingExclusivePublications) as usize
+                        - ptr as usize
                 },
                 408usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_countersValueBuffer)
+                    stringify!(m_pendingExclusivePublications)
                 )
             );
             assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toDriverRingBuffer) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_pendingSubscriptions) as usize - ptr as usize
                 },
-                424usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Aeron),
-                    "::",
-                    stringify!(m_toDriverRingBuffer)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_driverProxy) as usize - ptr as usize },
                 464usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_driverProxy)
+                    stringify!(m_pendingSubscriptions)
+                )
+            );
+            assert_eq!(
+                unsafe { ::std::ptr::addr_of!((*ptr).m_pendingCounters) as usize - ptr as usize },
+                520usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Aeron),
+                    "::",
+                    stringify!(m_pendingCounters)
                 )
             );
             assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toClientsBroadcastReceiver) as usize
+                    ::std::ptr::addr_of!((*ptr).m_availableCounterHandlers) as usize - ptr as usize
+                },
+                576usize,
+                concat!(
+                    "Offset of field: ",
+                    stringify!(Aeron),
+                    "::",
+                    stringify!(m_availableCounterHandlers)
+                )
+            );
+            assert_eq!(
+                unsafe {
+                    ::std::ptr::addr_of!((*ptr).m_unavailableCounterHandlers) as usize
                         - ptr as usize
                 },
-                480usize,
+                600usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_toClientsBroadcastReceiver)
+                    stringify!(m_unavailableCounterHandlers)
                 )
             );
             assert_eq!(
                 unsafe {
-                    ::std::ptr::addr_of!((*ptr).m_toClientsCopyReceiver) as usize - ptr as usize
+                    ::std::ptr::addr_of!((*ptr).m_closeClientHandlers) as usize - ptr as usize
                 },
-                544usize,
+                624usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_toClientsCopyReceiver)
+                    stringify!(m_closeClientHandlers)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_conductor) as usize - ptr as usize },
-                4672usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_adminLock) as usize - ptr as usize },
+                648usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_conductor)
+                    stringify!(m_adminLock)
                 )
             );
             assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_idleStrategy) as usize - ptr as usize },
-                5504usize,
+                unsafe { ::std::ptr::addr_of!((*ptr).m_clientConductor) as usize - ptr as usize },
+                688usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
                     "::",
-                    stringify!(m_idleStrategy)
-                )
-            );
-            assert_eq!(
-                unsafe { ::std::ptr::addr_of!((*ptr).m_conductorRunner) as usize - ptr as usize },
-                5512usize,
-                concat!(
-                    "Offset of field: ",
-                    stringify!(Aeron),
-                    "::",
-                    stringify!(m_conductorRunner)
+                    stringify!(m_clientConductor)
                 )
             );
             assert_eq!(
                 unsafe { ::std::ptr::addr_of!((*ptr).m_conductorInvoker) as usize - ptr as usize },
-                5584usize,
+                696usize,
                 concat!(
                     "Offset of field: ",
                     stringify!(Aeron),
@@ -7778,439 +2210,2781 @@ pub mod root {
                 )
             );
         }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron5Aeron7versionB5cxx11Ev"]
-            pub fn Aeron_version() -> root::std::string;
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron5AeronC1ERNS_7ContextE"]
-            pub fn Aeron_Aeron(this: *mut root::aeron::Aeron, context: *mut root::aeron::Context);
-        }
-        extern "C" {
-            #[link_name = "\u{1}_ZN5aeron5AeronD1Ev"]
-            pub fn Aeron_Aeron_destructor(this: *mut root::aeron::Aeron);
-        }
-        impl Aeron {
-            #[inline]
-            pub unsafe fn version() -> root::std::string {
-                Aeron_version()
-            }
-            #[inline]
-            pub unsafe fn new(context: *mut root::aeron::Context) -> Self {
-                let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-                Aeron_Aeron(__bindgen_tmp.as_mut_ptr(), context);
-                __bindgen_tmp.assume_init()
-            }
-            #[inline]
-            pub unsafe fn destruct(&mut self) {
-                Aeron_Aeron_destructor(self)
-            }
-        }
     }
-    
-    #[test]
-    fn __bindgen_test_layout_ReadablePosition_open0_UnsafeBufferPosition_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::concurrent::status::ReadablePosition<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            24usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::ReadablePosition<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::concurrent::status::ReadablePosition<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::ReadablePosition<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_context_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_context_t = root::aeron_context_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_t = root::aeron_stct;
+    #[doc = " Structure used to hold information for a try_claim function call."]
+    pub type aeron_buffer_claim_t = root::aeron_buffer_claim_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_publication_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_publication_t = root::aeron_publication_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_exclusive_publication_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_exclusive_publication_t = root::aeron_exclusive_publication_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_header_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_header_t = root::aeron_header_stct;
+    #[repr(C, packed(4))]
+    #[derive(Copy, Clone)]
+    pub struct aeron_header_values_frame_stct {
+        pub frame_length: i32,
+        pub version: i8,
+        pub flags: u8,
+        pub type_: i16,
+        pub term_offset: i32,
+        pub session_id: i32,
+        pub stream_id: i32,
+        pub term_id: i32,
+        pub reserved_value: i64,
     }
     #[test]
-    fn __bindgen_test_layout_ReadablePosition_open0_UnsafeBufferPosition_close0_instantiation_1() {
+    fn bindgen_test_layout_aeron_header_values_frame_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_header_values_frame_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
         assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::concurrent::status::ReadablePosition<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            24usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::ReadablePosition<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::concurrent::status::ReadablePosition<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::ReadablePosition<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
-    }
-    #[test]
-    fn __bindgen_test_layout_Position_open0_UnsafeBufferPosition_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::concurrent::status::Position<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            24usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::Position<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::concurrent::status::Position<
-                    root::aeron::concurrent::status::UnsafeBufferPosition,
-                >,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::concurrent::status::Position<
-                        root::aeron::concurrent::status::UnsafeBufferPosition,
-                    >
-                )
-            )
-        );
-    }
-    #[test]
-    fn __bindgen_test_layout_AtomicArrayUpdater_open0_shared_ptr_open1_Image_close1_close0_instantiation(
-    ) {
-        assert_eq!(
-            ::std::mem::size_of::<[u64; 4usize]>(),
+            ::std::mem::size_of::<aeron_header_values_frame_stct>(),
             32usize,
+            concat!("Size of: ", stringify!(aeron_header_values_frame_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_header_values_frame_stct>(),
+            4usize,
+            concat!("Alignment of ", stringify!(aeron_header_values_frame_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).frame_length) as usize - ptr as usize },
+            0usize,
             concat!(
-                "Size of template specialization: ",
-                stringify!([u64; 4usize])
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(frame_length)
             )
         );
         assert_eq!(
-            ::std::mem::align_of::<[u64; 4usize]>(),
+            unsafe { ::std::ptr::addr_of!((*ptr).version) as usize - ptr as usize },
+            4usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(version)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).flags) as usize - ptr as usize },
+            5usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(flags)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).type_) as usize - ptr as usize },
+            6usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(type_)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).term_offset) as usize - ptr as usize },
             8usize,
             concat!(
-                "Alignment of template specialization: ",
-                stringify!([u64; 4usize])
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(term_offset)
             )
         );
-    }
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_CorrelatedMessageDefn_close0_instantiation() {
         assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::CorrelatedMessageDefn>,
-            >(),
-            32usize,
+            unsafe { ::std::ptr::addr_of!((*ptr).session_id) as usize - ptr as usize },
+            12usize,
             concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::CorrelatedMessageDefn>
-                )
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(session_id)
             )
         );
         assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::CorrelatedMessageDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::CorrelatedMessageDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_PublicationBuffersReadyDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::PublicationBuffersReadyDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<
-                        root::aeron::command::PublicationBuffersReadyDefn,
-                    >
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::PublicationBuffersReadyDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<
-                        root::aeron::command::PublicationBuffersReadyDefn,
-                    >
-                )
-            )
-        );
-    }
-    
-    
-    
-    
-    
-    
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_ImageBuffersReadyDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ImageBuffersReadyDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ImageBuffersReadyDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ImageBuffersReadyDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ImageBuffersReadyDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_ImageMessageDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ImageMessageDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(root::aeron::command::Flyweight<root::aeron::command::ImageMessageDefn>)
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ImageMessageDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(root::aeron::command::Flyweight<root::aeron::command::ImageMessageDefn>)
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_ErrorResponseDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ErrorResponseDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ErrorResponseDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ErrorResponseDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ErrorResponseDefn>
-                )
-            )
-        );
-    }
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_OperationSucceededDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::OperationSucceededDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::OperationSucceededDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::OperationSucceededDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::OperationSucceededDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_SubscriptionReadyDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::SubscriptionReadyDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::SubscriptionReadyDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::SubscriptionReadyDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::SubscriptionReadyDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_CounterUpdateDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::CounterUpdateDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::CounterUpdateDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::CounterUpdateDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::CounterUpdateDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_Flyweight_open0_ClientTimeoutDefn_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ClientTimeoutDefn>,
-            >(),
-            32usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ClientTimeoutDefn>
-                )
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::command::Flyweight<root::aeron::command::ClientTimeoutDefn>,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify!(
-                    root::aeron::command::Flyweight<root::aeron::command::ClientTimeoutDefn>
-                )
-            )
-        );
-    }
-    
-    #[test]
-    fn __bindgen_test_layout_DriverListenerAdapter_open0_ClientConductor_close0_instantiation() {
-        assert_eq!(
-            ::std::mem::size_of::<root::aeron::DriverListenerAdapter<root::aeron::ClientConductor>>(
-            ),
+            unsafe { ::std::ptr::addr_of!((*ptr).stream_id) as usize - ptr as usize },
             16usize,
             concat!(
-                "Size of template specialization: ",
-                stringify!(root::aeron::DriverListenerAdapter<root::aeron::ClientConductor>)
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(stream_id)
             )
         );
         assert_eq!(
-            ::std::mem::align_of::<root::aeron::DriverListenerAdapter<root::aeron::ClientConductor>>(
-            ),
-            8usize,
+            unsafe { ::std::ptr::addr_of!((*ptr).term_id) as usize - ptr as usize },
+            20usize,
             concat!(
-                "Alignment of template specialization: ",
-                stringify!(root::aeron::DriverListenerAdapter<root::aeron::ClientConductor>)
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(term_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).reserved_value) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_frame_stct),
+                "::",
+                stringify!(reserved_value)
             )
         );
     }
+    pub type aeron_header_values_frame_t = root::aeron_header_values_frame_stct;
+    #[repr(C, packed(4))]
+    #[derive(Copy, Clone)]
+    pub struct aeron_header_values_stct {
+        pub frame: root::aeron_header_values_frame_t,
+        pub initial_term_id: i32,
+        pub position_bits_to_shift: usize,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_header_values_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_header_values_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_header_values_stct>(),
+            44usize,
+            concat!("Size of: ", stringify!(aeron_header_values_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_header_values_stct>(),
+            4usize,
+            concat!("Alignment of ", stringify!(aeron_header_values_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).frame) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_stct),
+                "::",
+                stringify!(frame)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).initial_term_id) as usize - ptr as usize },
+            32usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_stct),
+                "::",
+                stringify!(initial_term_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).position_bits_to_shift) as usize - ptr as usize },
+            36usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_header_values_stct),
+                "::",
+                stringify!(position_bits_to_shift)
+            )
+        );
+    }
+    pub type aeron_header_values_t = root::aeron_header_values_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_subscription_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_subscription_t = root::aeron_subscription_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_image_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_image_t = root::aeron_image_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counter_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_counter_t = root::aeron_counter_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_log_buffer_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_log_buffer_t = root::aeron_log_buffer_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counters_reader_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_counters_reader_t = root::aeron_counters_reader_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_client_registering_resource_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_async_add_publication_t = root::aeron_client_registering_resource_stct;
+    pub type aeron_async_add_exclusive_publication_t = root::aeron_client_registering_resource_stct;
+    pub type aeron_async_add_subscription_t = root::aeron_client_registering_resource_stct;
+    pub type aeron_async_add_counter_t = root::aeron_client_registering_resource_stct;
+    pub type aeron_async_destination_t = root::aeron_client_registering_resource_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_image_fragment_assembler_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_image_fragment_assembler_t = root::aeron_image_fragment_assembler_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_image_controlled_fragment_assembler_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_image_controlled_fragment_assembler_t =
+        root::aeron_image_controlled_fragment_assembler_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_fragment_assembler_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_fragment_assembler_t = root::aeron_fragment_assembler_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_controlled_fragment_assembler_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_controlled_fragment_assembler_t = root::aeron_controlled_fragment_assembler_stct;
+    extern "C" {
+        pub fn aeron_context_set_dir(
+            context: *mut root::aeron_context_t,
+            value: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_dir(
+            context: *mut root::aeron_context_t,
+        ) -> *const ::std::os::raw::c_char;
+    }
+    extern "C" {
+        pub fn aeron_context_set_driver_timeout_ms(
+            context: *mut root::aeron_context_t,
+            value: u64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_driver_timeout_ms(context: *mut root::aeron_context_t) -> u64;
+    }
+    extern "C" {
+        pub fn aeron_context_set_keepalive_interval_ns(
+            context: *mut root::aeron_context_t,
+            value: u64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_keepalive_interval_ns(context: *mut root::aeron_context_t) -> u64;
+    }
+    extern "C" {
+        pub fn aeron_context_set_resource_linger_duration_ns(
+            context: *mut root::aeron_context_t,
+            value: u64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_resource_linger_duration_ns(
+            context: *mut root::aeron_context_t,
+        ) -> u64;
+    }
+    extern "C" {
+        pub fn aeron_context_set_pre_touch_mapped_memory(
+            context: *mut root::aeron_context_t,
+            value: bool,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_pre_touch_mapped_memory(
+            context: *mut root::aeron_context_t,
+        ) -> bool;
+    }
+    #[doc = " The error handler to be called when an error occurs."]
+    pub type aeron_error_handler_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            errcode: ::std::os::raw::c_int,
+            message: *const ::std::os::raw::c_char,
+        ),
+    >;
+    #[doc = " Generalised notification callback."]
+    pub type aeron_notification_t =
+        ::std::option::Option<unsafe extern "C" fn(clientd: *mut ::std::os::raw::c_void)>;
+    extern "C" {
+        pub fn aeron_context_set_error_handler(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_error_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_error_handler(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_error_handler_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_error_handler_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    #[doc = " Function called by aeron_client_t to deliver notification that the media driver has added an aeron_publication_t\n or aeron_exclusive_publication_t successfully.\n\n Implementations should do the minimum work for passing off state to another thread for later processing.\n\n @param clientd to be returned in the call\n @param async associated with the original add publication call\n @param channel of the publication\n @param stream_id within the channel of the publication\n @param session_id of the publication\n @param correlation_id used by the publication"]
+    pub type aeron_on_new_publication_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            async_: *mut root::aeron_async_add_publication_t,
+            channel: *const ::std::os::raw::c_char,
+            stream_id: i32,
+            session_id: i32,
+            correlation_id: i64,
+        ),
+    >;
+    extern "C" {
+        pub fn aeron_context_set_on_new_publication(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_new_publication_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_publication(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_new_publication_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_publication_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    extern "C" {
+        pub fn aeron_context_set_on_new_exclusive_publication(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_new_publication_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_exclusive_publication(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_new_publication_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_exclusive_publication_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    #[doc = " Function called by aeron_client_t to deliver notification that the media driver has added an aeron_subscription_t\n successfully.\n\n Implementations should do the minimum work for handing off state to another thread for later processing.\n\n @param clientd to be returned in the call\n @param async associated with the original aeron_add_async_subscription call\n @param channel of the subscription\n @param stream_id within the channel of the subscription\n @param session_id of the subscription\n @param correlation_id used by the subscription"]
+    pub type aeron_on_new_subscription_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            async_: *mut root::aeron_async_add_subscription_t,
+            channel: *const ::std::os::raw::c_char,
+            stream_id: i32,
+            correlation_id: i64,
+        ),
+    >;
+    extern "C" {
+        pub fn aeron_context_set_on_new_subscription(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_new_subscription_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_subscription(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_new_subscription_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_new_subscription_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    #[doc = " Function called by aeron_client_t to deliver notifications that an aeron_image_t was added.\n\n @param clientd to be returned in the call.\n @param subscription that image is part of.\n @param image that has become available."]
+    pub type aeron_on_available_image_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            subscription: *mut root::aeron_subscription_t,
+            image: *mut root::aeron_image_t,
+        ),
+    >;
+    #[doc = " Function called by aeron_client_t to deliver notifications that an aeron_image_t has been removed from use and\n should not be used any longer.\n\n @param clientd to be returned in the call.\n @param subscription that image is part of.\n @param image that has become unavailable."]
+    pub type aeron_on_unavailable_image_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            subscription: *mut root::aeron_subscription_t,
+            image: *mut root::aeron_image_t,
+        ),
+    >;
+    #[doc = " Function called by aeron_client_t to deliver notifications that a counter has been added to the driver.\n\n @param clientd to be returned in the call.\n @param counters_reader that holds the counter.\n @param registration_id of the counter.\n @param counter_id of the counter."]
+    pub type aeron_on_available_counter_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            counters_reader: *mut root::aeron_counters_reader_t,
+            registration_id: i64,
+            counter_id: i32,
+        ),
+    >;
+    extern "C" {
+        pub fn aeron_context_set_on_available_counter(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_available_counter_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_available_counter(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_available_counter_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_available_counter_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    #[doc = " Function called by aeron_client_t to deliver notifications that a counter has been removed from the driver.\n\n @param clientd to be returned in the call.\n @param counters_reader that holds the counter.\n @param registration_id of the counter.\n @param counter_id of the counter."]
+    pub type aeron_on_unavailable_counter_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            counters_reader: *mut root::aeron_counters_reader_t,
+            registration_id: i64,
+            counter_id: i32,
+        ),
+    >;
+    extern "C" {
+        pub fn aeron_context_set_on_unavailable_counter(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_unavailable_counter_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_unavailable_counter(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_unavailable_counter_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_unavailable_counter_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    #[doc = " Function called by aeron_client_t to deliver notifications that the client is closing.\n\n @param clientd to be returned in the call."]
+    pub type aeron_on_close_client_t =
+        ::std::option::Option<unsafe extern "C" fn(clientd: *mut ::std::os::raw::c_void)>;
+    extern "C" {
+        pub fn aeron_context_set_on_close_client(
+            context: *mut root::aeron_context_t,
+            handler: root::aeron_on_close_client_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_close_client(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_on_close_client_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_on_close_client_clientd(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    extern "C" {
+        #[doc = " Whether to use an invoker to control the conductor agent or spawn a thread."]
+        pub fn aeron_context_set_use_conductor_agent_invoker(
+            context: *mut root::aeron_context_t,
+            value: bool,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_use_conductor_agent_invoker(
+            context: *mut root::aeron_context_t,
+        ) -> bool;
+    }
+    pub type aeron_agent_on_start_func_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            state: *mut ::std::os::raw::c_void,
+            role_name: *const ::std::os::raw::c_char,
+        ),
+    >;
+    extern "C" {
+        pub fn aeron_context_set_agent_on_start_function(
+            context: *mut root::aeron_context_t,
+            value: root::aeron_agent_on_start_func_t,
+            state: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_context_get_agent_on_start_function(
+            context: *mut root::aeron_context_t,
+        ) -> root::aeron_agent_on_start_func_t;
+    }
+    extern "C" {
+        pub fn aeron_context_get_agent_on_start_state(
+            context: *mut root::aeron_context_t,
+        ) -> *mut ::std::os::raw::c_void;
+    }
+    extern "C" {
+        #[doc = " Create a aeron_context_t struct and initialize with default values.\n\n @param context to create and initialize\n @return 0 for success and -1 for error."]
+        pub fn aeron_context_init(
+            context: *mut *mut root::aeron_context_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Close and delete aeron_context_t struct.\n\n @param context to close and delete\n @return 0 for success and -1 for error."]
+        pub fn aeron_context_close(context: *mut root::aeron_context_t) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Create a aeron_t client struct and initialize from the aeron_context_t struct.\n\n The given aeron_context_t struct will be used exclusively by the client. Do not reuse between clients.\n\n @param aeron  client to create and initialize.\n @param context to use for initialization.\n @return 0 for success and -1 for error."]
+        pub fn aeron_init(
+            client: *mut *mut root::aeron_t,
+            context: *mut root::aeron_context_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Start an aeron_t. This may spawn a thread for the Client Conductor.\n\n @param client to start.\n @return 0 for success and -1 for error."]
+        pub fn aeron_start(client: *mut root::aeron_t) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Call the Conductor main do_work duty cycle once.\n\n Client must have been created with use conductor invoker set to true.\n\n @param client to call do_work duty cycle on.\n @return 0 for success and -1 for error."]
+        pub fn aeron_main_do_work(client: *mut root::aeron_t) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Call the Conductor Idle Strategy.\n\n @param client to idle.\n @param work_count to pass to idle strategy."]
+        pub fn aeron_main_idle_strategy(
+            client: *mut root::aeron_t,
+            work_count: ::std::os::raw::c_int,
+        );
+    }
+    extern "C" {
+        #[doc = " Close and delete aeron_t struct.\n\n @param client to close and delete\n @return 0 for success and -1 for error."]
+        pub fn aeron_close(client: *mut root::aeron_t) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Determines if the client has been closed, e.g. via a driver timeout. Don't call this method after calling\n aeron_close as that will have already freed the associated memory.\n\n @param client to check if closed.\n @return true if it has been closed, false otherwise."]
+        pub fn aeron_is_closed(client: *mut root::aeron_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Call stream_out to print the counter labels and values.\n\n @param client to get the counters from.\n @param stream_out to call for each label and value."]
+        pub fn aeron_print_counters(
+            client: *mut root::aeron_t,
+            stream_out: ::std::option::Option<
+                unsafe extern "C" fn(arg1: *const ::std::os::raw::c_char),
+            >,
+        );
+    }
+    extern "C" {
+        #[doc = " Return the aeron_context_t that is in use by the given client.\n\n @param client to return the aeron_context_t for.\n @return the aeron_context_t for the given client or NULL for an error."]
+        pub fn aeron_context(client: *mut root::aeron_t) -> *mut root::aeron_context_t;
+    }
+    extern "C" {
+        #[doc = " Return the client id in use by the client.\n\n @param client to return the client id for.\n @return id value or -1 for an error."]
+        pub fn aeron_client_id(client: *mut root::aeron_t) -> i64;
+    }
+    extern "C" {
+        #[doc = " Return a unique correlation id from the driver.\n\n @param client to use to get the id.\n @return unique correlation id or -1 for an error."]
+        pub fn aeron_next_correlation_id(client: *mut root::aeron_t) -> i64;
+    }
+    extern "C" {
+        #[doc = " Asynchronously add a publication using the given client and return an object to use to determine when the\n publication is available.\n\n @param async object to use for polling completion.\n @param client to add the publication to.\n @param uri for the channel of the publication.\n @param stream_id for the publication.\n @return 0 for success or -1 for an error."]
+        pub fn aeron_async_add_publication(
+            async_: *mut *mut root::aeron_async_add_publication_t,
+            client: *mut root::aeron_t,
+            uri: *const ::std::os::raw::c_char,
+            stream_id: i32,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the aeron_async_add_publication call.\n\n @param publication to set if completed successfully.\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_async_add_publication_poll(
+            publication: *mut *mut root::aeron_publication_t,
+            async_: *mut root::aeron_async_add_publication_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Asynchronously add an exclusive publication using the given client and return an object to use to determine when the\n publication is available.\n\n @param async object to use for polling completion.\n @param client to add the publication to.\n @param uri for the channel of the publication.\n @param stream_id for the publication.\n @return 0 for success or -1 for an error."]
+        pub fn aeron_async_add_exclusive_publication(
+            async_: *mut *mut root::aeron_async_add_exclusive_publication_t,
+            client: *mut root::aeron_t,
+            uri: *const ::std::os::raw::c_char,
+            stream_id: i32,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the aeron_async_add_exclusive_publication call.\n\n @param publication to set if completed successfully.\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_async_add_exclusive_publication_poll(
+            publication: *mut *mut root::aeron_exclusive_publication_t,
+            async_: *mut root::aeron_async_add_exclusive_publication_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Asynchronously add a subscription using the given client and return an object to use to determine when the\n subscription is available.\n\n @param async object to use for polling completion.\n @param client to add the subscription to.\n @param uri for the channel of the subscription.\n @param stream_id for the subscription.\n @param on_available_image_handler to be called when images become available on the subscription.\n @param on_available_image_clientd to be passed when images become available on the subscription.\n @param on_unavailable_image_handler to be called when images go unavailable on the subscription.\n @param on_available_image_clientd to be called when images go unavailable on the subscription.\n @return 0 for success or -1 for an error."]
+        pub fn aeron_async_add_subscription(
+            async_: *mut *mut root::aeron_async_add_subscription_t,
+            client: *mut root::aeron_t,
+            uri: *const ::std::os::raw::c_char,
+            stream_id: i32,
+            on_available_image_handler: root::aeron_on_available_image_t,
+            on_available_image_clientd: *mut ::std::os::raw::c_void,
+            on_unavailable_image_handler: root::aeron_on_unavailable_image_t,
+            on_unavailable_image_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the aeron_async_add_subscription call.\n\n @param subscription to set if completed successfully.\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_async_add_subscription_poll(
+            subscription: *mut *mut root::aeron_subscription_t,
+            async_: *mut root::aeron_async_add_subscription_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return a reference to the counters reader of the given client.\n\n The aeron_counters_reader_t is maintained by the client. And should not be freed.\n\n @param client that contains the counters reader.\n @return aeron_counters_reader_t or NULL for error."]
+        pub fn aeron_counters_reader(
+            client: *mut root::aeron_t,
+        ) -> *mut root::aeron_counters_reader_t;
+    }
+    extern "C" {
+        #[doc = " Asynchronously add a counter using the given client and return an object to use to determine when the\n counter is available.\n\n @param async object to use for polling completion.\n @param client to add the counter to.\n @param type_id for the counter.\n @param key_buffer for the counter.\n @param key_buffer_length for the counter.\n @param label_buffer for the counter.\n @param label_buffer_length for the counter.\n @return 0 for success or -1 for an error."]
+        pub fn aeron_async_add_counter(
+            async_: *mut *mut root::aeron_async_add_counter_t,
+            client: *mut root::aeron_t,
+            type_id: i32,
+            key_buffer: *const u8,
+            key_buffer_length: usize,
+            label_buffer: *const ::std::os::raw::c_char,
+            label_buffer_length: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the aeron_async_add_counter call.\n\n @param counter to set if completed successfully.\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_async_add_counter_poll(
+            counter: *mut *mut root::aeron_counter_t,
+            async_: *mut root::aeron_async_add_counter_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_on_available_counter_pair_stct {
+        pub handler: root::aeron_on_available_counter_t,
+        pub clientd: *mut ::std::os::raw::c_void,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_on_available_counter_pair_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_on_available_counter_pair_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_on_available_counter_pair_stct>(),
+            16usize,
+            concat!(
+                "Size of: ",
+                stringify!(aeron_on_available_counter_pair_stct)
+            )
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_on_available_counter_pair_stct>(),
+            8usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_on_available_counter_pair_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).handler) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_available_counter_pair_stct),
+                "::",
+                stringify!(handler)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).clientd) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_available_counter_pair_stct),
+                "::",
+                stringify!(clientd)
+            )
+        );
+    }
+    pub type aeron_on_available_counter_pair_t = root::aeron_on_available_counter_pair_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_on_unavailable_counter_pair_stct {
+        pub handler: root::aeron_on_unavailable_counter_t,
+        pub clientd: *mut ::std::os::raw::c_void,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_on_unavailable_counter_pair_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_on_unavailable_counter_pair_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_on_unavailable_counter_pair_stct>(),
+            16usize,
+            concat!(
+                "Size of: ",
+                stringify!(aeron_on_unavailable_counter_pair_stct)
+            )
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_on_unavailable_counter_pair_stct>(),
+            8usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_on_unavailable_counter_pair_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).handler) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_unavailable_counter_pair_stct),
+                "::",
+                stringify!(handler)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).clientd) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_unavailable_counter_pair_stct),
+                "::",
+                stringify!(clientd)
+            )
+        );
+    }
+    pub type aeron_on_unavailable_counter_pair_t = root::aeron_on_unavailable_counter_pair_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_on_close_client_pair_stct {
+        pub handler: root::aeron_on_close_client_t,
+        pub clientd: *mut ::std::os::raw::c_void,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_on_close_client_pair_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_on_close_client_pair_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_on_close_client_pair_stct>(),
+            16usize,
+            concat!("Size of: ", stringify!(aeron_on_close_client_pair_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_on_close_client_pair_stct>(),
+            8usize,
+            concat!("Alignment of ", stringify!(aeron_on_close_client_pair_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).handler) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_close_client_pair_stct),
+                "::",
+                stringify!(handler)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).clientd) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_on_close_client_pair_stct),
+                "::",
+                stringify!(clientd)
+            )
+        );
+    }
+    pub type aeron_on_close_client_pair_t = root::aeron_on_close_client_pair_stct;
+    extern "C" {
+        #[doc = " Add a handler to be called when a new counter becomes available.\n\n NOTE: This function blocks until the handler is added by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_add_available_counter_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_available_counter_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a previously added handler to be called when a new counter becomes available.\n\n NOTE: This function blocks until the handler is removed by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_remove_available_counter_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_available_counter_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Add a handler to be called when a new counter becomes unavailable or goes away.\n\n NOTE: This function blocks until the handler is added by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_add_unavailable_counter_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_unavailable_counter_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a previously added handler to be called when a new counter becomes unavailable or goes away.\n\n NOTE: This function blocks until the handler is removed by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_remove_unavailable_counter_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_unavailable_counter_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Add a handler to be called when client is closed.\n\n NOTE: This function blocks until the handler is added by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_add_close_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_close_client_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a previously added handler to be called when client is closed.\n\n NOTE: This function blocks until the handler is removed by the client conductor thread.\n\n @param client for the counter\n @param pair holding the handler to call and a clientd to pass when called.\n @return 0 for success and -1 for error"]
+        pub fn aeron_remove_close_handler(
+            client: *mut root::aeron_t,
+            pair: *mut root::aeron_on_close_client_pair_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[repr(C, packed(4))]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counter_value_descriptor_stct {
+        pub counter_value: i64,
+        pub registration_id: i64,
+        pub owner_id: i64,
+        pub pad1: [u8; 104usize],
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_counter_value_descriptor_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_counter_value_descriptor_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_counter_value_descriptor_stct>(),
+            128usize,
+            concat!("Size of: ", stringify!(aeron_counter_value_descriptor_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_counter_value_descriptor_stct>(),
+            4usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_counter_value_descriptor_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).counter_value) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_value_descriptor_stct),
+                "::",
+                stringify!(counter_value)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).registration_id) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_value_descriptor_stct),
+                "::",
+                stringify!(registration_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).owner_id) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_value_descriptor_stct),
+                "::",
+                stringify!(owner_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).pad1) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_value_descriptor_stct),
+                "::",
+                stringify!(pad1)
+            )
+        );
+    }
+    pub type aeron_counter_value_descriptor_t = root::aeron_counter_value_descriptor_stct;
+    #[repr(C, packed(4))]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counter_metadata_descriptor_stct {
+        pub state: i32,
+        pub type_id: i32,
+        pub free_for_reuse_deadline_ms: i64,
+        pub key: [u8; 112usize],
+        pub label_length: i32,
+        pub label: [u8; 380usize],
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_counter_metadata_descriptor_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_counter_metadata_descriptor_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_counter_metadata_descriptor_stct>(),
+            512usize,
+            concat!(
+                "Size of: ",
+                stringify!(aeron_counter_metadata_descriptor_stct)
+            )
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_counter_metadata_descriptor_stct>(),
+            4usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_counter_metadata_descriptor_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).state) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(state)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).type_id) as usize - ptr as usize },
+            4usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(type_id)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).free_for_reuse_deadline_ms) as usize - ptr as usize
+            },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(free_for_reuse_deadline_ms)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).key) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(key)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).label_length) as usize - ptr as usize },
+            128usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(label_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).label) as usize - ptr as usize },
+            132usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_metadata_descriptor_stct),
+                "::",
+                stringify!(label)
+            )
+        );
+    }
+    pub type aeron_counter_metadata_descriptor_t = root::aeron_counter_metadata_descriptor_stct;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counters_reader_buffers_stct {
+        pub values: *mut u8,
+        pub metadata: *mut u8,
+        pub values_length: usize,
+        pub metadata_length: usize,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_counters_reader_buffers_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_counters_reader_buffers_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_counters_reader_buffers_stct>(),
+            32usize,
+            concat!("Size of: ", stringify!(aeron_counters_reader_buffers_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_counters_reader_buffers_stct>(),
+            8usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_counters_reader_buffers_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).values) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counters_reader_buffers_stct),
+                "::",
+                stringify!(values)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).metadata) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counters_reader_buffers_stct),
+                "::",
+                stringify!(metadata)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).values_length) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counters_reader_buffers_stct),
+                "::",
+                stringify!(values_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).metadata_length) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counters_reader_buffers_stct),
+                "::",
+                stringify!(metadata_length)
+            )
+        );
+    }
+    pub type aeron_counters_reader_buffers_t = root::aeron_counters_reader_buffers_stct;
+    extern "C" {
+        #[doc = " Get buffer pointers and lengths for the counters reader.\n\n @param reader reader containing the buffers.\n @param buffers output structure to return the buffers.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_get_buffers(
+            reader: *mut root::aeron_counters_reader_t,
+            buffers: *mut root::aeron_counters_reader_buffers_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[doc = " Function called by aeron_counters_reader_foreach_counter for each counter in the aeron_counters_reader_t.\n\n @param value of the counter.\n @param id of the counter.\n @param label for the counter.\n @param label_length for the counter.\n @param clientd to be returned in the call"]
+    pub type aeron_counters_reader_foreach_counter_func_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            value: i64,
+            id: i32,
+            type_id: i32,
+            key: *const u8,
+            key_length: usize,
+            label: *const ::std::os::raw::c_char,
+            label_length: usize,
+            clientd: *mut ::std::os::raw::c_void,
+        ),
+    >;
+    extern "C" {
+        #[doc = " Iterate over the counters in the counters_reader and call the given function for each counter.\n\n @param counters_reader to iterate over.\n @param func to call for each counter.\n @param clientd to pass for each call to func."]
+        pub fn aeron_counters_reader_foreach_counter(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            func: root::aeron_counters_reader_foreach_counter_func_t,
+            clientd: *mut ::std::os::raw::c_void,
+        );
+    }
+    extern "C" {
+        #[doc = " Get the current max counter id.\n\n @param reader to query\n @return -1 on failure, max counter id on success."]
+        pub fn aeron_counters_reader_max_counter_id(
+            reader: *mut root::aeron_counters_reader_t,
+        ) -> i32;
+    }
+    extern "C" {
+        #[doc = " Get the address for a counter.\n\n @param counters_reader that contains the counter\n @param counter_id to find\n @return address of the counter value"]
+        pub fn aeron_counters_reader_addr(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+        ) -> *mut i64;
+    }
+    extern "C" {
+        #[doc = " Get the registration id assigned to a counter.\n\n @param counters_reader representing the this pointer.\n @param counter_id      for which the registration id requested.\n @param registration_id pointer for value to be set on success.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_counter_registration_id(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            registration_id: *mut i64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the owner id assigned to a counter which will typically be the client id.\n\n @param counters_reader representing the this pointer.\n @param counter_id      for which the registration id requested.\n @param owner_id        pointer for value to be set on success.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_counter_owner_id(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            owner_id: *mut i64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the state for a counter.\n\n @param counters_reader that contains the counter\n @param counter_id to find\n @param state out pointer for the current state to be stored in.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_counter_state(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            state: *mut i32,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the type id for a counter.\n\n @param counters_reader that contains the counter\n @param counter_id to find\n @param type id out pointer for the current state to be stored in.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_counter_type_id(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            type_id: *mut i32,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the label for a counter.\n\n @param counters_reader that contains the counter\n @param counter_id to find\n @param buffer to store the counter in.\n @param buffer_length length of the output buffer\n @return -1 on failure, number of characters copied to buffer on success."]
+        pub fn aeron_counters_reader_counter_label(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            buffer: *mut ::std::os::raw::c_char,
+            buffer_length: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the free for reuse deadline (ms) for a counter.\n\n @param counters_reader that contains the counter.\n @param counter_id to find.\n @param deadline_ms output value to store the deadline.\n @return -1 on failure, 0 on success."]
+        pub fn aeron_counters_reader_free_for_reuse_deadline_ms(
+            counters_reader: *mut root::aeron_counters_reader_t,
+            counter_id: i32,
+            deadline_ms: *mut i64,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[doc = " Function called when filling in the reserved value field of a message.\n\n @param clientd passed to the offer function.\n @param buffer of the entire frame, including Aeron data header.\n @param frame_length of the entire frame."]
+    pub type aeron_reserved_value_supplier_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *mut u8,
+            frame_length: usize,
+        ) -> i64,
+    >;
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_iovec_stct {
+        pub iov_base: *mut u8,
+        pub iov_len: usize,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_iovec_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_iovec_stct> = ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_iovec_stct>(),
+            16usize,
+            concat!("Size of: ", stringify!(aeron_iovec_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_iovec_stct>(),
+            8usize,
+            concat!("Alignment of ", stringify!(aeron_iovec_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).iov_base) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_iovec_stct),
+                "::",
+                stringify!(iov_base)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).iov_len) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_iovec_stct),
+                "::",
+                stringify!(iov_len)
+            )
+        );
+    }
+    pub type aeron_iovec_t = root::aeron_iovec_stct;
+    #[doc = " Structure used to hold information for a try_claim function call."]
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_buffer_claim_stct {
+        pub frame_header: *mut u8,
+        pub data: *mut u8,
+        pub length: usize,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_buffer_claim_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_buffer_claim_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_buffer_claim_stct>(),
+            24usize,
+            concat!("Size of: ", stringify!(aeron_buffer_claim_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_buffer_claim_stct>(),
+            8usize,
+            concat!("Alignment of ", stringify!(aeron_buffer_claim_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).frame_header) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_buffer_claim_stct),
+                "::",
+                stringify!(frame_header)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_buffer_claim_stct),
+                "::",
+                stringify!(data)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).length) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_buffer_claim_stct),
+                "::",
+                stringify!(length)
+            )
+        );
+    }
+    extern "C" {
+        #[doc = " Commit the given buffer_claim as a complete message available for consumption.\n\n @param buffer_claim to commit.\n @return 0 for success or -1 for error."]
+        pub fn aeron_buffer_claim_commit(
+            buffer_claim: *mut root::aeron_buffer_claim_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Abort the given buffer_claim and assign its position as padding.\n\n @param buffer_claim to abort.\n @return 0 for success or -1 for error."]
+        pub fn aeron_buffer_claim_abort(
+            buffer_claim: *mut root::aeron_buffer_claim_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[doc = " Configuration for a publication that does not change during it's lifetime."]
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_publication_constants_stct {
+        #[doc = " Media address for delivery to the channel.\n\n This returns a pointer only valid for the lifetime of the publication."]
+        pub channel: *const ::std::os::raw::c_char,
+        #[doc = " The registration used to register this Publication with the media driver by the first publisher."]
+        pub original_registration_id: i64,
+        #[doc = " Get the registration id used to register this Publication with the media driver.\n\n If this value is different from the original_registration_id then a previous active registration exists."]
+        pub registration_id: i64,
+        #[doc = " The maximum possible position this stream can reach due to its term buffer length.\n\n Maximum possible position is term-length times 2^31 in bytes."]
+        pub max_possible_position: i64,
+        #[doc = " Number of bits to right shift a position to get a term count for how far the stream has progressed."]
+        pub position_bits_to_shift: usize,
+        #[doc = " Get the length in bytes for each term partition in the log buffer."]
+        pub term_buffer_length: usize,
+        #[doc = " Maximum message length supported in bytes. Messages may be made of multiple fragments if greater than\n MTU length."]
+        pub max_message_length: usize,
+        #[doc = " Maximum length of a message payload that fits within a message fragment.\n\n This is he MTU length minus the message fragment header length."]
+        pub max_payload_length: usize,
+        #[doc = " Stream id of the publication."]
+        pub stream_id: i32,
+        #[doc = " Session id of the publication."]
+        pub session_id: i32,
+        #[doc = " The initial term id assigned when this publication was created. This can be used to determine how many\n terms have passed since creation."]
+        pub initial_term_id: i32,
+        #[doc = " Counter id for the publication limit."]
+        pub publication_limit_counter_id: i32,
+        #[doc = " Counter id for the channel status indicator"]
+        pub channel_status_indicator_id: i32,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_publication_constants_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_publication_constants_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_publication_constants_stct>(),
+            88usize,
+            concat!("Size of: ", stringify!(aeron_publication_constants_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_publication_constants_stct>(),
+            8usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_publication_constants_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).channel) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(channel)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).original_registration_id) as usize - ptr as usize
+            },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(original_registration_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).registration_id) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(registration_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).max_possible_position) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(max_possible_position)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).position_bits_to_shift) as usize - ptr as usize },
+            32usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(position_bits_to_shift)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).term_buffer_length) as usize - ptr as usize },
+            40usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(term_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).max_message_length) as usize - ptr as usize },
+            48usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(max_message_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).max_payload_length) as usize - ptr as usize },
+            56usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(max_payload_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).stream_id) as usize - ptr as usize },
+            64usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(stream_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).session_id) as usize - ptr as usize },
+            68usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(session_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).initial_term_id) as usize - ptr as usize },
+            72usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(initial_term_id)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).publication_limit_counter_id) as usize - ptr as usize
+            },
+            76usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(publication_limit_counter_id)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).channel_status_indicator_id) as usize - ptr as usize
+            },
+            80usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_publication_constants_stct),
+                "::",
+                stringify!(channel_status_indicator_id)
+            )
+        );
+    }
+    #[doc = " Configuration for a publication that does not change during it's lifetime."]
+    pub type aeron_publication_constants_t = root::aeron_publication_constants_stct;
+    extern "C" {
+        #[doc = " Non-blocking publish of a buffer containing a message.\n\n @param publication to publish on.\n @param buffer to publish.\n @param length of the buffer.\n @param reserved_value_supplier to use for setting the reserved value field or NULL.\n @param clientd to pass to the reserved_value_supplier.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_publication_offer(
+            publication: *mut root::aeron_publication_t,
+            buffer: *const u8,
+            length: usize,
+            reserved_value_supplier: root::aeron_reserved_value_supplier_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Non-blocking publish by gathering buffer vectors into a message.\n\n @param publication to publish on.\n @param iov array for the vectors\n @param iovcnt of the number of vectors\n @param reserved_value_supplier to use for setting the reserved value field or NULL.\n @param clientd to pass to the reserved_value_supplier.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_publication_offerv(
+            publication: *mut root::aeron_publication_t,
+            iov: *mut root::aeron_iovec_t,
+            iovcnt: usize,
+            reserved_value_supplier: root::aeron_reserved_value_supplier_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Try to claim a range in the publication log into which a message can be written with zero copy semantics.\n Once the message has been written then aeron_buffer_claim_commit should be called thus making it available.\n A claim length cannot be greater than max payload length.\n <p>\n <b>Note:</b> This method can only be used for message lengths less than MTU length minus header.\n If the claim is held for more than the aeron.publication.unblock.timeout system property then the driver will\n assume the publication thread is dead and will unblock the claim thus allowing other threads to make progress\n and other claims to be sent to reach end-of-stream (EOS).\n\n @code\n aeron_buffer_claim_t buffer_claim;\n\n if (aeron_publication_try_claim(publication, length, &buffer_claim) > 0L)\n {\n     // work with buffer_claim->data directly.\n     aeron_buffer_claim_commit(&buffer_claim);\n }\n @endcode\n\n @param publication to publish to.\n @param length of the message.\n @param buffer_claim to be populated if the claim succeeds.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_publication_try_claim(
+            publication: *mut root::aeron_publication_t,
+            length: usize,
+            buffer_claim: *mut root::aeron_buffer_claim_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Get the status of the media channel for this publication.\n <p>\n The status will be ERRORED (-1) if a socket exception occurs on setup and ACTIVE (1) if all is well.\n\n @param publication to check status of.\n @return 1 for ACTIVE, -1 for ERRORED"]
+        pub fn aeron_publication_channel_status(publication: *mut root::aeron_publication_t)
+            -> i64;
+    }
+    extern "C" {
+        #[doc = " Has the publication closed?\n\n @param publication to check\n @return true if this publication is closed."]
+        pub fn aeron_publication_is_closed(publication: *mut root::aeron_publication_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Has the publication seen an active Subscriber recently?\n\n @param publication to check.\n @return true if this publication has recently seen an active subscriber otherwise false."]
+        pub fn aeron_publication_is_connected(publication: *mut root::aeron_publication_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Fill in a structure with the constants in use by a publication.\n\n @param publication to get the constants for.\n @param constants structure to fill in with the constants\n @return 0 for success and -1 for error."]
+        pub fn aeron_publication_constants(
+            publication: *mut root::aeron_publication_t,
+            constants: *mut root::aeron_publication_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the current position to which the publication has advanced for this stream.\n\n @param publication to query.\n @return the current position to which the publication has advanced for this stream or a negative error value."]
+        pub fn aeron_publication_position(publication: *mut root::aeron_publication_t) -> i64;
+    }
+    extern "C" {
+        #[doc = " Get the position limit beyond which this publication will be back pressured.\n\n This should only be used as a guide to determine when back pressure is likely to be applied.\n\n @param publication to query.\n @return the position limit beyond which this publication will be back pressured or a negative error value."]
+        pub fn aeron_publication_position_limit(publication: *mut root::aeron_publication_t)
+            -> i64;
+    }
+    extern "C" {
+        #[doc = " Add a destination manually to a multi-destination-cast publication.\n\n @param async object to use for polling completion.\n @param publication to add destination to.\n @param uri for the destination to add.\n @return 0 for success and -1 for error."]
+        pub fn aeron_publication_async_add_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            publication: *mut root::aeron_publication_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a destination manually from a multi-destination-cast publication.\n\n @param async object to use for polling completion.\n @param publication to remove destination from.\n @param uri for the destination to remove.\n @return 0 for success and -1 for error."]
+        pub fn aeron_publication_async_remove_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            publication: *mut root::aeron_publication_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the add/remove of a destination to/from a publication.\n\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_publication_async_destination_poll(
+            async_: *mut root::aeron_async_destination_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Add a destination manually to a multi-destination-cast exclusive publication.\n\n @param async object to use for polling completion.\n @param publication to add destination to.\n @param uri for the destination to add.\n @return 0 for success and -1 for error."]
+        pub fn aeron_exclusive_publication_async_add_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            publication: *mut root::aeron_exclusive_publication_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a destination manually from a multi-destination-cast exclusive publication.\n\n @param async object to use for polling completion.\n @param publication to remove destination from.\n @param uri for the destination to remove.\n @return 0 for success and -1 for error."]
+        pub fn aeron_exclusive_publication_async_remove_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            publication: *mut root::aeron_exclusive_publication_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of the add/remove of a destination to/from an exclusive publication.\n\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_exclusive_publication_async_destination_poll(
+            async_: *mut root::aeron_async_destination_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Asynchronously close the publication. Will callback on the on_complete notification when the subscription is closed.\n The callback is optional, use NULL for the on_complete callback if not required.\n\n @param publication to close\n @param on_close_complete optional callback to execute once the subscription has been closed and freed. This may\n happen on a separate thread, so the caller should ensure that clientd has the appropriate lifetime.\n @param on_close_complete_clientd parameter to pass to the on_complete callback.\n @return 0 for success or -1 for error."]
+        pub fn aeron_publication_close(
+            publication: *mut root::aeron_publication_t,
+            on_close_complete: root::aeron_notification_t,
+            on_close_complete_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the publication's channel\n\n @param publication this\n @return channel uri string"]
+        pub fn aeron_publication_channel(
+            publication: *mut root::aeron_publication_t,
+        ) -> *const ::std::os::raw::c_char;
+    }
+    extern "C" {
+        #[doc = " Get the publication's stream id\n\n @param publication this\n @return stream id"]
+        pub fn aeron_publication_stream_id(publication: *mut root::aeron_publication_t) -> i32;
+    }
+    extern "C" {
+        #[doc = " Get the publication's session id\n @param publication this\n @return session id"]
+        pub fn aeron_publication_session_id(publication: *mut root::aeron_publication_t) -> i32;
+    }
+    extern "C" {
+        #[doc = " Get all of the local socket addresses for this publication. Typically only one representing the control address.\n\n @param subscription to query\n @param address_vec to hold the received addresses\n @param address_vec_len available length of the vector to hold the addresses\n @return number of addresses found or -1 if there is an error.\n @see aeron_subscription_local_sockaddrs"]
+        pub fn aeron_publication_local_sockaddrs(
+            publication: *mut root::aeron_publication_t,
+            address_vec: *mut root::aeron_iovec_t,
+            address_vec_len: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Non-blocking publish of a buffer containing a message.\n\n @param publication to publish on.\n @param buffer to publish.\n @param length of the buffer.\n @param reserved_value_supplier to use for setting the reserved value field or NULL.\n @param clientd to pass to the reserved_value_supplier.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_exclusive_publication_offer(
+            publication: *mut root::aeron_exclusive_publication_t,
+            buffer: *const u8,
+            length: usize,
+            reserved_value_supplier: root::aeron_reserved_value_supplier_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Non-blocking publish by gathering buffer vectors into a message.\n\n @param publication to publish on.\n @param iov array for the vectors\n @param iovcnt of the number of vectors\n @param reserved_value_supplier to use for setting the reserved value field or NULL.\n @param clientd to pass to the reserved_value_supplier.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_exclusive_publication_offerv(
+            publication: *mut root::aeron_exclusive_publication_t,
+            iov: *mut root::aeron_iovec_t,
+            iovcnt: usize,
+            reserved_value_supplier: root::aeron_reserved_value_supplier_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Try to claim a range in the publication log into which a message can be written with zero copy semantics.\n Once the message has been written then aeron_buffer_claim_commit should be called thus making it available.\n A claim length cannot be greater than max payload length.\n <p>\n <b>Note:</b> This method can only be used for message lengths less than MTU length minus header.\n\n @code\n aeron_buffer_claim_t buffer_claim;\n\n if (aeron_exclusive_publication_try_claim(publication, length, &buffer_claim) > 0L)\n {\n     // work with buffer_claim->data directly.\n     aeron_buffer_claim_commit(&buffer_claim);\n }\n @endcode\n\n @param publication to publish to.\n @param length of the message.\n @param buffer_claim to be populated if the claim succeeds.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_exclusive_publication_try_claim(
+            publication: *mut root::aeron_exclusive_publication_t,
+            length: usize,
+            buffer_claim: *mut root::aeron_buffer_claim_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Append a padding record log of a given length to make up the log to a position.\n\n @param length of the range to claim, in bytes.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_exclusive_publication_append_padding(
+            publication: *mut root::aeron_exclusive_publication_t,
+            length: usize,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Offer a block of pre-formatted message fragments directly into the current term.\n\n @param buffer containing the pre-formatted block of message fragments.\n @param offset offset in the buffer at which the first fragment begins.\n @param length in bytes of the encoded block.\n @return the new stream position otherwise a negative error value."]
+        pub fn aeron_exclusive_publication_offer_block(
+            publication: *mut root::aeron_exclusive_publication_t,
+            buffer: *const u8,
+            length: usize,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Get the status of the media channel for this publication.\n <p>\n The status will be ERRORED (-1) if a socket exception occurs on setup and ACTIVE (1) if all is well.\n\n @param publication to check status of.\n @return 1 for ACTIVE, -1 for ERRORED"]
+        pub fn aeron_exclusive_publication_channel_status(
+            publication: *mut root::aeron_exclusive_publication_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Fill in a structure with the constants in use by a publication.\n\n @param publication to get the constants for.\n @param constants structure to fill in with the constants\n @return 0 for success and -1 for error."]
+        pub fn aeron_exclusive_publication_constants(
+            publication: *mut root::aeron_exclusive_publication_t,
+            constants: *mut root::aeron_publication_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the current position to which the publication has advanced for this stream.\n\n @param publication to query.\n @return the current position to which the publication has advanced for this stream or a negative error value."]
+        pub fn aeron_exclusive_publication_position(
+            publication: *mut root::aeron_exclusive_publication_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Get the position limit beyond which this publication will be back pressured.\n\n This should only be used as a guide to determine when back pressure is likely to be applied.\n\n @param publication to query.\n @return the position limit beyond which this publication will be back pressured or a negative error value."]
+        pub fn aeron_exclusive_publication_position_limit(
+            publication: *mut root::aeron_exclusive_publication_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Asynchronously close the publication.\n\n @param publication to close\n @return 0 for success or -1 for error."]
+        pub fn aeron_exclusive_publication_close(
+            publication: *mut root::aeron_exclusive_publication_t,
+            on_close_complete: root::aeron_notification_t,
+            on_close_complete_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Has the exclusive publication closed?\n\n @param publication to check\n @return true if this publication is closed."]
+        pub fn aeron_exclusive_publication_is_closed(
+            publication: *mut root::aeron_exclusive_publication_t,
+        ) -> bool;
+    }
+    extern "C" {
+        #[doc = " Has the exclusive publication seen an active Subscriber recently?\n\n @param publication to check.\n @return true if this publication has recently seen an active subscriber otherwise false."]
+        pub fn aeron_exclusive_publication_is_connected(
+            publication: *mut root::aeron_exclusive_publication_t,
+        ) -> bool;
+    }
+    extern "C" {
+        #[doc = " Get all of the local socket addresses for this exclusive publication. Typically only one representing the control\n address.\n\n @see aeron_subscription_local_sockaddrs\n @param subscription to query\n @param address_vec to hold the received addresses\n @param address_vec_len available length of the vector to hold the addresses\n @return number of addresses found or -1 if there is an error."]
+        pub fn aeron_exclusive_publication_local_sockaddrs(
+            publication: *mut root::aeron_exclusive_publication_t,
+            address_vec: *mut root::aeron_iovec_t,
+            address_vec_len: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[doc = " Callback for handling fragments of data being read from a log.\n\n The frame will either contain a whole message or a fragment of a message to be reassembled. Messages are fragmented\n if greater than the frame for MTU in length.\n\n @param clientd passed to the poll function.\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data."]
+    pub type aeron_fragment_handler_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        ),
+    >;
+    #[doc = " Abort the current polling operation and do not advance the position for this fragment."]
+    pub const aeron_controlled_fragment_handler_action_en_AERON_ACTION_ABORT:
+        root::aeron_controlled_fragment_handler_action_en = 1;
+    #[doc = " Break from the current polling operation and commit the position as of the end of the current fragment\n being handled."]
+    pub const aeron_controlled_fragment_handler_action_en_AERON_ACTION_BREAK:
+        root::aeron_controlled_fragment_handler_action_en = 2;
+    #[doc = " Continue processing but commit the position as of the end of the current fragment so that\n flow control is applied to this point."]
+    pub const aeron_controlled_fragment_handler_action_en_AERON_ACTION_COMMIT:
+        root::aeron_controlled_fragment_handler_action_en = 3;
+    #[doc = " Continue processing until fragment limit or no fragments with position commit at end of poll as in\n aeron_fragment_handler_t."]
+    pub const aeron_controlled_fragment_handler_action_en_AERON_ACTION_CONTINUE:
+        root::aeron_controlled_fragment_handler_action_en = 4;
+    pub type aeron_controlled_fragment_handler_action_en = ::std::os::raw::c_uint;
+    pub use self::super::root::aeron_controlled_fragment_handler_action_en as aeron_controlled_fragment_handler_action_t;
+    #[doc = " Callback for handling fragments of data being read from a log.\n\n Handler for reading data that is coming from a log buffer. The frame will either contain a whole message\n or a fragment of a message to be reassembled. Messages are fragmented if greater than the frame for MTU in length.\n\n @param clientd passed to the controlled poll function.\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data.\n @return The action to be taken with regard to the stream position after the callback."]
+    pub type aeron_controlled_fragment_handler_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        ) -> root::aeron_controlled_fragment_handler_action_t,
+    >;
+    #[doc = " Callback for handling a block of messages being read from a log.\n\n @param clientd passed to the block poll function.\n @param buffer containing the block of message fragments.\n @param offset at which the block begins, including any frame headers.\n @param length of the block in bytes, including any frame headers that is aligned.\n @param session_id of the stream containing this block of message fragments.\n @param term_id of the stream containing this block of message fragments."]
+    pub type aeron_block_handler_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            session_id: i32,
+            term_id: i32,
+        ),
+    >;
+    extern "C" {
+        #[doc = " Get all of the field values from the header. This will do a memcpy into the supplied header_values_t pointer.\n\n @param header to read values from.\n @param values to copy values to, must not be null.\n @return 0 on success, -1 on failure."]
+        pub fn aeron_header_values(
+            header: *mut root::aeron_header_t,
+            values: *mut root::aeron_header_values_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the current position to which the Image has advanced on reading this message.\n\n @param header the current header message\n @return the current position to which the Image has advanced on reading this message."]
+        pub fn aeron_header_position(header: *mut root::aeron_header_t) -> i64;
+    }
+    extern "C" {
+        #[doc = " Get the number of times to left shift the term count to multiply by term length.\n\n @return number of times to left shift the term count to multiply by term length."]
+        pub fn aeron_header_position_bits_to_shift(header: *mut root::aeron_header_t) -> usize;
+    }
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_subscription_constants_stct {
+        #[doc = " Media address for delivery to the channel.\n\n This returns a pointer only valid for the lifetime of the subscription."]
+        pub channel: *const ::std::os::raw::c_char,
+        #[doc = " Callback used to indicate when an Image becomes available under this Subscription."]
+        pub on_available_image: root::aeron_on_available_image_t,
+        #[doc = " Callback used to indicate when an Image goes unavailable under this Subscription."]
+        pub on_unavailable_image: root::aeron_on_unavailable_image_t,
+        #[doc = " Return the registration id used to register this Subscription with the media driver."]
+        pub registration_id: i64,
+        #[doc = " Stream identity for scoping within the channel media address."]
+        pub stream_id: i32,
+        #[doc = " Counter id for the channel status indicator"]
+        pub channel_status_indicator_id: i32,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_subscription_constants_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_subscription_constants_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_subscription_constants_stct>(),
+            40usize,
+            concat!("Size of: ", stringify!(aeron_subscription_constants_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_subscription_constants_stct>(),
+            8usize,
+            concat!(
+                "Alignment of ",
+                stringify!(aeron_subscription_constants_stct)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).channel) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(channel)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).on_available_image) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(on_available_image)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).on_unavailable_image) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(on_unavailable_image)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).registration_id) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(registration_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).stream_id) as usize - ptr as usize },
+            32usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(stream_id)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).channel_status_indicator_id) as usize - ptr as usize
+            },
+            36usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_subscription_constants_stct),
+                "::",
+                stringify!(channel_status_indicator_id)
+            )
+        );
+    }
+    pub type aeron_subscription_constants_t = root::aeron_subscription_constants_stct;
+    extern "C" {
+        #[doc = " Poll the images under the subscription for available message fragments.\n <p>\n Each fragment read will be a whole message if it is under MTU length. If larger than MTU then it will come\n as a series of fragments ordered within a session.\n <p>\n To assemble messages that span multiple fragments then use aeron_fragment_assembler_t.\n\n @param subscription to poll.\n @param handler for handling each message fragment as it is read.\n @param fragment_limit number of message fragments to limit when polling across multiple images.\n @return the number of fragments received or -1 for error."]
+        pub fn aeron_subscription_poll(
+            subscription: *mut root::aeron_subscription_t,
+            handler: root::aeron_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll in a controlled manner the images under the subscription for available message fragments.\n Control is applied to fragments in the stream. If more fragments can be read on another stream\n they will even if BREAK or ABORT is returned from the fragment handler.\n <p>\n Each fragment read will be a whole message if it is under MTU length. If larger than MTU then it will come\n as a series of fragments ordered within a session.\n <p>\n To assemble messages that span multiple fragments then use aeron_controlled_fragment_assembler_t.\n\n @param subscription to poll.\n @param handler for handling each message fragment as it is read.\n @param fragment_limit number of message fragments to limit when polling across multiple images.\n @return the number of fragments received or -1 for error."]
+        pub fn aeron_subscription_controlled_poll(
+            subscription: *mut root::aeron_subscription_t,
+            handler: root::aeron_controlled_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the images under the subscription for available message fragments in blocks.\n <p>\n This method is useful for operations like bulk archiving and messaging indexing.\n\n @param subscription to poll.\n @param handler to receive a block of fragments from each image.\n @param block_length_limit for each image polled.\n @return the number of bytes consumed or -1 for error."]
+        pub fn aeron_subscription_block_poll(
+            subscription: *mut root::aeron_subscription_t,
+            handler: root::aeron_block_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            block_length_limit: usize,
+        ) -> ::std::os::raw::c_long;
+    }
+    extern "C" {
+        #[doc = " Is this subscription connected by having at least one open publication image.\n\n @param subscription to check.\n @return true if this subscription connected by having at least one open publication image."]
+        pub fn aeron_subscription_is_connected(
+            subscription: *mut root::aeron_subscription_t,
+        ) -> bool;
+    }
+    extern "C" {
+        #[doc = " Fill in a structure with the constants in use by a subscription.\n\n @param subscription to get the constants for.\n @param constants structure to fill in with the constants\n @return 0 for success and -1 for error."]
+        pub fn aeron_subscription_constants(
+            subscription: *mut root::aeron_subscription_t,
+            constants: *mut root::aeron_subscription_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Count of images associated to this subscription.\n\n @param subscription to count images for.\n @return count of count associated to this subscription or -1 for error."]
+        pub fn aeron_subscription_image_count(
+            subscription: *mut root::aeron_subscription_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return the image associated with the given session_id under the given subscription.\n\n Note: the returned image is considered retained by the application and thus must be released via\n aeron_image_release when finished or if the image becomes unavailable.\n\n @param subscription to search.\n @param session_id associated with the image.\n @return image associated with the given session_id or NULL if no image exists."]
+        pub fn aeron_subscription_image_by_session_id(
+            subscription: *mut root::aeron_subscription_t,
+            session_id: i32,
+        ) -> *mut root::aeron_image_t;
+    }
+    extern "C" {
+        #[doc = " Return the image at the given index.\n\n Note: the returned image is considered retained by the application and thus must be released via\n aeron_image_release when finished or if the image becomes unavailable.\n\n @param subscription to search.\n @param index for the image.\n @return image at the given index or NULL if no image exists."]
+        pub fn aeron_subscription_image_at_index(
+            subscription: *mut root::aeron_subscription_t,
+            index: usize,
+        ) -> *mut root::aeron_image_t;
+    }
+    extern "C" {
+        #[doc = " Iterate over the images for this subscription calling the given function.\n\n @param subscription to iterate over.\n @param handler to be called for each image."]
+        pub fn aeron_subscription_for_each_image(
+            subscription: *mut root::aeron_subscription_t,
+            handler: ::std::option::Option<
+                unsafe extern "C" fn(
+                    image: *mut root::aeron_image_t,
+                    clientd: *mut ::std::os::raw::c_void,
+                ),
+            >,
+            clientd: *mut ::std::os::raw::c_void,
+        );
+    }
+    extern "C" {
+        #[doc = " Retain the given image for access in the application.\n\n Note: A retain call must have a corresponding release call.\n Note: Subscriptions are not threadsafe and should not be shared between subscribers.\n\n @param subscription that image is part of.\n @param image to retain\n @return 0 for success and -1 for error."]
+        pub fn aeron_subscription_image_retain(
+            subscription: *mut root::aeron_subscription_t,
+            image: *mut root::aeron_image_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Release the given image and relinquish desire to use the image directly.\n\n Note: Subscriptions are not threadsafe and should not be shared between subscribers.\n\n @param subscription that image is part of.\n @param image to release\n @return 0 for success and -1 for error."]
+        pub fn aeron_subscription_image_release(
+            subscription: *mut root::aeron_subscription_t,
+            image: *mut root::aeron_image_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Is the subscription closed.\n\n @param subscription to be checked.\n @return true if it has been closed otherwise false."]
+        pub fn aeron_subscription_is_closed(subscription: *mut root::aeron_subscription_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Get the status of the media channel for this subscription.\n <p>\n The status will be ERRORED (-1) if a socket exception occurs on setup and ACTIVE (1) if all is well.\n\n @param subscription to check status of.\n @return 1 for ACTIVE, -1 for ERRORED"]
+        pub fn aeron_subscription_channel_status(
+            subscription: *mut root::aeron_subscription_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Add a destination manually to a multi-destination-subscription.\n\n @param async object to use for polling completion.\n @param subscription to add destination to.\n @param uri for the destination to add.\n @return 0 for success and -1 for error."]
+        pub fn aeron_subscription_async_add_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            subscription: *mut root::aeron_subscription_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Remove a destination manually from a multi-destination-subscription.\n\n @param async object to use for polling completion.\n @param subscription to remove destination from.\n @param uri for the destination to remove.\n @return 0 for success and -1 for error."]
+        pub fn aeron_subscription_async_remove_destination(
+            async_: *mut *mut root::aeron_async_destination_t,
+            client: *mut root::aeron_t,
+            subscription: *mut root::aeron_subscription_t,
+            uri: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll the completion of add/remove of a destination to/from a subscription.\n\n @param async to check for completion.\n @return 0 for not complete (try again), 1 for completed successfully, or -1 for an error."]
+        pub fn aeron_subscription_async_destination_poll(
+            async_: *mut root::aeron_async_destination_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Asynchronously close the subscription. Will callback on the on_complete notification when the subscription is\n closed. The callback is optional, use NULL for the on_complete callback if not required.\n\n @param subscription to close\n @param on_close_complete optional callback to execute once the subscription has been closed and freed. This may\n happen on a separate thread, so the caller should ensure that clientd has the appropriate lifetime.\n @param on_close_complete_clientd parameter to pass to the on_complete callback.\n @return 0 for success or -1 for error."]
+        pub fn aeron_subscription_close(
+            subscription: *mut root::aeron_subscription_t,
+            on_close_complete: root::aeron_notification_t,
+            on_close_complete_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get all of the local socket addresses for this subscription. Multiple addresses can occur if this is a\n multi-destination subscription. Addresses will a string representation in numeric form. IPv6 addresses will be\n surrounded by '[' and ']' so that the ':' that separate the parts are distinguishable from the port delimiter.\n E.g. [fe80::7552:c06e:6bf4:4160]:12345. As of writing the maximum length for a formatted address is 54 bytes\n including the NULL terminator. AERON_CLIENT_MAX_LOCAL_ADDRESS_STR_LEN is defined to provide enough space to fit the\n returned string. Returned strings will be NULL terminated. If the buffer to hold the address can not hold enough\n of the message it will be truncated and the last character will be null.\n\n If the address_vec_len is less the total number of addresses available then the first addresses found up to that\n length will be placed into the address_vec. However the function will return the total number of addresses available\n so if if that is larger than the input array then the client code may wish to re-query with a larger array to get\n them all.\n\n @param subscription to query\n @param address_vec to hold the received addresses\n @param address_vec_len available length of the vector to hold the addresses\n @return number of addresses found or -1 if there is an error."]
+        pub fn aeron_subscription_local_sockaddrs(
+            subscription: *mut root::aeron_subscription_t,
+            address_vec: *mut root::aeron_iovec_t,
+            address_vec_len: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Retrieves the first local socket address for this subscription. If this is not MDS then it will be the one\n representing endpoint for this subscription.\n\n @see aeron_subscription_local_sockaddrs\n @param subscription to query\n @param address for the received address\n @param address_len available length for the copied address.\n @return -1 on error, 0 if address not found, 1 if address is found."]
+        pub fn aeron_subscription_resolved_endpoint(
+            subscription: *mut root::aeron_subscription_t,
+            address: *const ::std::os::raw::c_char,
+            address_len: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Retrieves the channel URI for this subscription with any wildcard ports filled in. If the channel is not UDP or\n does not have a wildcard port (`0`), then it will return the original URI.\n\n @param subscription to query\n @param uri buffer to hold the resolved uri\n @param uri_len length of the buffer\n @return -1 on failure or the number of bytes written to the buffer (excluding the NULL terminator). Writing is done\n on a per key basis, so if the buffer was truncated before writing completed, it will only include the byte count up\n to the key that overflowed. However, the invariant that if the number returned >= uri_len, then output will have been\n truncated."]
+        pub fn aeron_subscription_try_resolve_channel_endpoint_port(
+            subscription: *mut root::aeron_subscription_t,
+            uri: *mut ::std::os::raw::c_char,
+            uri_len: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[doc = " Configuration for an image that does not change during it's lifetime."]
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_image_constants_stct {
+        #[doc = " The subscription to which this image belongs."]
+        pub subscription: *mut root::aeron_subscription_t,
+        #[doc = " The source identity of the sending publisher as an abstract concept appropriate for the media."]
+        pub source_identity: *const ::std::os::raw::c_char,
+        #[doc = " The correlationId for identification of the image with the media driver."]
+        pub correlation_id: i64,
+        #[doc = " Get the position the subscriber joined this stream at."]
+        pub join_position: i64,
+        #[doc = " Number of bits to right shift a position to get a term count for how far the stream has progressed."]
+        pub position_bits_to_shift: usize,
+        #[doc = " Get the length in bytes for each term partition in the log buffer."]
+        pub term_buffer_length: usize,
+        #[doc = " The length in bytes of the MTU (Maximum Transmission Unit) the Sender used for the datagram."]
+        pub mtu_length: usize,
+        #[doc = " The sessionId for the steam of messages. Sessions are unique within a subscription and unique across\n all publications from a source identity."]
+        pub session_id: i32,
+        #[doc = " The initial term at which the stream started for this session."]
+        pub initial_term_id: i32,
+        #[doc = " Counter id that refers to the subscriber position for this image."]
+        pub subscriber_position_id: i32,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_image_constants_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_image_constants_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_image_constants_stct>(),
+            72usize,
+            concat!("Size of: ", stringify!(aeron_image_constants_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_image_constants_stct>(),
+            8usize,
+            concat!("Alignment of ", stringify!(aeron_image_constants_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).subscription) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(subscription)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).source_identity) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(source_identity)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).correlation_id) as usize - ptr as usize },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(correlation_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).join_position) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(join_position)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).position_bits_to_shift) as usize - ptr as usize },
+            32usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(position_bits_to_shift)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).term_buffer_length) as usize - ptr as usize },
+            40usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(term_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).mtu_length) as usize - ptr as usize },
+            48usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(mtu_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).session_id) as usize - ptr as usize },
+            56usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(session_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).initial_term_id) as usize - ptr as usize },
+            60usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(initial_term_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).subscriber_position_id) as usize - ptr as usize },
+            64usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_image_constants_stct),
+                "::",
+                stringify!(subscriber_position_id)
+            )
+        );
+    }
+    #[doc = " Configuration for an image that does not change during it's lifetime."]
+    pub type aeron_image_constants_t = root::aeron_image_constants_stct;
+    extern "C" {
+        #[doc = " Fill in a structure with the constants in use by a image.\n\n @param image to get the constants for.\n @param constants structure to fill in with the constants\n @return 0 for success and -1 for error."]
+        pub fn aeron_image_constants(
+            image: *mut root::aeron_image_t,
+            constants: *mut root::aeron_image_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " The position this image has been consumed to by the subscriber.\n\n @param image to query position of.\n @return the position this image has been consumed to by the subscriber."]
+        pub fn aeron_image_position(image: *mut root::aeron_image_t) -> i64;
+    }
+    extern "C" {
+        #[doc = " Set the subscriber position for this image to indicate where it has been consumed to.\n\n @param image to set the position of.\n @param new_position for the consumption point."]
+        pub fn aeron_image_set_position(
+            image: *mut root::aeron_image_t,
+            position: i64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Is the current consumed position at the end of the stream?\n\n @param image to check.\n @return true if at the end of the stream or false if not."]
+        pub fn aeron_image_is_end_of_stream(image: *mut root::aeron_image_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Count of observed active transports within the image liveness timeout.\n\n If the image is closed, then this is 0. This may also be 0 if no actual datagrams have arrived. IPC\n Images also will be 0.\n\n @param image to check.\n @return count of active transports - 0 if Image is closed, no datagrams yet, or IPC. Or -1 for error."]
+        pub fn aeron_image_active_transport_count(
+            image: *mut root::aeron_image_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll for new messages in a stream. If new messages are found beyond the last consumed position then they\n will be delivered to the handler up to a limited number of fragments as specified.\n <p>\n Use a fragment assembler to assemble messages which span multiple fragments.\n\n @param image to poll.\n @param handler to which message fragments are delivered.\n @param clientd to pass to the handler.\n @param fragment_limit for the number of fragments to be consumed during one polling operation.\n @return the number of fragments that have been consumed or -1 for error."]
+        pub fn aeron_image_poll(
+            image: *mut root::aeron_image_t,
+            handler: root::aeron_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll for new messages in a stream. If new messages are found beyond the last consumed position then they\n will be delivered to the handler up to a limited number of fragments as specified.\n <p>\n Use a controlled fragment assembler to assemble messages which span multiple fragments.\n\n @param image to poll.\n @param handler to which message fragments are delivered.\n @param clientd to pass to the handler.\n @param fragment_limit for the number of fragments to be consumed during one polling operation.\n @return the number of fragments that have been consumed or -1 for error."]
+        pub fn aeron_image_controlled_poll(
+            image: *mut root::aeron_image_t,
+            handler: root::aeron_controlled_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll for new messages in a stream. If new messages are found beyond the last consumed position then they\n will be delivered to the handler up to a limited number of fragments as specified or the maximum position specified.\n <p>\n Use a fragment assembler to assemble messages which span multiple fragments.\n\n @param image to poll.\n @param handler to which message fragments are delivered.\n @param clientd to pass to the handler.\n @param limit_position to consume messages up to.\n @param fragment_limit for the number of fragments to be consumed during one polling operation.\n @return the number of fragments that have been consumed or -1 for error."]
+        pub fn aeron_image_bounded_poll(
+            image: *mut root::aeron_image_t,
+            handler: root::aeron_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            limit_position: i64,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Poll for new messages in a stream. If new messages are found beyond the last consumed position then they\n will be delivered to the handler up to a limited number of fragments as specified or the maximum position specified.\n <p>\n Use a controlled fragment assembler to assemble messages which span multiple fragments.\n\n @param image to poll.\n @param handler to which message fragments are delivered.\n @param clientd to pass to the handler.\n @param limit_position to consume messages up to.\n @param fragment_limit for the number of fragments to be consumed during one polling operation.\n @return the number of fragments that have been consumed or -1 for error."]
+        pub fn aeron_image_bounded_controlled_poll(
+            image: *mut root::aeron_image_t,
+            handler: root::aeron_controlled_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            limit_position: i64,
+            fragment_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Peek for new messages in a stream by scanning forward from an initial position. If new messages are found then\n they will be delivered to the handler up to a limited position.\n <p>\n Use a controlled fragment assembler to assemble messages which span multiple fragments. Scans must also\n start at the beginning of a message so that the assembler is reset.\n\n @param image to peek.\n @param initial_position from which to peek forward.\n @param handler to which message fragments are delivered.\n @param clientd to pass to the handler.\n @param limit_position up to which can be scanned.\n @return the resulting position after the scan terminates which is a complete message or -1 for error."]
+        pub fn aeron_image_controlled_peek(
+            image: *mut root::aeron_image_t,
+            initial_position: i64,
+            handler: root::aeron_controlled_fragment_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            limit_position: i64,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Poll for new messages in a stream. If new messages are found beyond the last consumed position then they\n will be delivered to the handler up to a limited number of bytes.\n <p>\n A scan will terminate if a padding frame is encountered. If first frame in a scan is padding then a block\n for the padding is notified. If the padding comes after the first frame in a scan then the scan terminates\n at the offset the padding frame begins. Padding frames are delivered singularly in a block.\n <p>\n Padding frames may be for a greater range than the limit offset but only the header needs to be valid so\n relevant length of the frame is data header length.\n\n @param image to poll.\n @param handler to which block is delivered.\n @param clientd to pass to the handler.\n @param block_length_limit up to which a block may be in length.\n @return the number of bytes that have been consumed or -1 for error."]
+        pub fn aeron_image_block_poll(
+            image: *mut root::aeron_image_t,
+            handler: root::aeron_block_handler_t,
+            clientd: *mut ::std::os::raw::c_void,
+            block_length_limit: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        pub fn aeron_image_is_closed(image: *mut root::aeron_image_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Create an image fragment assembler for use with a single image.\n\n @param assembler to be set when created successfully.\n @param delegate to call on completed.\n @param delegate_clientd to pass to delegate handler.\n @return 0 for success and -1 for error."]
+        pub fn aeron_image_fragment_assembler_create(
+            assembler: *mut *mut root::aeron_image_fragment_assembler_t,
+            delegate: root::aeron_fragment_handler_t,
+            delegate_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Delete an image fragment assembler.\n\n @param assembler to delete.\n @return 0 for success or -1 for error."]
+        pub fn aeron_image_fragment_assembler_delete(
+            assembler: *mut root::aeron_image_fragment_assembler_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Handler function to be passed for handling fragment assembly.\n\n @param clientd passed in the poll call (must be a aeron_image_fragment_assembler_t)\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data."]
+        pub fn aeron_image_fragment_assembler_handler(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        );
+    }
+    extern "C" {
+        #[doc = " Create an image controlled fragment assembler for use with a single image.\n\n @param assembler to be set when created successfully.\n @param delegate to call on completed\n @param delegate_clientd to pass to delegate handler.\n @return 0 for success and -1 for error."]
+        pub fn aeron_image_controlled_fragment_assembler_create(
+            assembler: *mut *mut root::aeron_image_controlled_fragment_assembler_t,
+            delegate: root::aeron_controlled_fragment_handler_t,
+            delegate_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Delete an image controlled fragment assembler.\n\n @param assembler to delete.\n @return 0 for success or -1 for error."]
+        pub fn aeron_image_controlled_fragment_assembler_delete(
+            assembler: *mut root::aeron_image_controlled_fragment_assembler_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Handler function to be passed for handling fragment assembly.\n\n @param clientd passed in the poll call (must be a aeron_image_controlled_fragment_assembler_t)\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data.\n @return The action to be taken with regard to the stream position after the callback."]
+        pub fn aeron_controlled_image_fragment_assembler_handler(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        ) -> root::aeron_controlled_fragment_handler_action_t;
+    }
+    extern "C" {
+        #[doc = " Create a fragment assembler for use with a subscription.\n\n @param assembler to be set when created successfully.\n @param delegate to call on completed\n @param delegate_clientd to pass to delegate handler.\n @return 0 for success and -1 for error."]
+        pub fn aeron_fragment_assembler_create(
+            assembler: *mut *mut root::aeron_fragment_assembler_t,
+            delegate: root::aeron_fragment_handler_t,
+            delegate_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Delete a fragment assembler.\n\n @param assembler to delete.\n @return 0 for success or -1 for error."]
+        pub fn aeron_fragment_assembler_delete(
+            assembler: *mut root::aeron_fragment_assembler_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Handler function to be passed for handling fragment assembly.\n\n @param clientd passed in the poll call (must be a aeron_fragment_assembler_t)\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data."]
+        pub fn aeron_fragment_assembler_handler(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        );
+    }
+    extern "C" {
+        #[doc = " Create a controlled fragment assembler for use with a subscription.\n\n @param assembler to be set when created successfully.\n @param delegate to call on completed\n @param delegate_clientd to pass to delegate handler.\n @return 0 for success and -1 for error."]
+        pub fn aeron_controlled_fragment_assembler_create(
+            assembler: *mut *mut root::aeron_controlled_fragment_assembler_t,
+            delegate: root::aeron_controlled_fragment_handler_t,
+            delegate_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Delete a controlled fragment assembler.\n\n @param assembler to delete.\n @return 0 for success or -1 for error."]
+        pub fn aeron_controlled_fragment_assembler_delete(
+            assembler: *mut root::aeron_controlled_fragment_assembler_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Handler function to be passed for handling fragment assembly.\n\n @param clientd passed in the poll call (must be a aeron_controlled_fragment_assembler_t)\n @param buffer containing the data.\n @param length of the data in bytes.\n @param header representing the meta data for the data.\n @return The action to be taken with regard to the stream position after the callback."]
+        pub fn aeron_controlled_fragment_assembler_handler(
+            clientd: *mut ::std::os::raw::c_void,
+            buffer: *const u8,
+            length: usize,
+            header: *mut root::aeron_header_t,
+        ) -> root::aeron_controlled_fragment_handler_action_t;
+    }
+    extern "C" {
+        #[doc = " Return a pointer to the counter value.\n\n @param counter to pointer to.\n @return pointer to the counter value."]
+        pub fn aeron_counter_addr(counter: *mut root::aeron_counter_t) -> *mut i64;
+    }
+    #[doc = " Configuration for a counter that does not change during it's lifetime."]
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_counter_constants_stct {
+        #[doc = " Return the registration id used to register this counter with the media driver."]
+        pub registration_id: i64,
+        #[doc = " Identity for the counter within the counters reader and counters manager."]
+        pub counter_id: i32,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_counter_constants_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_counter_constants_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_counter_constants_stct>(),
+            16usize,
+            concat!("Size of: ", stringify!(aeron_counter_constants_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_counter_constants_stct>(),
+            8usize,
+            concat!("Alignment of ", stringify!(aeron_counter_constants_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).registration_id) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_constants_stct),
+                "::",
+                stringify!(registration_id)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).counter_id) as usize - ptr as usize },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_counter_constants_stct),
+                "::",
+                stringify!(counter_id)
+            )
+        );
+    }
+    #[doc = " Configuration for a counter that does not change during it's lifetime."]
+    pub type aeron_counter_constants_t = root::aeron_counter_constants_stct;
+    extern "C" {
+        #[doc = " Fill in a structure with the constants in use by a counter.\n\n @param counter to get the constants for.\n @param constants structure to fill in with the constants.\n @return 0 for success and -1 for error."]
+        pub fn aeron_counter_constants(
+            counter: *mut root::aeron_counter_t,
+            constants: *mut root::aeron_counter_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Asynchronously close the counter.\n\n @param counter to close.\n @return 0 for success or -1 for error."]
+        pub fn aeron_counter_close(
+            counter: *mut root::aeron_counter_t,
+            on_close_complete: root::aeron_notification_t,
+            on_close_complete_clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Check if the counter is closed\n @param counter to check\n @return true if closed, false otherwise."]
+        pub fn aeron_counter_is_closed(counter: *mut root::aeron_counter_t) -> bool;
+    }
+    extern "C" {
+        #[doc = " Return full version and build string.\n\n @return full version and build string."]
+        pub fn aeron_version_full() -> *const ::std::os::raw::c_char;
+    }
+    extern "C" {
+        #[doc = " Return major version number.\n\n @return major version number."]
+        pub fn aeron_version_major() -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return minor version number.\n\n @return minor version number."]
+        pub fn aeron_version_minor() -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return patch version number.\n\n @return patch version number."]
+        pub fn aeron_version_patch() -> ::std::os::raw::c_int;
+    }
+    #[doc = " Clock function used by aeron."]
+    pub type aeron_clock_func_t = ::std::option::Option<unsafe extern "C" fn() -> i64>;
+    extern "C" {
+        #[doc = " Return time in nanoseconds for machine. Is not wall clock time.\n\n @return nanoseconds since epoch for machine."]
+        pub fn aeron_nano_clock() -> i64;
+    }
+    extern "C" {
+        #[doc = " Return time in milliseconds since epoch. Is wall clock time.\n\n @return milliseconds since epoch."]
+        pub fn aeron_epoch_clock() -> i64;
+    }
+    #[doc = " Function to return logging information."]
+    pub type aeron_log_func_t =
+        ::std::option::Option<unsafe extern "C" fn(arg1: *const ::std::os::raw::c_char)>;
+    extern "C" {
+        #[doc = " Determine if an aeron driver is using a given aeron directory.\n\n @param dirname  for aeron directory\n @param timeout_ms  to use to determine activity for aeron directory\n @param log_func to call during activity check to log diagnostic information.\n @return true for active driver or false for no active driver."]
+        pub fn aeron_is_driver_active(
+            dirname: *const ::std::os::raw::c_char,
+            timeout_ms: i64,
+            log_func: root::aeron_log_func_t,
+        ) -> bool;
+    }
+    extern "C" {
+        #[doc = " Load properties from a string containing name=value pairs and set appropriate environment variables for the\n process so that subsequent calls to aeron_driver_context_init will use those values.\n\n @param buffer containing properties and values.\n @return 0 for success and -1 for error."]
+        pub fn aeron_properties_buffer_load(
+            buffer: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Load properties file and set appropriate environment variables for the process so that subsequent\n calls to aeron_driver_context_init will use those values.\n\n @param filename to load.\n @return 0 for success and -1 for error."]
+        pub fn aeron_properties_file_load(
+            filename: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Load properties from HTTP URL and set environment variables for the process so that subsequent\n calls to aeron_driver_context_init will use those values.\n\n @param url to attempt to retrieve and load.\n @return 0 for success and -1 for error."]
+        pub fn aeron_properties_http_load(
+            url: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Load properties based on URL or filename. If string contains file or http URL, it will attempt\n to load properties from a file or http as indicated. If not a URL, then it will try to load the string\n as a filename.\n\n @param url_or_filename to load properties from.\n @return 0 for success and -1 for error."]
+        pub fn aeron_properties_load(
+            url_or_filename: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return current aeron error code (errno) for calling thread.\n\n @return aeron error code for calling thread."]
+        pub fn aeron_errcode() -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Return the current aeron error message for calling thread.\n\n @return aeron error message for calling thread."]
+        pub fn aeron_errmsg() -> *const ::std::os::raw::c_char;
+    }
+    extern "C" {
+        #[doc = " Get the default path used by the Aeron media driver.\n\n @param path buffer to store the path.\n @param path_length space available in the buffer\n @return -1 if there is an issue or the number of bytes written to path excluding the terminator `\\0`. If this\n is equal to or greater than the path_length then the path has been truncated."]
+        pub fn aeron_default_path(
+            path: *mut ::std::os::raw::c_char,
+            path_length: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Gets the registration id for addition of the counter. Note that using this after a call to poll the succeeds or\n errors is undefined behaviour. As the async_add_counter_t may have been freed.\n\n @param add_counter used to check for completion.\n @return registration id for the counter."]
+        pub fn aeron_async_add_counter_get_registration_id(
+            add_counter: *mut root::aeron_async_add_counter_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Gets the registration id for addition of the publication. Note that using this after a call to poll the succeeds or\n errors is undefined behaviour. As the async_add_publication_t may have been freed.\n\n @param add_publication used to check for completion.\n @return registration id for the publication."]
+        pub fn aeron_async_add_publication_get_registration_id(
+            add_publication: *mut root::aeron_async_add_publication_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Gets the registration id for addition of the exclusive_publication. Note that using this after a call to poll the\n succeeds or errors is undefined behaviour. As the async_add_exclusive_publication_t may have been freed.\n\n @param add_exclusive_publication used to check for completion.\n @return registration id for the exclusive_publication."]
+        pub fn aeron_async_add_exclusive_exclusive_publication_get_registration_id(
+            add_exclusive_publication: *mut root::aeron_async_add_exclusive_publication_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Gets the registration id for addition of the subscription. Note that using this after a call to poll the succeeds or\n errors is undefined behaviour. As the async_add_subscription_t may have been freed.\n\n @param add_subscription used to check for completion.\n @return registration id for the subscription."]
+        pub fn aeron_async_add_subscription_get_registration_id(
+            add_subscription: *mut root::aeron_async_add_subscription_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Gets the registration_id for the destination command supplied. Note that this is the correlation_id used for\n the specified destination command, not the registration_id for the original parent resource (publication,\n subscription).\n\n @param async_destination tracking the current destination command.\n @return correlation_id sent to driver."]
+        pub fn aeron_async_destination_get_registration_id(
+            async_destination: *mut root::aeron_async_destination_t,
+        ) -> i64;
+    }
+    extern "C" {
+        #[doc = " Request the media driver terminates operation and closes all resources.\n\n @param directory    in which the media driver is running.\n @param token_buffer containing the authentication token confirming the client is allowed to terminate the driver.\n @param token_length of the token in the buffer.\n @return"]
+        pub fn aeron_context_request_driver_termination(
+            directory: *const ::std::os::raw::c_char,
+            token_buffer: *const u8,
+            token_length: usize,
+        ) -> ::std::os::raw::c_int;
+    }
+    #[repr(C)]
+    #[derive(Copy, Clone)]
+    pub struct aeron_cnc_stct {
+        _unused: [u8; 0],
+    }
+    pub type aeron_cnc_t = root::aeron_cnc_stct;
+    #[repr(C, packed(4))]
+    #[derive(Copy, Clone)]
+    pub struct aeron_cnc_constants_stct {
+        pub cnc_version: i32,
+        pub to_driver_buffer_length: i32,
+        pub to_clients_buffer_length: i32,
+        pub counter_metadata_buffer_length: i32,
+        pub counter_values_buffer_length: i32,
+        pub error_log_buffer_length: i32,
+        pub client_liveness_timeout: i64,
+        pub start_timestamp: i64,
+        pub pid: i64,
+    }
+    #[test]
+    fn bindgen_test_layout_aeron_cnc_constants_stct() {
+        const UNINIT: ::std::mem::MaybeUninit<aeron_cnc_constants_stct> =
+            ::std::mem::MaybeUninit::uninit();
+        let ptr = UNINIT.as_ptr();
+        assert_eq!(
+            ::std::mem::size_of::<aeron_cnc_constants_stct>(),
+            48usize,
+            concat!("Size of: ", stringify!(aeron_cnc_constants_stct))
+        );
+        assert_eq!(
+            ::std::mem::align_of::<aeron_cnc_constants_stct>(),
+            4usize,
+            concat!("Alignment of ", stringify!(aeron_cnc_constants_stct))
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).cnc_version) as usize - ptr as usize },
+            0usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(cnc_version)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).to_driver_buffer_length) as usize - ptr as usize },
+            4usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(to_driver_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).to_clients_buffer_length) as usize - ptr as usize
+            },
+            8usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(to_clients_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).counter_metadata_buffer_length) as usize - ptr as usize
+            },
+            12usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(counter_metadata_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe {
+                ::std::ptr::addr_of!((*ptr).counter_values_buffer_length) as usize - ptr as usize
+            },
+            16usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(counter_values_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).error_log_buffer_length) as usize - ptr as usize },
+            20usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(error_log_buffer_length)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).client_liveness_timeout) as usize - ptr as usize },
+            24usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(client_liveness_timeout)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).start_timestamp) as usize - ptr as usize },
+            32usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(start_timestamp)
+            )
+        );
+        assert_eq!(
+            unsafe { ::std::ptr::addr_of!((*ptr).pid) as usize - ptr as usize },
+            40usize,
+            concat!(
+                "Offset of field: ",
+                stringify!(aeron_cnc_constants_stct),
+                "::",
+                stringify!(pid)
+            )
+        );
+    }
+    pub type aeron_cnc_constants_t = root::aeron_cnc_constants_stct;
+    extern "C" {
+        #[doc = " Initialise an aeron_cnc, which gives user level access to the command and control file used to communicate\n with the media driver. Will wait until the media driver has loaded and the cnc file is created, up to timeout_ms.\n Use a value of 0 for a non-blocking initialisation.\n\n @param aeron_cnc to hold the loaded aeron_cnc\n @param base_path media driver's base path\n @param timeout_ms Number of milliseconds to wait before timing out.\n @return 0 on success, -1 on failure."]
+        pub fn aeron_cnc_init(
+            aeron_cnc: *mut *mut root::aeron_cnc_t,
+            base_path: *const ::std::os::raw::c_char,
+            timeout_ms: i64,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Fetch the sets of constant values associated with this command and control file.\n\n @param aeron_cnc to query\n @param constants user supplied structure to hold return values.\n @return 0 on success, -1 on failure."]
+        pub fn aeron_cnc_constants(
+            aeron_cnc: *mut root::aeron_cnc_t,
+            constants: *mut root::aeron_cnc_constants_t,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Get the current file name of the cnc file.\n\n @param aeron_cnc to query\n @return name of the cnc file"]
+        pub fn aeron_cnc_filename(
+            aeron_cnc: *mut root::aeron_cnc_t,
+        ) -> *const ::std::os::raw::c_char;
+    }
+    extern "C" {
+        #[doc = " Gets the timestamp of the last heartbeat sent to the media driver from any client.\n\n @param aeron_cnc to query\n @return last heartbeat timestamp in ms."]
+        pub fn aeron_cnc_to_driver_heartbeat(aeron_cnc: *mut root::aeron_cnc_t) -> i64;
+    }
+    pub type aeron_error_log_reader_func_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            observation_count: i32,
+            first_observation_timestamp: i64,
+            last_observation_timestamp: i64,
+            error: *const ::std::os::raw::c_char,
+            error_length: usize,
+            clientd: *mut ::std::os::raw::c_void,
+        ),
+    >;
+    extern "C" {
+        #[doc = " Reads the current error log for this driver.\n\n @param aeron_cnc to query\n @param callback called for every distinct error observation\n @param clientd client data to be passed to the callback\n @param since_timestamp only return errors after this timestamp (0 returns all)\n @return the number of distinct errors seen"]
+        pub fn aeron_cnc_error_log_read(
+            aeron_cnc: *mut root::aeron_cnc_t,
+            callback: root::aeron_error_log_reader_func_t,
+            clientd: *mut ::std::os::raw::c_void,
+            since_timestamp: i64,
+        ) -> usize;
+    }
+    extern "C" {
+        #[doc = " Gets a counters reader for this command and control file. This does not need to be closed manually, resources\n are tied to the instance of aeron_cnc.\n\n @param aeron_cnc to query\n @return pointer to a counters reader."]
+        pub fn aeron_cnc_counters_reader(
+            aeron_cnc: *mut root::aeron_cnc_t,
+        ) -> *mut root::aeron_counters_reader_t;
+    }
+    pub type aeron_loss_reporter_read_entry_func_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            clientd: *mut ::std::os::raw::c_void,
+            observation_count: i64,
+            total_bytes_lost: i64,
+            first_observation_timestamp: i64,
+            last_observation_timestamp: i64,
+            session_id: i32,
+            stream_id: i32,
+            channel: *const ::std::os::raw::c_char,
+            channel_length: i32,
+            source: *const ::std::os::raw::c_char,
+            source_length: i32,
+        ),
+    >;
+    extern "C" {
+        #[doc = " Read all of the data loss observations from the report in the same media driver instances as the cnc file.\n\n @param aeron_cnc to query\n @param entry_func callback for each observation found\n @param clientd client data to be passed to the callback.\n @return -1 on failure, number of observations on success (could be 0)."]
+        pub fn aeron_cnc_loss_reporter_read(
+            aeron_cnc: *mut root::aeron_cnc_t,
+            entry_func: root::aeron_loss_reporter_read_entry_func_t,
+            clientd: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int;
+    }
+    extern "C" {
+        #[doc = " Closes the instance of the aeron cnc and frees its resources.\n\n @param aeron_cnc to close"]
+        pub fn aeron_cnc_close(aeron_cnc: *mut root::aeron_cnc_t);
+    }
+    pub type aeron_idle_strategy_func_t = ::std::option::Option<
+        unsafe extern "C" fn(state: *mut ::std::os::raw::c_void, work_count: ::std::os::raw::c_int),
+    >;
+    pub type aeron_idle_strategy_init_func_t = ::std::option::Option<
+        unsafe extern "C" fn(
+            state: *mut *mut ::std::os::raw::c_void,
+            env_var: *const ::std::os::raw::c_char,
+            init_args: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int,
+    >;
+    extern "C" {
+        pub fn aeron_semantic_version_compose(major: u8, minor: u8, patch: u8) -> i32;
+    }
+    extern "C" {
+        pub fn aeron_semantic_version_major(version: i32) -> u8;
+    }
+    extern "C" {
+        pub fn aeron_semantic_version_minor(version: i32) -> u8;
+    }
+    extern "C" {
+        pub fn aeron_semantic_version_patch(version: i32) -> u8;
+    }
+    pub type aeron_fptr_t = ::std::option::Option<unsafe extern "C" fn()>;
+    #[doc = " Set the value of the header flags field.\n\n @param flags value to be set in the header.\n @return this for a fluent API."]
+    
+    #[doc = " @cond HIDDEN_SYMBOLS"]
+    
+    
     #[test]
     fn __bindgen_test_layout_AgentInvoker_open0_ClientConductor_close0_instantiation() {
         assert_eq!(
@@ -8231,36 +5005,6 @@ pub mod root {
             concat!(
                 "Alignment of template specialization: ",
                 stringify!(root::aeron::concurrent::AgentInvoker<root::aeron::ClientConductor>)
-            )
-        );
-    }
-    #[test]
-    fn __bindgen_test_layout_AgentRunner_open0_ClientConductor_SleepingIdleStrategy_close0_instantiation(
-    ) {
-        assert_eq!(
-            ::std::mem::size_of::<
-                root::aeron::concurrent::AgentRunner<
-                    root::aeron::ClientConductor,
-                    root::aeron::concurrent::SleepingIdleStrategy,
-                >,
-            >(),
-            72usize,
-            concat!(
-                "Size of template specialization: ",
-                stringify ! (root :: aeron :: concurrent :: AgentRunner < root :: aeron :: ClientConductor , root :: aeron :: concurrent :: SleepingIdleStrategy >)
-            )
-        );
-        assert_eq!(
-            ::std::mem::align_of::<
-                root::aeron::concurrent::AgentRunner<
-                    root::aeron::ClientConductor,
-                    root::aeron::concurrent::SleepingIdleStrategy,
-                >,
-            >(),
-            8usize,
-            concat!(
-                "Alignment of template specialization: ",
-                stringify ! (root :: aeron :: concurrent :: AgentRunner < root :: aeron :: ClientConductor , root :: aeron :: concurrent :: SleepingIdleStrategy >)
             )
         );
     }

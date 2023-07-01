@@ -18,6 +18,10 @@ path = "src/basic_publisher.rs"
 name = "subscriber"
 path = "src/basic_subscriber.rs"
 
+[[bin]]
+name = "cpp_subscriber"
+path = "src/cpp_subscriber.rs"
+
 [dependencies]
 aeron-lib = { version = "0.1.0+1.41.4", path = "../aeron-lib" }
 aeron-rs = {git = "https://github.com/UnitedTraders/aeron-rs.git", branch = "master",  version = "0.1.6"}

@@ -89,8 +89,7 @@ pub fn main() {
     );
 
 
-    println!("cargo:rustc-link-lib=static=aeron_archive_client");
-    println!("cargo:rustc-link-lib=static=aeron_archive_client_wrapper");
+    // println!("cargo:rustc-link-lib=static=aeron_cpp_archive_client_static");
     println!("cargo:rustc-link-lib=stdc++");
 
     println!("cargo:include={}", header_path.display());

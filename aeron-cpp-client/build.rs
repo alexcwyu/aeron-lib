@@ -37,7 +37,7 @@ pub fn main() {
     println!("cargo:rerun-if-changed=aeron_cpp_client.h");
 
     let aeron_path = canonicalize(Path::new("./aeron")).unwrap();
-    let header_path = aeron_path.join("aeron-archive/src/main/cpp/client");
+    let header_path = aeron_path.join("aeron-client/src/main/cpp");
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
     // let link_type = LinkType::detect();
@@ -89,8 +89,7 @@ pub fn main() {
     );
 
 
-    println!("cargo:rustc-link-lib=static=aeron_archive_client");
-    println!("cargo:rustc-link-lib=static=aeron_archive_client_wrapper");
+    // println!("cargo:rustc-link-lib=static=aeron_cpp_client_static");
     println!("cargo:rustc-link-lib=stdc++");
 
     println!("cargo:include={}", header_path.display());

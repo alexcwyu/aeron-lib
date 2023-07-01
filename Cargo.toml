@@ -1,13 +1,13 @@
 [workspace]
 members = [
     "aeron-lib",
-    "aeron-example", 
+    # "aeron-example", 
 ]
 
 exclude = [
-    "aeron-cpp-archive-client", 
-    "aeron-cpp-client",
-    "aeron-cpp-wrapper-client",
     "aeron-c-client", 
     "aeron-c-driver", 
+    "aeron-cpp-client",
+    "aeron-cpp-archive-client", 
+    "aeron-cpp-wrapper-client",
 ]
