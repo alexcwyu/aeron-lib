@@ -3,7 +3,7 @@
 #![allow(non_snake_case)]
 #![allow(unaligned_references)]
 #![allow(clippy::all)]
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+include!(concat!(env!("OUT_DIR"), "/aeron_cpp_archive_client.rs"));
 
 #[cfg(test)]
 mod tests {

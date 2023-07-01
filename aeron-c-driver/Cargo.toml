@@ -1,0 +1,16 @@
+[package]
+name = "aeron-c-driver"
+version = "0.1.0+1.41.4"
+license = "Apache-2.0"
+edition = "2021"
+readme = "README.md"
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.66"
+cmake = "0.1"
+dunce = "1.0"
+
+[features]
+static = []

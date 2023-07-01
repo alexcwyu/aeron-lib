@@ -26,18 +26,18 @@ impl LinkType {
 
     fn target_name(&self) -> &'static str {
         match self {
-            LinkType::Dynamic => "aeron",
-            LinkType::Static => "aeron_static",
+            LinkType::Dynamic => "aeron_driver",
+            LinkType::Static => "aeron_driver_static",
         }
     }
 }
 
 pub fn main() {
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=bindings.h");
+    println!("cargo:rerun-if-changed=aeron_c_driver.h");
 
     let aeron_path = canonicalize(Path::new("./aeron")).unwrap();
-    let header_path = aeron_path.join("aeron-client/src/main/c");
+    let header_path = aeron_path.join("aeron-driver/src/main/c");
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
     let link_type = LinkType::detect();
@@ -91,15 +91,23 @@ pub fn main() {
     println!("cargo:include={}", header_path.display());
     let bindings = bindgen::Builder::default()
         .clang_arg(format!("-I{}", header_path.display()))
-        .header("bindings.h")
+        // We need to include some of the headers from `libaeron`, so update the include path here
+        .clang_arg(format!(
+            "-I{}",
+            aeron_path.join("aeron-client/src/main/c").display()
+        ))
+        .header("aeron_c_driver.h")
         .allowlist_function("aeron_.*")
         .allowlist_type("aeron_.*")
         .allowlist_var("AERON_.*")
         .constified_enum_module("aeron_.*_enum")
+        // Some padding structures use arrays > 120 elements,
+        // so we can't derive Debug implementations
+        .derive_debug(false)
         .generate()
-        .expect("Unable to generate aeron bindings");
+        .expect("Unable to generate aeron_driver bindings");
 
     bindings
-        .write_to_file(out_path.join("bindings.rs"))
+        .write_to_file(out_path.join("aeron_c_driver.rs"))
         .expect("Couldn't write bindings!");
 }

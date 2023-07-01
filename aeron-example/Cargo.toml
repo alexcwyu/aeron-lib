@@ -1,0 +1,27 @@
+[package]
+name = "aeron-example"
+version = "0.1.0+1.41.4"
+license = "Apache-2.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# [[bin]]
+# name = "lib_publisher"
+# path = "src/lib_publisher.rs"
+
+[[bin]]
+name = "publisher"
+path = "src/basic_publisher.rs"
+
+[[bin]]
+name = "subscriber"
+path = "src/basic_subscriber.rs"
+
+[dependencies]
+aeron-lib = { version = "0.1.0+1.41.4", path = "../aeron-lib" }
+aeron-rs = {git = "https://github.com/UnitedTraders/aeron-rs.git", branch = "master",  version = "0.1.6"}
+lazy_static = "1.4"
+pretty_env_logger = "0.5"
+ctrlc = "3.2"
+nix = "0.26"

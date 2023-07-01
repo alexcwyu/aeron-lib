@@ -1,7 +1,13 @@
 [workspace]
 members = [
-    "libaeron",
-    "libaeron-sys",
-    "libaeron_driver-sys",
-    "libaeron_archive-sys",
+    "aeron-lib",
+    "aeron-example", 
+]
+
+exclude = [
+    "aeron-cpp-archive-client", 
+    "aeron-cpp-client",
+    "aeron-cpp-wrapper-client",
+    "aeron-c-client", 
+    "aeron-c-driver", 
 ]

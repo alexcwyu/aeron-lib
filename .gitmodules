@@ -1,9 +1,16 @@
-[submodule "libaeron_archive-sys/aeron"]
-	path = libaeron_archive-sys/aeron
+[submodule "aeron-c-client/aeron"]
+	path = aeron-c-client/aeron
 	url = https://github.com/real-logic/aeron.git
-[submodule "libaeron_driver-sys/aeron"]
-	path = libaeron_driver-sys/aeron
+[submodule "aeron-c-driver/aeron"]
+	path = aeron-c-driver/aeron
 	url = https://github.com/real-logic/aeron.git
-[submodule "libaeron-sys/aeron"]
-	path = libaeron-sys/aeron
+[submodule "aeron-cpp-archive-client/aeron"]
+	path = aeron-cpp-archive-client/aeron
+	url = https://github.com/real-logic/aeron.git
+[submodule "aeron-cpp-client/aeron"]
+	path = aeron-cpp-client/aeron
+	url = https://github.com/real-logic/aeron.git
+
+[submodule "aeron-cpp-wrapper-client/aeron"]
+	path = aeron-cpp-wrapper-client/aeron
 	url = https://github.com/real-logic/aeron.git

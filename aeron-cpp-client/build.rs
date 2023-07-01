@@ -34,7 +34,7 @@ use std::path::{Path, PathBuf};
 
 pub fn main() {
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=bindings.h");
+    println!("cargo:rerun-if-changed=aeron_cpp_client.h");
 
     let aeron_path = canonicalize(Path::new("./aeron")).unwrap();
     let header_path = aeron_path.join("aeron-archive/src/main/cpp/client");
@@ -96,16 +96,18 @@ pub fn main() {
     println!("cargo:include={}", header_path.display());
     let bindings = bindgen::Builder::default()
         .clang_arg(format!("-I{}", header_path.display()))
-        .clang_arg(format!(
-            "-I{}",
-            aeron_path.join("aeron-client/src/main/c").display()
-        ))
-        .header("bindings.h")
+        // .clang_arg(format!(
+        //     "-I{}",
+        //     aeron_path.join("aeron-client/src/main/c").display()
+        // ))
+        .header("aeron_cpp_client.h")
         .enable_cxx_namespaces()
         // enable C++
-        .clang_args(&["-x", "c++", "--std=c++14", "-fkeep-inline-functions"])
+        // .clang_args(&["-x", "c++", "--std=c++14", "-fkeep-inline-functions"])
+        // .opaque_type("std::.*")
+        // .generate_inline_functions(true)
+        .clang_args(&["-x", "c++", "--std=c++14"])
         .opaque_type("std::.*")
- 
         .allowlist_function("aeron::.*")
         .allowlist_function("aeron.*")
         .allowlist_type("aeron::.*")
@@ -125,6 +127,6 @@ pub fn main() {
         .expect("Unable to generate aeron bindings");
 
     bindings
-        .write_to_file(out_path.join("bindings.rs"))
+        .write_to_file(out_path.join("aeron_cpp_client.rs"))
         .expect("Couldn't write bindings!");
 }

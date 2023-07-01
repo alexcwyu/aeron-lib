@@ -1,6 +1,6 @@
 [package]
-name = "libaeron"
-version = "1.0.0+1.41.4"
+name = "aeron-lib"
+version = "0.1.0+1.41.4"
 license = "Apache-2.0"
 edition = "2021"
 readme = "README.md"
